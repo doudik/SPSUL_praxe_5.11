@@ -44,7 +44,7 @@
       },
       "vse": true,
       "latence_s": 1.136,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 257,
       "completion_tokens": 121
     },
@@ -74,7 +74,7 @@
       },
       "vse": true,
       "latence_s": 0.762,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 253,
       "completion_tokens": 131
     },
@@ -104,7 +104,7 @@
       },
       "vse": true,
       "latence_s": 21.775,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 254,
       "completion_tokens": 140
     },
@@ -134,7 +134,7 @@
       },
       "vse": true,
       "latence_s": 0.893,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 270,
       "completion_tokens": 195
     },
@@ -164,7 +164,7 @@
       },
       "vse": true,
       "latence_s": 1.002,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 268,
       "completion_tokens": 190
     },
@@ -194,7 +194,7 @@
       },
       "vse": true,
       "latence_s": 0.824,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 252,
       "completion_tokens": 149
     },
@@ -224,7 +224,7 @@
       },
       "vse": true,
       "latence_s": 0.543,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 261,
       "completion_tokens": 160
     },
@@ -254,7 +254,7 @@
       },
       "vse": true,
       "latence_s": 0.721,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 248,
       "completion_tokens": 124
     },
@@ -284,7 +284,7 @@
       },
       "vse": true,
       "latence_s": 0.941,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 265,
       "completion_tokens": 222
     },
@@ -314,7 +314,7 @@
       },
       "vse": false,
       "latence_s": 0.936,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 300,
       "completion_tokens": 188
     },
@@ -344,7 +344,7 @@
       },
       "vse": true,
       "latence_s": 0.752,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 265,
       "completion_tokens": 173
     },
@@ -374,7 +374,7 @@
       },
       "vse": true,
       "latence_s": 0.887,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 253,
       "completion_tokens": 173
     },
@@ -404,7 +404,7 @@
       },
       "vse": true,
       "latence_s": 0.776,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 247,
       "completion_tokens": 134
     },
@@ -434,7 +434,7 @@
       },
       "vse": false,
       "latence_s": 0.523,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 263,
       "completion_tokens": 149
     },
@@ -464,7 +464,7 @@
       },
       "vse": true,
       "latence_s": 0.741,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 249,
       "completion_tokens": 132
     }

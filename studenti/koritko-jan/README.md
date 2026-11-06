@@ -80,14 +80,16 @@ Tabulku generuje `src/report.py` přímo z `results/summary.json`, čísla tedy 
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | openai/gpt-oss-120b | groq | v1 | dev | 100 % | **87 %** | 87 % | 100 % | 100 % | 100 % | 2,21 s | 3 905 / 2 381 |
 | openai/gpt-oss-20b | groq | v1 | dev | 100 % | **87 %** | 93 % | 100 % | 93 % | 93 % | 0,93 s | 3 905 / 4 914 |
+| allam-2-7b | groq | v1 | dev | 100 % | **13 %** | 67 % | 93 % | 67 % | 20 % | 1,86 s | 4 036 / 775 |
 | openai/gpt-oss-120b | groq | v2 | dev | 100 % | **100 %** | 100 % | 100 % | 100 % | 100 % | 1,66 s | 13 445 / 3 608 |
 | openai/gpt-oss-20b | groq | v2 | dev | 100 % | **100 %** | 100 % | 100 % | 100 % | 100 % | 0,68 s | 13 445 / 3 101 |
+| allam-2-7b | groq | v2 | dev | 93 % | **40 %** | 87 % | 80 % | 80 % | 47 % | 0,39 s | 17 461 / 1 591 |
 | openai/gpt-oss-120b | groq | v2 | test | 100 % | **100 %** | 100 % | 100 % | 100 % | 100 % | 2,94 s | 8 980 / 2 447 |
 | openai/gpt-oss-20b | groq | v2 | test | 100 % | **100 %** | 100 % | 100 % | 100 % | 100 % | 1,40 s | 8 980 / 2 785 |
 <!-- TABULKA KONEC -->
 
 <!-- MODELY START -->
-Použité modely: `openai/gpt-oss-120b` (groq, ~120 mld.), `openai/gpt-oss-20b` (groq, ~20 mld. parametrů).
+Použité modely: `allam-2-7b` (groq, ?), `openai/gpt-oss-120b` (groq, ~120 mld.), `openai/gpt-oss-20b` (groq, ~20 mld. parametrů).
 <!-- MODELY KONEC -->
 
 Pozn.: Mistral (`mistral-small-latest`) na bezplatném účtu opakovaně vracel chybu 429 (vyčerpaný limit)
@@ -151,7 +153,7 @@ Odhad ceny podle cen placených variant na OpenRouteru (ověřeno 6. 11. 2026, k
 <!-- CENA KONEC -->
 
 <!-- DOPORUCENI START -->
-Vybral bych **openai/gpt-oss-20b** (groq) s promptem **v2**. Na dev sadě má nejvyšší úplnou shodu (100 %, validní JSON 100 %) a na test sadě 100 %, průměrná latence 0,68 s. Při naměřené spotřebě 896 vstupních a 207 výstupních tokenů na dotaz by 10 000 dotazů denně stálo na OpenRouteru asi **0,35 USD (≈ 8 Kč) denně**, tj. ≈ 240 Kč měsíčně. Prompt v2 změnil úplnou shodu v průměru o +13 procentních bodů, ale má 3,4× víc vstupních tokenů – u takhle levných modelů je to pořád zanedbatelná cena, rozhoduje hlavně přesnost.
+Vybral bych **openai/gpt-oss-20b** (groq) s promptem **v2**. Na dev sadě má nejvyšší úplnou shodu (100 %, validní JSON 100 %) a na test sadě 100 %, průměrná latence 0,68 s. Při naměřené spotřebě 896 vstupních a 207 výstupních tokenů na dotaz by 10 000 dotazů denně stálo na OpenRouteru asi **0,35 USD (≈ 8 Kč) denně**, tj. ≈ 240 Kč měsíčně. Prompt v2 změnil úplnou shodu v průměru o +18 procentních bodů, ale má 3,7× víc vstupních tokenů – u takhle levných modelů je to pořád zanedbatelná cena, rozhoduje hlavně přesnost.
 <!-- DOPORUCENI KONEC -->
 
 ## Rozdíl dev a test

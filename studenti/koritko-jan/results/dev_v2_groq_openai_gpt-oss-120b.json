@@ -44,7 +44,7 @@
       },
       "vse": true,
       "latence_s": 0.794,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 893,
       "completion_tokens": 191
     },
@@ -74,7 +74,7 @@
       },
       "vse": true,
       "latence_s": 0.72,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 889,
       "completion_tokens": 155
     },
@@ -104,7 +104,7 @@
       },
       "vse": true,
       "latence_s": 0.791,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 890,
       "completion_tokens": 244
     },
@@ -134,7 +134,7 @@
       },
       "vse": true,
       "latence_s": 0.998,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 906,
       "completion_tokens": 314
     },
@@ -164,7 +164,7 @@
       },
       "vse": true,
       "latence_s": 1.138,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 904,
       "completion_tokens": 288
     },
@@ -194,7 +194,7 @@
       },
       "vse": true,
       "latence_s": 0.907,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 888,
       "completion_tokens": 243
     },
@@ -224,7 +224,7 @@
       },
       "vse": true,
       "latence_s": 0.974,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 897,
       "completion_tokens": 187
     },
@@ -254,7 +254,7 @@
       },
       "vse": true,
       "latence_s": 0.786,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 884,
       "completion_tokens": 197
     },
@@ -284,7 +284,7 @@
       },
       "vse": true,
       "latence_s": 0.884,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 901,
       "completion_tokens": 228
     },
@@ -314,7 +314,7 @@
       },
       "vse": true,
       "latence_s": 0.994,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 936,
       "completion_tokens": 260
     },
@@ -344,7 +344,7 @@
       },
       "vse": true,
       "latence_s": 8.036,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 901,
       "completion_tokens": 240
     },
@@ -374,7 +374,7 @@
       },
       "vse": true,
       "latence_s": 3.246,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 889,
       "completion_tokens": 275
     },
@@ -404,7 +404,7 @@
       },
       "vse": true,
       "latence_s": 2.911,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 883,
       "completion_tokens": 422
     },
@@ -434,7 +434,7 @@
       },
       "vse": true,
       "latence_s": 0.909,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 899,
       "completion_tokens": 208
     },
@@ -464,7 +464,7 @@
       },
       "vse": true,
       "latence_s": 0.866,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 885,
       "completion_tokens": 156
     }

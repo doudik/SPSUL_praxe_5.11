@@ -44,7 +44,7 @@
       },
       "vse": true,
       "latence_s": 1.002,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 888,
       "completion_tokens": 397
     },
@@ -74,7 +74,7 @@
       },
       "vse": true,
       "latence_s": 1.092,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 886,
       "completion_tokens": 332
     },
@@ -104,7 +104,7 @@
       },
       "vse": true,
       "latence_s": 0.677,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 896,
       "completion_tokens": 182
     },
@@ -134,7 +134,7 @@
       },
       "vse": true,
       "latence_s": 0.926,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 900,
       "completion_tokens": 195
     },
@@ -164,7 +164,7 @@
       },
       "vse": true,
       "latence_s": 1.277,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 895,
       "completion_tokens": 239
     },
@@ -194,7 +194,7 @@
       },
       "vse": true,
       "latence_s": 1.525,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 887,
       "completion_tokens": 139
     },
@@ -224,7 +224,7 @@
       },
       "vse": true,
       "latence_s": 1.756,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 894,
       "completion_tokens": 185
     },
@@ -254,7 +254,7 @@
       },
       "vse": true,
       "latence_s": 2.243,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 892,
       "completion_tokens": 167
     },
@@ -284,7 +284,7 @@
       },
       "vse": true,
       "latence_s": 1.119,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 939,
       "completion_tokens": 474
     },
@@ -314,7 +314,7 @@
       },
       "vse": true,
       "latence_s": 2.329,
-      "z_cache": false,
+      "z_cache": true,
       "prompt_tokens": 903,
       "completion_tokens": 475
     }
