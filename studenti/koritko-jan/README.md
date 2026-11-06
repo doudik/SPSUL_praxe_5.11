@@ -76,11 +76,18 @@ souhrn všech běhů v `results/summary.json` (stejný běh se přepíše).
 Tabulku generuje `src/report.py` přímo z `results/summary.json`, čísla tedy vždy odpovídají souborům.
 
 <!-- TABULKA START -->
-_Zatím nespuštěno – po `python src/run_all.py` se sem vloží tabulka._
+| Model | Poskytovatel | Prompt | Sada | Validní JSON | Úplná shoda | město | teplota | srážky | typ srážek | Latence | Tokeny (vstup/výstup) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| openai/gpt-oss-120b | groq | v1 | dev | 100 % | **87 %** | 87 % | 100 % | 100 % | 100 % | 2,21 s | 3 905 / 2 381 |
+| openai/gpt-oss-20b | groq | v1 | dev | 100 % | **87 %** | 93 % | 100 % | 93 % | 93 % | 0,93 s | 3 905 / 4 914 |
+| openai/gpt-oss-120b | groq | v2 | dev | 100 % | **100 %** | 100 % | 100 % | 100 % | 100 % | 1,66 s | 13 445 / 3 608 |
+| openai/gpt-oss-20b | groq | v2 | dev | 100 % | **100 %** | 100 % | 100 % | 100 % | 100 % | 0,68 s | 13 445 / 3 101 |
+| openai/gpt-oss-120b | groq | v2 | test | 100 % | **100 %** | 100 % | 100 % | 100 % | 100 % | 2,94 s | 8 980 / 2 447 |
+| openai/gpt-oss-20b | groq | v2 | test | 100 % | **100 %** | 100 % | 100 % | 100 % | 100 % | 1,40 s | 8 980 / 2 785 |
 <!-- TABULKA KONEC -->
 
 <!-- MODELY START -->
-_Zatím nespuštěno._
+Použité modely: `openai/gpt-oss-120b` (groq, ~120 mld.), `openai/gpt-oss-20b` (groq, ~20 mld. parametrů).
 <!-- MODELY KONEC -->
 
 Grafy: [`results/dashboard.html`](results/dashboard.html).
@@ -92,7 +99,27 @@ Tři různé chyby vybírá a popisuje `src/report.py` přímo ze surových odpo
 v sadě je poznamenáno, co je na něm záludné). Všechny chyby jsou v [`results/chyby.md`](results/chyby.md).
 
 <!-- ROZBOR START -->
-_Zatím nespuštěno._
+**1. Případ #8** (openai/gpt-oss-20b, prompt v1, sada dev)
+
+- Vstup: „Plzen: zatazeno, mrholeni, 7 C“
+- Model vrátil: `{"mesto": "Plzen", "teplota": 7, "srazky": false, "typ_srazek": null}`
+- Správně: `{"mesto": "Plzeň", "teplota": 7, "srazky": true, "typ_srazek": "dest"}`
+- Proč: srážky: vrátil false, správně je true; pole typ srážek nechal prázdné, i když údaj v textu je. Na případu je záludné: text bez diakritiky a se zkratkou „C“. Pravidlo je v zadání jasné, jde spíš o **chybu modelu**.
+
+**2. Případ #10** (openai/gpt-oss-120b, prompt v1, sada dev)
+
+- Vstup: „Ahoj, tak jsme dorazili do Zlína a počasí nic moc. Kamarád říkal, že předpověď na dnešek hlásí 12 stupňů, ale fouká jak blázen. Naštěstí aspoň neprší a podle radaru ani nemá.“
+- Model vrátil: `{"mesto": "Zlína", "teplota": 12, "srazky": false, "typ_srazek": "zadne"}`
+- Správně: `{"mesto": "Zlín", "teplota": 12, "srazky": false, "typ_srazek": "zadne"}`
+- Proč: město vrátil jako „Zlína“ místo „Zlín“ – buď jiný pád/tvar, nebo vybral jiné místo. Na případu je záludné: dlouhý hovorový text, údaje jsou rozházené. Pravidlo je v zadání jasné, jde spíš o **chybu modelu**.
+
+**3. Případ #11** (openai/gpt-oss-20b, prompt v1, sada dev)
+
+- Vstup: „Super, v Jihlavě zase „krásné letní počasí“ – leje jako z konve a je 6 stupňů.“
+- Model vrátil: `{"mesto": "Jihlavě", "teplota": 6, "srazky": true, "typ_srazek": "dest"}`
+- Správně: `{"mesto": "Jihlava", "teplota": 6, "srazky": true, "typ_srazek": "dest"}`
+- Proč: město vrátil jako „Jihlavě“ místo „Jihlava“ – buď jiný pád/tvar, nebo vybral jiné místo. Na případu je záludné: ironie – slova „krásné letní počasí“ tvrdí opak skutečnosti. Pravidlo je v zadání jasné, jde spíš o **chybu modelu**.
+
 <!-- ROZBOR KONEC -->
 
 ## Doporučení pro 10 000 dotazů denně
@@ -100,17 +127,27 @@ _Zatím nespuštěno._
 Odhad ceny podle cen placených variant na OpenRouteru (ověřeno 6. 11. 2026, kurz 23 Kč/USD) a naměřených tokenů:
 
 <!-- CENA START -->
-_Zatím nespuštěno._
+| Model (OpenRouter) | Prompt | Sada | Ø tokeny vstup / výstup na dotaz | Cena $/1M (vstup/výstup) | 10 000 dotazů USD | ≈ Kč |
+|---|---|---|---|---|---|---|
+| openai/gpt-oss-120b | v1 | dev | 260 / 159 | 0.026 / 0.095 | 0,218 | 5,0 |
+| openai/gpt-oss-20b | v1 | dev | 260 / 328 | 0.018 / 0.09 | 0,342 | 7,9 |
+| openai/gpt-oss-120b | v2 | dev | 896 / 241 | 0.026 / 0.095 | 0,462 | 10,6 |
+| openai/gpt-oss-20b | v2 | dev | 896 / 207 | 0.018 / 0.09 | 0,347 | 8,0 |
+| openai/gpt-oss-120b | v2 | test | 898 / 245 | 0.026 / 0.095 | 0,466 | 10,7 |
+| openai/gpt-oss-20b | v2 | test | 898 / 278 | 0.018 / 0.09 | 0,412 | 9,5 |
 <!-- CENA KONEC -->
 
 <!-- DOPORUCENI START -->
-_Zatím nespuštěno._
+Vybral bych **openai/gpt-oss-20b** (groq) s promptem **v2**. Na dev sadě má nejvyšší úplnou shodu (100 %, validní JSON 100 %) a na test sadě 100 %, průměrná latence 0,68 s. Při naměřené spotřebě 896 vstupních a 207 výstupních tokenů na dotaz by 10 000 dotazů denně stálo na OpenRouteru asi **0,35 USD (≈ 8 Kč) denně**, tj. ≈ 240 Kč měsíčně. Prompt v2 změnil úplnou shodu v průměru o +13 procentních bodů, ale má 3,4× víc vstupních tokenů – u takhle levných modelů je to pořád zanedbatelná cena, rozhoduje hlavně přesnost.
 <!-- DOPORUCENI KONEC -->
 
 ## Rozdíl dev a test
 
 <!-- DEVTEST START -->
-_Zatím nespuštěno._
+- openai/gpt-oss-120b + v2: dev 100 % → test 100 % (+0 p. b.)
+- openai/gpt-oss-20b + v2: dev 100 % → test 100 % (+0 p. b.)
+
+Test sada má jen 10 případů, takže jeden případ = 10 procentních bodů a rozdíl v řádu desítek bodů může být čistě náhoda. Prompt v2 jsem ladil na dev sadě, proto se na ní dá čekat spíš lepší výsledek než na test (mírné přeučení). Test sada navíc obsahuje typy záludností, které v dev nejsou (°F, text, který není o počasí, krupobití), takže ukazuje, jak nástroj zvládne nové situace.
 <!-- DEVTEST KONEC -->
 
 ## AI asistent

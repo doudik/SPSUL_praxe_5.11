@@ -1,0 +1,322 @@
+{
+  "souhrn": {
+    "model": "openai/gpt-oss-20b",
+    "poskytovatel": "groq",
+    "prompt": "v2",
+    "sada": "test",
+    "pripadu": 10,
+    "validni_json": 1.0,
+    "uplna_shoda": 1.0,
+    "pole": {
+      "mesto": 1.0,
+      "teplota": 1.0,
+      "srazky": 1.0,
+      "typ_srazek": 1.0
+    },
+    "latence_s": 1.395,
+    "tokeny_vstup": 8980,
+    "tokeny_vystup": 2785
+  },
+  "pripady": [
+    {
+      "id": 16,
+      "tezky": false,
+      "input": "Na Lysé hoře padá sníh, teplota −6 °C.",
+      "expected": {
+        "mesto": "Lysá hora",
+        "teplota": -6,
+        "srazky": true,
+        "typ_srazek": "snih"
+      },
+      "raw": "{\"mesto\":\"Lysá hora\",\"teplota\":-6,\"srazky\":true,\"typ_srazek\":\"snih\"}",
+      "parsed": {
+        "mesto": "Lysá hora",
+        "teplota": -6,
+        "srazky": true,
+        "typ_srazek": "snih"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": true
+      },
+      "vse": true,
+      "latence_s": 1.002,
+      "z_cache": false,
+      "prompt_tokens": 888,
+      "completion_tokens": 397
+    },
+    {
+      "id": 17,
+      "tezky": false,
+      "input": "Most: tropický den, až 32 stupňů, bez deště.",
+      "expected": {
+        "mesto": "Most",
+        "teplota": 32,
+        "srazky": false,
+        "typ_srazek": "zadne"
+      },
+      "raw": "{\"mesto\":\"Most\",\"teplota\":32,\"srazky\":false,\"typ_srazek\":\"zadne\"}",
+      "parsed": {
+        "mesto": "Most",
+        "teplota": 32,
+        "srazky": false,
+        "typ_srazek": "zadne"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": true
+      },
+      "vse": true,
+      "latence_s": 1.092,
+      "z_cache": false,
+      "prompt_tokens": 886,
+      "completion_tokens": 332
+    },
+    {
+      "id": 18,
+      "tezky": false,
+      "input": "Kladno ráno 3 °C, odpoledne 9 °C, občasné přeháňky.",
+      "expected": {
+        "mesto": "Kladno",
+        "teplota": 9,
+        "srazky": true,
+        "typ_srazek": "dest"
+      },
+      "raw": "{\"mesto\":\"Kladno\",\"teplota\":9,\"srazky\":true,\"typ_srazek\":\"dest\"}",
+      "parsed": {
+        "mesto": "Kladno",
+        "teplota": 9,
+        "srazky": true,
+        "typ_srazek": "dest"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": true
+      },
+      "vse": true,
+      "latence_s": 0.677,
+      "z_cache": false,
+      "prompt_tokens": 896,
+      "completion_tokens": 182
+    },
+    {
+      "id": 19,
+      "tezky": true,
+      "input": "Turistům v Praze ukazuje americká aplikace 41 °F, venku je zataženo, ale bez srážek.",
+      "expected": {
+        "mesto": "Praha",
+        "teplota": 5,
+        "srazky": false,
+        "typ_srazek": "zadne"
+      },
+      "raw": "{\"mesto\":\"Praha\",\"teplota\":5,\"srazky\":false,\"typ_srazek\":\"zadne\"}",
+      "parsed": {
+        "mesto": "Praha",
+        "teplota": 5,
+        "srazky": false,
+        "typ_srazek": "zadne"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": true
+      },
+      "vse": true,
+      "latence_s": 0.926,
+      "z_cache": false,
+      "prompt_tokens": 900,
+      "completion_tokens": 195
+    },
+    {
+      "id": 20,
+      "tezky": true,
+      "input": "Dobrý den, nevíte, jestli zítra ráno pojede autobus do Mělníka?",
+      "expected": {
+        "mesto": null,
+        "teplota": null,
+        "srazky": null,
+        "typ_srazek": null
+      },
+      "raw": "{\"mesto\": null, \"teplota\": null, \"srazky\": null, \"typ_srazek\": null}",
+      "parsed": {
+        "mesto": null,
+        "teplota": null,
+        "srazky": null,
+        "typ_srazek": null
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": true
+      },
+      "vse": true,
+      "latence_s": 1.277,
+      "z_cache": false,
+      "prompt_tokens": 895,
+      "completion_tokens": 239
+    },
+    {
+      "id": 21,
+      "tezky": false,
+      "input": "Opava: krupobití a silný vítr, 19 °C.",
+      "expected": {
+        "mesto": "Opava",
+        "teplota": 19,
+        "srazky": true,
+        "typ_srazek": "krupobiti"
+      },
+      "raw": "{\"mesto\":\"Opava\",\"teplota\":19,\"srazky\":true,\"typ_srazek\":\"krupobiti\"}",
+      "parsed": {
+        "mesto": "Opava",
+        "teplota": 19,
+        "srazky": true,
+        "typ_srazek": "krupobiti"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": true
+      },
+      "vse": true,
+      "latence_s": 1.525,
+      "z_cache": false,
+      "prompt_tokens": 887,
+      "completion_tokens": 139
+    },
+    {
+      "id": 22,
+      "tezky": true,
+      "input": "V Jablonci nad Nisou bude dvacet dva stupnu a odpoledne mozna sprchne.",
+      "expected": {
+        "mesto": "Jablonec nad Nisou",
+        "teplota": 22,
+        "srazky": true,
+        "typ_srazek": "dest"
+      },
+      "raw": "{\"mesto\":\"Jablonec nad Nisou\",\"teplota\":22,\"srazky\":true,\"typ_srazek\":\"dest\"}",
+      "parsed": {
+        "mesto": "Jablonec nad Nisou",
+        "teplota": 22,
+        "srazky": true,
+        "typ_srazek": "dest"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": true
+      },
+      "vse": true,
+      "latence_s": 1.756,
+      "z_cache": false,
+      "prompt_tokens": 894,
+      "completion_tokens": 185
+    },
+    {
+      "id": 23,
+      "tezky": true,
+      "input": "Trutnov – večer přejde déšť ve sněžení, teploty kolem nuly.",
+      "expected": {
+        "mesto": "Trutnov",
+        "teplota": 0,
+        "srazky": true,
+        "typ_srazek": "dest_se_snehem"
+      },
+      "raw": "{\"mesto\":\"Trutnov\",\"teplota\":0,\"srazky\":true,\"typ_srazek\":\"dest_se_snehem\"}",
+      "parsed": {
+        "mesto": "Trutnov",
+        "teplota": 0,
+        "srazky": true,
+        "typ_srazek": "dest_se_snehem"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": true
+      },
+      "vse": true,
+      "latence_s": 2.243,
+      "z_cache": false,
+      "prompt_tokens": 892,
+      "completion_tokens": 167
+    },
+    {
+      "id": 24,
+      "tezky": false,
+      "input": "Dnešní předpověď pro Prostějov: dopoledne převážně jasno, odpoledne přibývání oblačnosti, nejvyšší teploty 17 až 19 °C, srážky se neočekávají, vítr západní 2–5 m/s.",
+      "expected": {
+        "mesto": "Prostějov",
+        "teplota": 19,
+        "srazky": false,
+        "typ_srazek": "zadne"
+      },
+      "raw": "{\"mesto\": \"Prostějov\", \"teplota\": 19, \"srazky\": false, \"typ_srazek\": \"zadne\"}",
+      "parsed": {
+        "mesto": "Prostějov",
+        "teplota": 19,
+        "srazky": false,
+        "typ_srazek": "zadne"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": true
+      },
+      "vse": true,
+      "latence_s": 1.119,
+      "z_cache": false,
+      "prompt_tokens": 939,
+      "completion_tokens": 474
+    },
+    {
+      "id": 25,
+      "tezky": true,
+      "input": "V Děčíně naměřili ráno 4 °C a hustou mlhu, v Ústí bylo o dva stupně tepleji.",
+      "expected": {
+        "mesto": "Děčín",
+        "teplota": 4,
+        "srazky": null,
+        "typ_srazek": null
+      },
+      "raw": "{\"mesto\":\"Děčín\",\"teplota\":4,\"srazky\":null,\"typ_srazek\":null}",
+      "parsed": {
+        "mesto": "Děčín",
+        "teplota": 4,
+        "srazky": null,
+        "typ_srazek": null
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": true
+      },
+      "vse": true,
+      "latence_s": 2.329,
+      "z_cache": false,
+      "prompt_tokens": 903,
+      "completion_tokens": 475
+    }
+  ]
+}
