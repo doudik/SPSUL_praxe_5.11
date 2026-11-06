@@ -326,7 +326,7 @@ def dev_test(behy):
 
 VELIKOST = {"openai/gpt-oss-20b": "~20 mld. parametrů", "llama-3.3-70b-versatile": "70 mld.",
             "mistral-small-latest": "~24 mld.", "llama-3.1-8b-instant": "8 mld.", "openai/gpt-oss-120b": "~120 mld.",
-            "gemini-flash-latest": "velikost nezveřejněna", "qwen/qwen3-32b": "32 mld."}
+            "gemini-flash-latest": "velikost nezveřejněna", "qwen/qwen3-32b": "32 mld.", "allam-2-7b": "7 mld."}
 
 
 def pouzite_modely(behy):

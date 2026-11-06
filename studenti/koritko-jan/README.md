@@ -89,13 +89,21 @@ Tabulku generuje `src/report.py` přímo z `results/summary.json`, čísla tedy 
 <!-- TABULKA KONEC -->
 
 <!-- MODELY START -->
-Použité modely: `allam-2-7b` (groq, ?), `openai/gpt-oss-120b` (groq, ~120 mld.), `openai/gpt-oss-20b` (groq, ~20 mld. parametrů).
+Použité modely: `allam-2-7b` (groq, 7 mld.), `openai/gpt-oss-120b` (groq, ~120 mld.), `openai/gpt-oss-20b` (groq, ~20 mld. parametrů).
 <!-- MODELY KONEC -->
 
-Pozn.: Mistral (`mistral-small-latest`) na bezplatném účtu opakovaně vracel chybu 429 (vyčerpaný limit)
-a `llama-3.3-70b-versatile` už Groq nenabízí (404 `model_not_found`). Skript `run_all.py` proto automaticky
-vzal další dostupný model; všechny použité modely jsou tak nakonec od Groqu, což zadání pro tuhle situaci
-povoluje.
+Pozn.: Mistral (`mistral-small-latest`) na bezplatném účtu vracel chybu 429 „Rate limit exceeded“ hned od
+prvního požadavku a modely `llama-3.1-8b-instant`, `llama-3.3-70b-versatile` a `qwen/qwen3-32b` můj účet na
+Groqu nenabízí (404 `model_not_found`). Skript `run_all.py` proto automaticky vzal další model z nabídky Groqu –
+`allam-2-7b` (malý model 7 mld. parametrů zaměřený hlavně na arabštinu). Všechny 3 modely jsou tak od jednoho
+poskytovatele, což zadání pro tuhle situaci povoluje. Cenu u `allam-2-7b` nepočítám, na OpenRouteru není.
+
+**Porovnání modelů:** oba modely gpt-oss mají s v1 stejnou úplnou shodu (87 %) a s v2 100 %; větší 120b
+ale odpovídá asi 2× pomaleji. Malý `allam-2-7b` je výrazně horší (v1 13 %, v2 40 %): nedodržuje povolené
+hodnoty (`"typ_srazek": "bez srážek"`, `"přeháňky"`, `"slunečno"`), plete si typ srážek (u Brna se sluncem
+vrátil sníh), u ironie v #11 uvěřil „krásnému letnímu počasí“ (`srazky: false`) a v #14 po správném JSONu
+pokračoval vymýšlením dalších příkladů, takže výstup už nebyl validní JSON. Prompt v2 mu pomohl
+(13 % → 40 %), ale na spolehlivost to nestačí – velikost modelu tu rozhoduje víc než prompt.
 
 Grafy: [`results/dashboard.html`](results/dashboard.html).
 Seznam všech chyb: [`results/chyby.md`](results/chyby.md).
