@@ -1,0 +1,215 @@
+{
+  "student": "Tomáš Prokeš",
+  "uloha": "Inzeráty aut",
+  "behy": [
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1,
+      "uplna_shoda": 0.8,
+      "pole": {
+        "znacka": 0.933,
+        "model": 0.933,
+        "rok": 1,
+        "najezd_km": 0.933,
+        "cena": 0.933
+      },
+      "latence_s": 0.739,
+      "tokeny_vstup": 7795,
+      "tokeny_vystup": 3114
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1,
+      "uplna_shoda": 0.933,
+      "pole": {
+        "znacka": 1,
+        "model": 0.933,
+        "rok": 1,
+        "najezd_km": 1,
+        "cena": 1
+      },
+      "latence_s": 0.794,
+      "tokeny_vstup": 7795,
+      "tokeny_vystup": 2809
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "poskytovatel": "gemini",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1,
+      "uplna_shoda": 0.933,
+      "pole": {
+        "znacka": 1,
+        "model": 0.933,
+        "rok": 1,
+        "najezd_km": 1,
+        "cena": 1
+      },
+      "latence_s": 1.355,
+      "tokeny_vstup": 7066,
+      "tokeny_vystup": 892
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v2",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 0.933,
+      "uplna_shoda": 0.867,
+      "pole": {
+        "znacka": 0.867,
+        "model": 0.933,
+        "rok": 0.933,
+        "najezd_km": 0.933,
+        "cena": 0.933
+      },
+      "latence_s": 0.806,
+      "tokeny_vstup": 13510,
+      "tokeny_vystup": 5328
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "poskytovatel": "groq",
+      "prompt": "v2",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1,
+      "uplna_shoda": 0.933,
+      "pole": {
+        "znacka": 1,
+        "model": 1,
+        "rok": 1,
+        "najezd_km": 0.933,
+        "cena": 1
+      },
+      "latence_s": 0.855,
+      "tokeny_vstup": 13510,
+      "tokeny_vystup": 3115
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "poskytovatel": "gemini",
+      "prompt": "v2",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1,
+      "uplna_shoda": 1,
+      "pole": {
+        "znacka": 1,
+        "model": 1,
+        "rok": 1,
+        "najezd_km": 1,
+        "cena": 1
+      },
+      "latence_s": 1.393,
+      "tokeny_vstup": 13321,
+      "tokeny_vystup": 857
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "poskytovatel": "gemini",
+      "prompt": "v2",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 1,
+      "uplna_shoda": 0.9,
+      "pole": {
+        "znacka": 1,
+        "model": 0.9,
+        "rok": 1,
+        "najezd_km": 1,
+        "cena": 1
+      },
+      "latence_s": 1.443,
+      "tokeny_vstup": 8870,
+      "tokeny_vystup": 547
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "poskytovatel": "groq",
+      "prompt": "v2",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 1,
+      "uplna_shoda": 0.9,
+      "pole": {
+        "znacka": 1,
+        "model": 0.9,
+        "rok": 1,
+        "najezd_km": 1,
+        "cena": 1
+      },
+      "latence_s": 0.734,
+      "tokeny_vstup": 8985,
+      "tokeny_vystup": 1805
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "poskytovatel": "gemini",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1,
+      "uplna_shoda": 1,
+      "pole": {
+        "znacka": 1,
+        "model": 1,
+        "rok": 1,
+        "najezd_km": 1,
+        "cena": 1
+      },
+      "latence_s": 12.541,
+      "tokeny_vstup": 7066,
+      "tokeny_vystup": 796
+    },
+    {
+      "model": "gemma-4-31b-it",
+      "poskytovatel": "gemini",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 0.933,
+      "uplna_shoda": 0.933,
+      "pole": {
+        "znacka": 0.933,
+        "model": 0.933,
+        "rok": 0.933,
+        "najezd_km": 0.933,
+        "cena": 0.933
+      },
+      "latence_s": 35.586,
+      "tokeny_vstup": 7066,
+      "tokeny_vystup": 905
+    },
+    {
+      "model": "gemma-4-31b-it",
+      "poskytovatel": "gemini",
+      "prompt": "v2",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 0.933,
+      "uplna_shoda": 0.933,
+      "pole": {
+        "znacka": 0.933,
+        "model": 0.933,
+        "rok": 0.933,
+        "najezd_km": 0.933,
+        "cena": 0.933
+      },
+      "latence_s": 28.187,
+      "tokeny_vstup": 13321,
+      "tokeny_vystup": 724
+    }
+  ]
+}

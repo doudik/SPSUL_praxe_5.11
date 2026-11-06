@@ -1,0 +1,15 @@
+{"id":1,"raw":"{\"znacka\":\"Škoda\",\"model\":\"Octavia\",\"rok\":2014,\"najezd_km\":250,\"cena\":600}"}
+{"id":2,"raw":"{\"znacka\":\"Volkswagen\",\"model\":\"Golf\",\"rok\":2016,\"najezd_km\":150000,\"cena\":120000}"}
+{"id":3,"raw":"{\"znacka\":\"Ford\",\"model\":\"Fiesta\",\"rok\":null,\"najezd_km\":98000,\"cena\":89000}"}
+{"id":4,"raw":"{\"znacka\":\"Toyota\",\"model\":\"Yaris\",\"rok\":2011,\"najezd_km\":112000,\"cena\":15000}"}
+{"id":5,"raw":"{\"znacka\":\"Hyundai\",\"model\":\"i30\",\"rok\":2018,\"najezd_km\":null,\"cena\":245000}"}
+{"id":6,"raw":"{\"znacka\":\"Opel\",\"model\":\"Astra\",\"rok\":2013,\"najezd_km\":180000,\"cena\":95000}"}
+{"id":7,"raw":"{\"znacka\":\"Renault\",\"model\":\"Clio\",\"rok\":2005,\"najezd_km\":303000,\"cena\":15000}"}
+{"id":8,"raw":"{\"znacka\":\"BMW\",\"model\":null,\"rok\":2010,\"najezd_km\":320000,\"cena\":180000}"}
+{"id":9,"raw":"{\"znacka\":\"Audi\",\"model\":\"A4\",\"rok\":2015,\"najezd_km\":165000,\"cena\":310000}"}
+{"id":10,"raw":"{\"znacka\":\"Renault\",\"model\":\"208\",\"rok\":2017,\"najezd_km\":77000,\"cena\":null}"}
+{"id":11,"raw":"{\"znacka\":\"Kia\",\"model\":\"Sportage\",\"rok\":2012,\"najezd_km\":142000,\"cena\":265000}"}
+{"id":12,"raw":"{\"znacka\":\"Dacia\",\"model\":\"Duster\",\"rok\":2012,\"najezd_km\":250000,\"cena\":null}"}
+{"id":13,"raw":"{\"znacka\":\"Fiat\",\"model\":\"Punto\",\"rok\":2008,\"najezd_km\":189000,\"cena\":35000}"}
+{"id":14,"raw":"{\"znacka\":\"Seat\",\"model\":\"Leon\",\"rok\":2019,\"najezd_km\":60000,\"cena\":180000}"}
+{"id":15,"raw":"{\"znacka\":\"Mazda\",\"model\":\"3\",\"rok\":2014,\"najezd_km\":134000,\"cena\":155000}"}
