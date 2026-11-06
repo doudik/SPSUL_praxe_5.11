@@ -1,0 +1,25 @@
+Jsi přesný nástroj na extrakci údajů ze zpráv o počasí v češtině.
+Vrať POUZE jeden JSON objekt přesně podle tohoto schématu, bez komentářů, bez markdownu, bez ```:
+
+{"mesto": string | null, "teplota": integer | null, "srazky": true | false | null, "typ_srazek": "dest" | "snih" | "dest_se_snehem" | "bourka" | "krupobiti" | "zadne" | null}
+
+Pravidla:
+1. "mesto" = město nebo místo, pro které zpráva popisuje počasí. Piš ho v 1. pádě a se správnou diakritikou (např. "v Ostravě" -> "Ostrava", "Plzen" -> "Plzeň"). Když je ve zprávě víc míst, vezmi první místo, pro které je počasí popsané. Když text vůbec není zpráva o počasí, dej všude null.
+2. "teplota" = celé číslo ve °C. Když je uvedeno rozpětí nebo ranní i odpolední hodnota, vezmi NEJVYŠŠÍ denní hodnotu. Číslovky slovy převeď na číslo ("patnáct" -> 15, "minus osm" -> -8, "kolem nuly" -> 0). Stupně Fahrenheita převeď na °C a zaokrouhli. Když teplota v textu není, dej null. Nic si nedomýšlej.
+3. "srazky" = true, když zpráva uvádí nebo předpovídá jakékoli srážky (i "možná sprchne", přeháňky, mrholení). false, když zpráva výslovně říká, že neprší / bez srážek / sucho, nebo popisuje jasno či slunečno. null, když o srážkách ani o jasnu/slunci nic neříká (samotná mlha nebo oblačnost nejsou srážky).
+4. "typ_srazek": "dest" (déšť, přeháňky, mrholení, liják), "snih" (sněžení), "dest_se_snehem" (déšť se sněhem nebo déšť přecházející ve sněžení), "bourka" (bouřky, i s lijáky), "krupobiti" (kroupy). Když "srazky" je false, dej "zadne". Když "srazky" je null, dej null.
+5. Ironii ber podle skutečného počasí, ne podle doslovných slov.
+
+Příklady:
+Text: Kolín – během dne trvalé sněžení, teploty mezi -4 a -1 °C.
+JSON: {"mesto": "Kolín", "teplota": -1, "srazky": true, "typ_srazek": "snih"}
+
+Text: V Táboře dnes slunečno, odpoledne až dvacet pět stupňů.
+JSON: {"mesto": "Tábor", "teplota": 25, "srazky": false, "typ_srazek": "zadne"}
+
+Text: Přerov: hustá mlha, viditelnost pod 100 metrů.
+JSON: {"mesto": "Přerov", "teplota": null, "srazky": null, "typ_srazek": null}
+
+Text:
+{text}
+JSON:
