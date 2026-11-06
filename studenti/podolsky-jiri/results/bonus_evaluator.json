@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "inzerat": "Pronájem bytu 2+kk v Praze na Vinohradech, plocha 55 m², nájemné 22000 Kč měsíčně.",
+    "shrnuti": "Pronájem 55m² bytu 2+kk v Praze na Vinohradech za 22 000 Kč měsíčně.",
+    "llm_skore": 5,
+    "clovek_skore": 5,
+    "rozdil": 0,
+    "oduvodneni": "Shrnutí je fakticky přesné, obsahuje všechny klíčové informace (typ bytu, velikost, lokalitu a cenu) a je výstižné a stručné."
+  },
+  {
+    "id": 2,
+    "inzerat": "Nabízíme k prodeji slunný cihlový byt 3+1 v Brně - Bystrci o výměře 74 m2. Cena 5 800 000 Kč včetně provize.",
+    "shrnuti": "K prodeji je slunný cihlový byt 3+1 o velikosti 74 m² v Brně-Bystrci za 5 800 000 Kč včetně provize.",
+    "llm_skore": 5,
+    "clovek_skore": 5,
+    "rozdil": 0,
+    "oduvodneni": "Shrnutí je fakticky přesné, zachovává všechny klíčové informace (typ bytu, velikost, lokalitu, cenu a provizi) a je stručné a výstižné."
+  },
+  {
+    "id": 3,
+    "inzerat": "Pronajmu zařízenou garsonku o rozloze 28 m² v centru Plzně, nájem 11500 Kč/měsíc.",
+    "shrnuti": "Pronájem zařízené garsonky o velikosti 28 m² v centru Plzně za 11 500 Kč měsíčně.",
+    "llm_skore": 5,
+    "clovek_skore": 5,
+    "rozdil": 0,
+    "oduvodneni": "Shrnutí je fakticky přesné, zachovává všechny klíčové informace (typ bytu, velikost, lokalita, cena) a je výstižné. Jediný drobný stylistický rozdíl (gramatická forma) neovlivňuje přesnost."
+  },
+  {
+    "id": 4,
+    "inzerat": "Prodej prostorného bytu 4+kk, 92 m², Olomouc, ulice Nová. Kupní cena činí 7 200 000 Kč.",
+    "shrnuti": "Prodej prostorného bytu 4+kk o velikosti 92 m² v Olomouci na ulici Nová za 7 200 000 Kč.",
+    "llm_skore": 5,
+    "clovek_skore": 5,
+    "rozdil": 0,
+    "oduvodneni": "Shrnutí je fakticky přesné, zachovává všechny klíčové informace (typ bytu, velikost, lokalitu a cenu) a je výstižné a stručné."
+  },
+  {
+    "id": 5,
+    "inzerat": "Krásný podkrovní byt 1+1, 40 m2, Liberec - Staré Město, čistý měsíční nájem 13 000 Kč.",
+    "shrnuti": "K pronájmu je podkrovní byt 1+1 o velikosti 40 m2 v Liberci - Starém Městě za 13 000 Kč měsíčně.",
+    "llm_skore": 5,
+    "clovek_skore": 5,
+    "rozdil": 0,
+    "oduvodneni": "Shrnutí je fakticky přesné, zachovává všechny klíčové informace (typ bytu, velikost, lokalitu a cenu) a je výstižné a stručné."
+  },
+  {
+    "id": 6,
+    "inzerat": "Hledáte investiční příležitost? Panelový byt 2+1, 58 m², Ostrava - Poruba, za cenu 2 100 000 Kč.",
+    "shrnuti": "Panelový byt 2+1 o velikosti 58 m² v Ostravě-Porubě je k prodeji za 2 100 000 Kč.",
+    "llm_skore": 5,
+    "clovek_skore": 5,
+    "rozdil": 0,
+    "oduvodneni": "Shrnutí je fakticky přesné, zachycuje všechny klíčové informace (typ bytu, velikost, lokalitu a cenu) a je výstižné a stručné."
+  },
+  {
+    "id": 7,
+    "inzerat": "Pronájem novostavby 3+kk o velikosti 68 m2 v Hradci Králové za 19 500 Kč měsíčně.",
+    "shrnuti": "Pronájem novostavby 3+kk o velikosti 68 m² v Hradci Králové za 19 500 Kč měsíčně.",
+    "llm_skore": 5,
+    "clovek_skore": 5,
+    "rozdil": 0,
+    "oduvodneni": "Shrnutí je fakticky přesné, jen mírně upravuje zápis jednotky metrů čtverečních (m2 → m²), což neovlivňuje správnost informací."
+  },
+  {
+    "id": 8,
+    "inzerat": "Prodej bytu 1+kk, České Budějovice, výměra 32 m2, cena 2 950 000 Kč.",
+    "shrnuti": "Prodává se byt 1+kk o velikosti 32 m2 v Českých Budějovicích za 2 950 000 Kč.",
+    "llm_skore": 5,
+    "clovek_skore": 5,
+    "rozdil": 0,
+    "oduvodneni": "Shrnutí je fakticky přesné, zachovává všechny klíčové informace z původního inzerátu a je výstižné a srozumitelné."
+  },
+  {
+    "id": 9,
+    "inzerat": "Ústí nad Labem, Klíše: pronájem bytu 2+kk, výměra 48 m², nájemné 10 000 Kč/měsíc.",
+    "shrnuti": "K pronájmu je v Klíších v Ústí nad Labem byt 2+kk o velikosti 48 m² za 10 000 Kč měsíčně.",
+    "llm_skore": 5,
+    "clovek_skore": 5,
+    "rozdil": 0,
+    "oduvodneni": "Shrnutí je fakticky přesné, obsahuje všechny klíčové informace (lokace, typ bytu, velikost a nájemné) a je výstižné a stručné."
+  },
+  {
+    "id": 10,
+    "inzerat": "Moderní byt 3+1 v Pardubicích, 70 m2, volný ihned, nájem 16000 Kč měsíčně.",
+    "shrnuti": "K pronájmu je moderní byt 3+1 o velikosti 70 m2 v Pardubicích za 16 000 Kč měsíčně, volný ihned.",
+    "llm_skore": 5,
+    "clovek_skore": 5,
+    "rozdil": 0,
+    "oduvodneni": "Shrnutí je úplně přesné, obsahuje všechny klíčové informace z původního inzerátu a je jasně a výstižně formulováno."
+  }
+]

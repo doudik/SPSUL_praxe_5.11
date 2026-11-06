@@ -1,0 +1,114 @@
+{
+  "student": "Jiří Podolský",
+  "uloha": "Inzeráty bytů",
+  "behy": [
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 1.0,
+      "pole": {
+        "dispozice": 1.0,
+        "plocha_m2": 1.0,
+        "cena_kc": 1.0,
+        "mesto": 1.0
+      },
+      "latence_s": 0.59,
+      "tokeny_vstup": 8072,
+      "tokeny_vystup": 2953
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 1.0,
+      "pole": {
+        "dispozice": 1.0,
+        "plocha_m2": 1.0,
+        "cena_kc": 1.0,
+        "mesto": 1.0
+      },
+      "latence_s": 0.78,
+      "tokeny_vstup": 8072,
+      "tokeny_vystup": 1974
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 1.0,
+      "pole": {
+        "dispozice": 1.0,
+        "plocha_m2": 1.0,
+        "cena_kc": 1.0,
+        "mesto": 1.0
+      },
+      "latence_s": 0.46,
+      "tokeny_vstup": 7358,
+      "tokeny_vystup": 813
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "poskytovatel": "groq",
+      "prompt": "v2",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 1.0,
+      "pole": {
+        "dispozice": 1.0,
+        "plocha_m2": 1.0,
+        "cena_kc": 1.0,
+        "mesto": 1.0
+      },
+      "latence_s": 0.47,
+      "tokeny_vstup": 11873,
+      "tokeny_vystup": 813
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "poskytovatel": "groq",
+      "prompt": "v2",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 1.0,
+      "uplna_shoda": 1.0,
+      "pole": {
+        "dispozice": 1.0,
+        "plocha_m2": 1.0,
+        "cena_kc": 1.0,
+        "mesto": 1.0
+      },
+      "latence_s": 0.5,
+      "tokeny_vstup": 7877,
+      "tokeny_vystup": 537
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 1.0,
+      "uplna_shoda": 1.0,
+      "pole": {
+        "dispozice": 1.0,
+        "plocha_m2": 1.0,
+        "cena_kc": 1.0,
+        "mesto": 1.0
+      },
+      "latence_s": 0.78,
+      "tokeny_vstup": 5342,
+      "tokeny_vystup": 1938
+    }
+  ]
+}

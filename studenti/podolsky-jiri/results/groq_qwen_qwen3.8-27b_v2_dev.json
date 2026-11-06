@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "input": "Pronájem bytu 2+kk v Praze na Vinohradech, plocha 55 m², nájemné 22000 Kč měsíčně.",
+    "expected": {
+      "dispozice": "2+kk",
+      "plocha_m2": 55,
+      "cena_kc": 22000,
+      "mesto": "Praha"
+    },
+    "raw_output": "{\n  \"dispozice\": \"2+kk\",\n  \"plocha_m2\": 55,\n  \"cena_kc\": 22000,\n  \"mesto\": \"Praha\"\n}",
+    "prediction": {
+      "dispozice": "2+kk",
+      "plocha_m2": 55,
+      "cena_kc": 22000,
+      "mesto": "Praha"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 2,
+    "input": "Nabízíme k prodeji slunný cihlový byt 3+1 v Brně - Bystrci o výměře 74 m2. Cena 5 800 000 Kč včetně provize.",
+    "expected": {
+      "dispozice": "3+1",
+      "plocha_m2": 74,
+      "cena_kc": 5800000,
+      "mesto": "Brno"
+    },
+    "raw_output": "{\n  \"dispozice\": \"3+1\",\n  \"plocha_m2\": 74,\n  \"cena_kc\": 5800000,\n  \"mesto\": \"Brno\"\n}",
+    "prediction": {
+      "dispozice": "3+1",
+      "plocha_m2": 74,
+      "cena_kc": 5800000,
+      "mesto": "Brno"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 3,
+    "input": "Pronajmu zařízenou garsonku o rozloze 28 m² v centru Plzně, nájem 11500 Kč/měsíc.",
+    "expected": {
+      "dispozice": "garsonka",
+      "plocha_m2": 28,
+      "cena_kc": 11500,
+      "mesto": "Plzeň"
+    },
+    "raw_output": "{\n  \"dispozice\": \"garsonka\",\n  \"plocha_m2\": 28,\n  \"cena_kc\": 11500,\n  \"mesto\": \"Plzeň\"\n}",
+    "prediction": {
+      "dispozice": "garsonka",
+      "plocha_m2": 28,
+      "cena_kc": 11500,
+      "mesto": "Plzeň"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 4,
+    "input": "Prodej prostorného bytu 4+kk, 92 m², Olomouc, ulice Nová. Kupní cena činí 7 200 000 Kč.",
+    "expected": {
+      "dispozice": "4+kk",
+      "plocha_m2": 92,
+      "cena_kc": 7200000,
+      "mesto": "Olomouc"
+    },
+    "raw_output": "{\n  \"dispozice\": \"4+kk\",\n  \"plocha_m2\": 92,\n  \"cena_kc\": 7200000,\n  \"mesto\": \"Olomouc\"\n}",
+    "prediction": {
+      "dispozice": "4+kk",
+      "plocha_m2": 92,
+      "cena_kc": 7200000,
+      "mesto": "Olomouc"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 5,
+    "input": "Krásný podkrovní byt 1+1, 40 m2, Liberec - Staré Město, čistý měsíční nájem 13 000 Kč.",
+    "expected": {
+      "dispozice": "1+1",
+      "plocha_m2": 40,
+      "cena_kc": 13000,
+      "mesto": "Liberec"
+    },
+    "raw_output": "{\n  \"dispozice\": \"1+1\",\n  \"plocha_m2\": 40,\n  \"cena_kc\": 13000,\n  \"mesto\": \"Liberec\"\n}",
+    "prediction": {
+      "dispozice": "1+1",
+      "plocha_m2": 40,
+      "cena_kc": 13000,
+      "mesto": "Liberec"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 6,
+    "input": "Hledáte investiční příležitost? Panelový byt 2+1, 58 m², Ostrava - Poruba, za cenu 2 100 000 Kč.",
+    "expected": {
+      "dispozice": "2+1",
+      "plocha_m2": 58,
+      "cena_kc": 2100000,
+      "mesto": "Ostrava"
+    },
+    "raw_output": "{\n  \"dispozice\": \"2+1\",\n  \"plocha_m2\": 58,\n  \"cena_kc\": 2100000,\n  \"mesto\": \"Ostrava\"\n}",
+    "prediction": {
+      "dispozice": "2+1",
+      "plocha_m2": 58,
+      "cena_kc": 2100000,
+      "mesto": "Ostrava"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 7,
+    "input": "Pronájem novostavby 3+kk o velikosti 68 m2 v Hradci Králové za 19 500 Kč měsíčně.",
+    "expected": {
+      "dispozice": "3+kk",
+      "plocha_m2": 68,
+      "cena_kc": 19500,
+      "mesto": "Hradec Králové"
+    },
+    "raw_output": "{\n  \"dispozice\": \"3+kk\",\n  \"plocha_m2\": 68,\n  \"cena_kc\": 19500,\n  \"mesto\": \"Hradec Králové\"\n}",
+    "prediction": {
+      "dispozice": "3+kk",
+      "plocha_m2": 68,
+      "cena_kc": 19500,
+      "mesto": "Hradec Králové"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 8,
+    "input": "Prodej bytu 1+kk, České Budějovice, výměra 32 m2, cena 2 950 000 Kč.",
+    "expected": {
+      "dispozice": "1+kk",
+      "plocha_m2": 32,
+      "cena_kc": 2950000,
+      "mesto": "České Budějovice"
+    },
+    "raw_output": "{\n  \"dispozice\": \"1+kk\",\n  \"plocha_m2\": 32,\n  \"cena_kc\": 2950000,\n  \"mesto\": \"České Budějovice\"\n}",
+    "prediction": {
+      "dispozice": "1+kk",
+      "plocha_m2": 32,
+      "cena_kc": 2950000,
+      "mesto": "České Budějovice"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 9,
+    "input": "Ústí nad Labem, Klíše: pronájem bytu 2+kk, výměra 48 m², nájemné 10 000 Kč/měsíc.",
+    "expected": {
+      "dispozice": "2+kk",
+      "plocha_m2": 48,
+      "cena_kc": 10000,
+      "mesto": "Ústí nad Labem"
+    },
+    "raw_output": "{\n  \"dispozice\": \"2+kk\",\n  \"plocha_m2\": 48,\n  \"cena_kc\": 10000,\n  \"mesto\": \"Ústí nad Labem\"\n}",
+    "prediction": {
+      "dispozice": "2+kk",
+      "plocha_m2": 48,
+      "cena_kc": 10000,
+      "mesto": "Ústí nad Labem"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 10,
+    "input": "Moderní byt 3+1 v Pardubicích, 70 m2, volný ihned, nájem 16000 Kč měsíčně.",
+    "expected": {
+      "dispozice": "3+1",
+      "plocha_m2": 70,
+      "cena_kc": 16000,
+      "mesto": "Pardubice"
+    },
+    "raw_output": "{\n  \"dispozice\": \"3+1\",\n  \"plocha_m2\": 70,\n  \"cena_kc\": 16000,\n  \"mesto\": \"Pardubice\"\n}",
+    "prediction": {
+      "dispozice": "3+1",
+      "plocha_m2": 70,
+      "cena_kc": 16000,
+      "mesto": "Pardubice"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 11,
+    "input": "Pronájem zrekonstruovaného bytu 2+kk o velikosti 60 m2 v Teplicích. Cena nájmu dohodou při osobní prohlídce.",
+    "expected": {
+      "dispozice": "2+kk",
+      "plocha_m2": 60,
+      "cena_kc": null,
+      "mesto": "Teplice"
+    },
+    "raw_output": "{\n  \"dispozice\": \"2+kk\",\n  \"plocha_m2\": 60,\n  \"cena_kc\": null,\n  \"mesto\": \"Teplice\"\n}",
+    "prediction": {
+      "dispozice": "2+kk",
+      "plocha_m2": 60,
+      "cena_kc": null,
+      "mesto": "Teplice"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 12,
+    "input": "Pronajmu pěkný slunný byt 1+1 o rozloze 38 m2 za 12 000 Kč měsíčně. Klidná lokalita 5 minut od nádraží.",
+    "expected": {
+      "dispozice": "1+1",
+      "plocha_m2": 38,
+      "cena_kc": 12000,
+      "mesto": null
+    },
+    "raw_output": "{\n  \"dispozice\": \"1+1\",\n  \"plocha_m2\": 38,\n  \"cena_kc\": 12000,\n  \"mesto\": null\n}",
+    "prediction": {
+      "dispozice": "1+1",
+      "plocha_m2": 38,
+      "cena_kc": 12000,
+      "mesto": null
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 13,
+    "input": "Pronájem bytu 2+kk v Brně, 45 m2. Základní nájemné činí 14 000 Kč, zúčtovatelné poplatky za energie a služby jsou 3 500 Kč, vratná kauce 28 000 Kč.",
+    "expected": {
+      "dispozice": "2+kk",
+      "plocha_m2": 45,
+      "cena_kc": 14000,
+      "mesto": "Brno"
+    },
+    "raw_output": "{\n  \"dispozice\": \"2+kk\",\n  \"plocha_m2\": 45,\n  \"cena_kc\": 14000,\n  \"mesto\": \"Brno\"\n}",
+    "prediction": {
+      "dispozice": "2+kk",
+      "plocha_m2": 45,
+      "cena_kc": 14000,
+      "mesto": "Brno"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 14,
+    "input": "Přenechám prostornou garsoniéru o výměře padesát metrů čtverečních v Praze za osmnáct tisíc korun.",
+    "expected": {
+      "dispozice": "garsonka",
+      "plocha_m2": 50,
+      "cena_kc": 18000,
+      "mesto": "Praha"
+    },
+    "raw_output": "{\n  \"dispozice\": \"garsonka\",\n  \"plocha_m2\": 50,\n  \"cena_kc\": 18000,\n  \"mesto\": \"Praha\"\n}",
+    "prediction": {
+      "dispozice": "garsonka",
+      "plocha_m2": 50,
+      "cena_kc": 18000,
+      "mesto": "Praha"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  },
+  {
+    "id": 15,
+    "input": "Pronájem kompletně zařízeného bytu v Kladně, výměra 52 m2, měsíční nájem 13 500 Kč.",
+    "expected": {
+      "dispozice": null,
+      "plocha_m2": 52,
+      "cena_kc": 13500,
+      "mesto": "Kladno"
+    },
+    "raw_output": "{\n  \"dispozice\": null,\n  \"plocha_m2\": 52,\n  \"cena_kc\": 13500,\n  \"mesto\": \"Kladno\"\n}",
+    "prediction": {
+      "dispozice": null,
+      "plocha_m2": 52,
+      "cena_kc": 13500,
+      "mesto": "Kladno"
+    },
+    "evaluation": {
+      "dispozice": true,
+      "plocha_m2": true,
+      "cena_kc": true,
+      "mesto": true,
+      "uplna_shoda": true
+    }
+  }
+]

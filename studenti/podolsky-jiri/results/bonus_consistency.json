@@ -1,0 +1,187 @@
+[
+  {
+    "id": 1,
+    "identical_pct": 100.0,
+    "accuracy_pct": 100.0,
+    "answers": [
+      {
+        "dispozice": "2+kk",
+        "plocha_m2": 55,
+        "cena_kc": 22000,
+        "mesto": "Praha"
+      },
+      {
+        "dispozice": "2+kk",
+        "plocha_m2": 55,
+        "cena_kc": 22000,
+        "mesto": "Praha"
+      },
+      {
+        "dispozice": "2+kk",
+        "plocha_m2": 55,
+        "cena_kc": 22000,
+        "mesto": "Praha"
+      },
+      {
+        "dispozice": "2+kk",
+        "plocha_m2": 55,
+        "cena_kc": 22000,
+        "mesto": "Praha"
+      },
+      {
+        "dispozice": "2+kk",
+        "plocha_m2": 55,
+        "cena_kc": 22000,
+        "mesto": "Praha"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "identical_pct": 100.0,
+    "accuracy_pct": 100.0,
+    "answers": [
+      {
+        "dispozice": "3+1",
+        "plocha_m2": 74,
+        "cena_kc": 5800000,
+        "mesto": "Brno"
+      },
+      {
+        "dispozice": "3+1",
+        "plocha_m2": 74,
+        "cena_kc": 5800000,
+        "mesto": "Brno"
+      },
+      {
+        "dispozice": "3+1",
+        "plocha_m2": 74,
+        "cena_kc": 5800000,
+        "mesto": "Brno"
+      },
+      {
+        "dispozice": "3+1",
+        "plocha_m2": 74,
+        "cena_kc": 5800000,
+        "mesto": "Brno"
+      },
+      {
+        "dispozice": "3+1",
+        "plocha_m2": 74,
+        "cena_kc": 5800000,
+        "mesto": "Brno"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "identical_pct": 100.0,
+    "accuracy_pct": 100.0,
+    "answers": [
+      {
+        "dispozice": "garsonka",
+        "plocha_m2": 28,
+        "cena_kc": 11500,
+        "mesto": "Plzeň"
+      },
+      {
+        "dispozice": "garsonka",
+        "plocha_m2": 28,
+        "cena_kc": 11500,
+        "mesto": "Plzeň"
+      },
+      {
+        "dispozice": "garsonka",
+        "plocha_m2": 28,
+        "cena_kc": 11500,
+        "mesto": "Plzeň"
+      },
+      {
+        "dispozice": "garsonka",
+        "plocha_m2": 28,
+        "cena_kc": 11500,
+        "mesto": "Plzeň"
+      },
+      {
+        "dispozice": "garsonka",
+        "plocha_m2": 28,
+        "cena_kc": 11500,
+        "mesto": "Plzeň"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "identical_pct": 100.0,
+    "accuracy_pct": 100.0,
+    "answers": [
+      {
+        "dispozice": "4+kk",
+        "plocha_m2": 92,
+        "cena_kc": 7200000,
+        "mesto": "Olomouc"
+      },
+      {
+        "dispozice": "4+kk",
+        "plocha_m2": 92,
+        "cena_kc": 7200000,
+        "mesto": "Olomouc"
+      },
+      {
+        "dispozice": "4+kk",
+        "plocha_m2": 92,
+        "cena_kc": 7200000,
+        "mesto": "Olomouc"
+      },
+      {
+        "dispozice": "4+kk",
+        "plocha_m2": 92,
+        "cena_kc": 7200000,
+        "mesto": "Olomouc"
+      },
+      {
+        "dispozice": "4+kk",
+        "plocha_m2": 92,
+        "cena_kc": 7200000,
+        "mesto": "Olomouc"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "identical_pct": 100.0,
+    "accuracy_pct": 100.0,
+    "answers": [
+      {
+        "dispozice": "1+1",
+        "plocha_m2": 40,
+        "cena_kc": 13000,
+        "mesto": "Liberec"
+      },
+      {
+        "dispozice": "1+1",
+        "plocha_m2": 40,
+        "cena_kc": 13000,
+        "mesto": "Liberec"
+      },
+      {
+        "dispozice": "1+1",
+        "plocha_m2": 40,
+        "cena_kc": 13000,
+        "mesto": "Liberec"
+      },
+      {
+        "dispozice": "1+1",
+        "plocha_m2": 40,
+        "cena_kc": 13000,
+        "mesto": "Liberec"
+      },
+      {
+        "dispozice": "1+1",
+        "plocha_m2": 40,
+        "cena_kc": 13000,
+        "mesto": "Liberec"
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{"id": 101, "input": "Prodej bytu 3+kk, 75 m², Praha 6 - Dejvice. Cena 8 900 000 Kč.", "expected": {"dispozice": "3+kk", "plocha_m2": 75, "cena_kc": 8900000, "mesto": "Praha"}}
+{"id": 102, "input": "Pronájem 1+kk, 30 m2, Brno - Královo Pole, 12 500 Kč/měsíc bez energií.", "expected": {"dispozice": "1+kk", "plocha_m2": 30, "cena_kc": 12500, "mesto": "Brno"}}
+{"id": 103, "input": "Nabízíme k prodeji byt 2+1 v osobním vlastnictví v Karlových Varech, 56 m2, za 2 650 000 Kč.", "expected": {"dispozice": "2+1", "plocha_m2": 56, "cena_kc": 2650000, "mesto": "Karlovy Vary"}}
+{"id": 104, "input": "Pronajmu byt 4+1 o velikosti 88 m2 ve Zlíně, cena 21 000 Kč měsíčně.", "expected": {"dispozice": "4+1", "plocha_m2": 88, "cena_kc": 21000, "mesto": "Zlín"}}
+{"id": 105, "input": "Exkluzivní prodej novostavby 2+kk, 49 m², Jihlava, kupní cena 3 400 000 Kč.", "expected": {"dispozice": "2+kk", "plocha_m2": 49, "cena_kc": 3400000, "mesto": "Jihlava"}}
+{"id": 106, "input": "Pronájem bytu 3+1 v Mostě, ulice Budovatelů, plocha 66 m², nájem 11 000 Kč měsíčně.", "expected": {"dispozice": "3+1", "plocha_m2": 66, "cena_kc": 11000, "mesto": "Most"}}
+{"id": 107, "input": "Cihlový byt 1+1 k prodeji v Děčíně, podlahová plocha 37 m2, cena 1 850 000 Kč.", "expected": {"dispozice": "1+1", "plocha_m2": 37, "cena_kc": 1850000, "mesto": "Děčín"}}
+{"id": 108, "input": "Světlý byt 2+kk v Olomouci s podlahovou plochou 62 m² a balkonem 5 m², nájemné 15 000 Kč.", "expected": {"dispozice": "2+kk", "plocha_m2": 62, "cena_kc": 15000, "mesto": "Olomouc"}, "tezky": true}
+{"id": 109, "input": "Dlouhodobý pronájem pokoje v bytě 3+1 v Opavě. Výměra neuvedena, cena dohodou dle spotřeby.", "expected": {"dispozice": "3+1", "plocha_m2": null, "cena_kc": null, "mesto": "Opava"}, "tezky": true}
+{"id": 110, "input": "Pronajmu luxusní zařízený mezonet 110 m2 v Říčanech za 25 000 Kč za měsíc.", "expected": {"dispozice": null, "plocha_m2": 110, "cena_kc": 25000, "mesto": "Říčany"}, "tezky": true}
