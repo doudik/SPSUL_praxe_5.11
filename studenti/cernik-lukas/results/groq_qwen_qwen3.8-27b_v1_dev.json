@@ -1,0 +1,472 @@
+{
+  "run": {
+    "model": "qwen/qwen3.8-27b",
+    "poskytovatel": "groq",
+    "prompt": "v1",
+    "sada": "dev",
+    "pripadu": 15,
+    "validni_json": 1.0,
+    "uplna_shoda": 0.7333,
+    "pole": {
+      "komponenta": 1.0,
+      "zavaznost": 0.8,
+      "reprodukovatelny": 0.9333,
+      "chybova_hlaska": 1.0
+    },
+    "latence_s": 0.493,
+    "tokeny_vstup": 13627,
+    "tokeny_vystup": 838
+  },
+  "cases": [
+    {
+      "id": 1,
+      "tezky": false,
+      "input": "Po kliknutí na tlačítko 'Uložit profil' v nastavení účtu se nic nestane. Zkoušel jsem to v Chrome i Firefoxu, dělá to pokaždé. V konzoli prohlížeče vyskočí: Uncaught TypeError: Cannot read properties of undefined (reading 'submit').",
+      "expected": {
+        "komponenta": "frontend",
+        "zavaznost": "stredni",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "Uncaught TypeError: Cannot read properties of undefined (reading 'submit')"
+      },
+      "raw_response": "{\n  \"komponenta\": \"frontend\",\n  \"zavaznost\": \"vysoka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": \"Uncaught TypeError: Cannot read properties of undefined (reading 'submit')\"\n}",
+      "parsed": {
+        "komponenta": "frontend",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "Uncaught TypeError: Cannot read properties of undefined (reading 'submit')"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": false,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": false
+      },
+      "latency_s": 0.8254590034484863,
+      "prompt_tokens": 914,
+      "completion_tokens": 63,
+      "from_cache": true
+    },
+    {
+      "id": 2,
+      "tezky": false,
+      "input": "Při volání endpointu /api/v1/orders/calculate vrací server chybu 500 Internal Server Error. Děje se to pouze při objednávce nad 50 položek, vyzkoušeno 3x za sebou se stejným výsledkem.",
+      "expected": {
+        "komponenta": "backend",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "500 Internal Server Error"
+      },
+      "raw_response": "{\n  \"komponenta\": \"backend\",\n  \"zavaznost\": \"vysoka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": \"500 Internal Server Error\"\n}",
+      "parsed": {
+        "komponenta": "backend",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "500 Internal Server Error"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.5423462390899658,
+      "prompt_tokens": 903,
+      "completion_tokens": 56,
+      "from_cache": false
+    },
+    {
+      "id": 3,
+      "tezky": false,
+      "input": "Uživatelé se nemohou přihlásit přes Google SSO. Po přesměrování zpět na naši stránku se zobrazí hláška 'OAuth2 callback failed: invalid_grant'. Nefunguje to nikomu od dnešního rána.",
+      "expected": {
+        "komponenta": "auth",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "OAuth2 callback failed: invalid_grant"
+      },
+      "raw_response": "{\n  \"komponenta\": \"auth\",\n  \"zavaznost\": \"kriticka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": \"OAuth2 callback failed: invalid_grant\"\n}",
+      "parsed": {
+        "komponenta": "auth",
+        "zavaznost": "kriticka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "OAuth2 callback failed: invalid_grant"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": false,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": false
+      },
+      "latency_s": 0.524634599685669,
+      "prompt_tokens": 903,
+      "completion_tokens": 57,
+      "from_cache": false
+    },
+    {
+      "id": 4,
+      "tezky": false,
+      "input": "Produkční PostgreSQL databáze vyčerpala maximální počet spojení. Všechny služby hlásí: FATAL: remaining connection slots are reserved for non-replication superuser connections. Celý e-shop i interní systém je kompletně nedostupný!",
+      "expected": {
+        "komponenta": "databaze",
+        "zavaznost": "kriticka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "FATAL: remaining connection slots are reserved for non-replication superuser connections"
+      },
+      "raw_response": "{\n  \"komponenta\": \"databaze\",\n  \"zavaznost\": \"kriticka\",\n  \"reprodukovatelny\": null,\n  \"chybova_hlaska\": \"FATAL: remaining connection slots are reserved for non-replication superuser connections\"\n}",
+      "parsed": {
+        "komponenta": "databaze",
+        "zavaznost": "kriticka",
+        "reprodukovatelny": null,
+        "chybova_hlaska": "FATAL: remaining connection slots are reserved for non-replication superuser connections"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": false,
+        "chybova_hlaska": true,
+        "uplna_shoda": false
+      },
+      "latency_s": 0.42820000648498535,
+      "prompt_tokens": 903,
+      "completion_tokens": 66,
+      "from_cache": false
+    },
+    {
+      "id": 5,
+      "tezky": false,
+      "input": "Zákazník hlásí, že mu neprošla platba kartou přes bránu GoPay. Peníze se mu strhly, ale v objednávce zůstal stav Nezaplaceno. Žádnou chybovou hlášku to neukázalo. Stalo se to prý jen jednou, druhý nákup už proběhl v pořádku.",
+      "expected": {
+        "komponenta": "platby",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": false,
+        "chybova_hlaska": null
+      },
+      "raw_response": "{\n  \"komponenta\": \"platby\",\n  \"zavaznost\": \"vysoka\",\n  \"reprodukovatelny\": false,\n  \"chybova_hlaska\": null\n}",
+      "parsed": {
+        "komponenta": "platby",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": false,
+        "chybova_hlaska": null
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.4552152156829834,
+      "prompt_tokens": 928,
+      "completion_tokens": 50,
+      "from_cache": false
+    },
+    {
+      "id": 6,
+      "tezky": false,
+      "input": "V patičce webu je překlep v copyrightu – je tam napsáno 'Všechna práva vyhrazeny' místo 'vyhrazena'. Žádný chybový kód se samozřejmě nezobrazuje.",
+      "expected": {
+        "komponenta": "frontend",
+        "zavaznost": "nizka",
+        "reprodukovatelny": null,
+        "chybova_hlaska": null
+      },
+      "raw_response": "{\n  \"komponenta\": \"frontend\",\n  \"zavaznost\": \"nizka\",\n  \"reprodukovatelny\": null,\n  \"chybova_hlaska\": null\n}",
+      "parsed": {
+        "komponenta": "frontend",
+        "zavaznost": "nizka",
+        "reprodukovatelny": null,
+        "chybova_hlaska": null
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.40863633155822754,
+      "prompt_tokens": 897,
+      "completion_tokens": 49,
+      "from_cache": false
+    },
+    {
+      "id": 7,
+      "tezky": true,
+      "input": "No to je fakt nádhera, tmavý režim jste vyřešili geniálně: černé písmo na černém pozadí v celém nastavení profilu. Kdo to má proboha luštit? Žádná chyba nevyskočí, prostě skvělý design. Dělá to pokaždé, když přepnu přepínač na dark mode.",
+      "expected": {
+        "komponenta": "frontend",
+        "zavaznost": "stredni",
+        "reprodukovatelny": true,
+        "chybova_hlaska": null
+      },
+      "raw_response": "{\n  \"komponenta\": \"frontend\",\n  \"zavaznost\": \"stredni\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": null\n}",
+      "parsed": {
+        "komponenta": "frontend",
+        "zavaznost": "stredni",
+        "reprodukovatelny": true,
+        "chybova_hlaska": null
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.521674394607544,
+      "prompt_tokens": 934,
+      "completion_tokens": 49,
+      "from_cache": false
+    },
+    {
+      "id": 8,
+      "tezky": true,
+      "input": "cs hele padato kdyz chci zaplatit prez applepay hned to spadne a pise to chybu PaymentRequest failed with code 402, zkousel sem to asi petkrat porad to sami.",
+      "expected": {
+        "komponenta": "platby",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "PaymentRequest failed with code 402"
+      },
+      "raw_response": "{\n  \"komponenta\": \"platby\",\n  \"zavaznost\": \"vysoka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": \"PaymentRequest failed with code 402\"\n}",
+      "parsed": {
+        "komponenta": "platby",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "PaymentRequest failed with code 402"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.5472705364227295,
+      "prompt_tokens": 890,
+      "completion_tokens": 60,
+      "from_cache": false
+    },
+    {
+      "id": 9,
+      "tezky": true,
+      "input": "Uživatel klikne v administraci na tlačítko 'Smazat zákazníka'. Na obrazovce se objeví červená notifikace: 'DB constraint error: foreign key violation on table orders'. Zkoušeno opakovaně na třech různých zákaznících se stejným výsledkem.",
+      "expected": {
+        "komponenta": "databaze",
+        "zavaznost": "stredni",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "DB constraint error: foreign key violation on table orders"
+      },
+      "raw_response": "{\n  \"komponenta\": \"databaze\",\n  \"zavaznost\": \"vysoka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": \"DB constraint error: foreign key violation on table orders\"\n}",
+      "parsed": {
+        "komponenta": "databaze",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "DB constraint error: foreign key violation on table orders"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": false,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": false
+      },
+      "latency_s": 0.4595682621002197,
+      "prompt_tokens": 910,
+      "completion_tokens": 62,
+      "from_cache": false
+    },
+    {
+      "id": 10,
+      "tezky": true,
+      "input": "V kanceláři v 3. patře přestala fungovat síťová tiskárna HP LaserJet, na jejím displeji bliká hlášení 'Error 79 - Turn off and on'. Po restartu tiskárny se chyba objeví znovu. Tiskárna je úplně zablokovaná.",
+      "expected": {
+        "komponenta": "jine",
+        "zavaznost": "stredni",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "Error 79 - Turn off and on"
+      },
+      "raw_response": "{\n  \"komponenta\": \"jine\",\n  \"zavaznost\": \"stredni\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": \"Error 79 - Turn off and on\"\n}",
+      "parsed": {
+        "komponenta": "jine",
+        "zavaznost": "stredni",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "Error 79 - Turn off and on"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.45540380477905273,
+      "prompt_tokens": 917,
+      "completion_tokens": 60,
+      "from_cache": false
+    },
+    {
+      "id": 11,
+      "tezky": false,
+      "input": "KRITICKÁ BEZPEČNOSTNÍ CHYBA: Každý nepřihlášený návštěvník může přistupovat k administračnímu rozhraní na URL /admin/users bez vyzvání k přihlášení. Tokeny se vůbec neověřují. Ověřeno v anonymním okně prohlížeče.",
+      "expected": {
+        "komponenta": "auth",
+        "zavaznost": "kriticka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": null
+      },
+      "raw_response": "{\n  \"komponenta\": \"auth\",\n  \"zavaznost\": \"kriticka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": null\n}",
+      "parsed": {
+        "komponenta": "auth",
+        "zavaznost": "kriticka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": null
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.38486242294311523,
+      "prompt_tokens": 920,
+      "completion_tokens": 48,
+      "from_cache": false
+    },
+    {
+      "id": 12,
+      "tezky": false,
+      "input": "Export roční účetní uzávěrky do PDF spadl s chybou Gateway Timeout (HTTP 504). Když jsem to zkusil o pět minut později znovu, PDF se v pořádku vygenerovalo, takže se to podruhé nezopakovalo.",
+      "expected": {
+        "komponenta": "backend",
+        "zavaznost": "stredni",
+        "reprodukovatelny": false,
+        "chybova_hlaska": "Gateway Timeout (HTTP 504)"
+      },
+      "raw_response": "{\n  \"komponenta\": \"backend\",\n  \"zavaznost\": \"stredni\",\n  \"reprodukovatelny\": false,\n  \"chybova_hlaska\": \"Gateway Timeout (HTTP 504)\"\n}",
+      "parsed": {
+        "komponenta": "backend",
+        "zavaznost": "stredni",
+        "reprodukovatelny": false,
+        "chybova_hlaska": "Gateway Timeout (HTTP 504)"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.35103654861450195,
+      "prompt_tokens": 907,
+      "completion_tokens": 58,
+      "from_cache": false
+    },
+    {
+      "id": 13,
+      "tezky": true,
+      "input": "V patičce profilu uživatele na webu se překrývá text obchodních podmínek s tlačítkem 'Zavřít', je to čistě vizuální překryv prvků v CSS.",
+      "expected": {
+        "komponenta": "frontend",
+        "zavaznost": "nizka",
+        "reprodukovatelny": null,
+        "chybova_hlaska": null
+      },
+      "raw_response": "{\n  \"komponenta\": \"frontend\",\n  \"zavaznost\": \"nizka\",\n  \"reprodukovatelny\": null,\n  \"chybova_hlaska\": null\n}",
+      "parsed": {
+        "komponenta": "frontend",
+        "zavaznost": "nizka",
+        "reprodukovatelny": null,
+        "chybova_hlaska": null
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.6666655540466309,
+      "prompt_tokens": 895,
+      "completion_tokens": 49,
+      "from_cache": false
+    },
+    {
+      "id": 14,
+      "tezky": false,
+      "input": "Služba pro výpočet DPH vrací u položek s nulovou sazbou zápornou částku. V logu microservice-tax je záznam: InvalidTaxRateCalculationException: rate cannot be zero. Chyba nastává při každém výpočtu takové faktury.",
+      "expected": {
+        "komponenta": "backend",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "InvalidTaxRateCalculationException: rate cannot be zero"
+      },
+      "raw_response": "{\n  \"komponenta\": \"backend\",\n  \"zavaznost\": \"vysoka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": \"InvalidTaxRateCalculationException: rate cannot be zero\"\n}",
+      "parsed": {
+        "komponenta": "backend",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "InvalidTaxRateCalculationException: rate cannot be zero"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.37962889671325684,
+      "prompt_tokens": 913,
+      "completion_tokens": 61,
+      "from_cache": false
+    },
+    {
+      "id": 15,
+      "tezky": false,
+      "input": "Při volbě platby bankovním převodem se nevygeneruje QR kód pro platbu, okno zůstane prázdné. Testováno opakovaně na 4 různých prohlížečích.",
+      "expected": {
+        "komponenta": "platby",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": null
+      },
+      "raw_response": "{\n  \"komponenta\": \"platby\",\n  \"zavaznost\": \"vysoka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": null\n}",
+      "parsed": {
+        "komponenta": "platby",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": null
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.44762754440307617,
+      "prompt_tokens": 893,
+      "completion_tokens": 50,
+      "from_cache": false
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "student": "Lukáš Černík",
+  "uloha": "Bug reporty",
+  "behy": [
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.6,
+      "pole": {
+        "komponenta": 1.0,
+        "zavaznost": 0.6667,
+        "reprodukovatelny": 0.9333,
+        "chybova_hlaska": 1.0
+      },
+      "latence_s": 0.807,
+      "tokeny_vstup": 14197,
+      "tokeny_vystup": 5540
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.6,
+      "pole": {
+        "komponenta": 1.0,
+        "zavaznost": 0.6667,
+        "reprodukovatelny": 0.9333,
+        "chybova_hlaska": 1.0
+      },
+      "latence_s": 1.379,
+      "tokeny_vstup": 14197,
+      "tokeny_vystup": 3900
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.7333,
+      "pole": {
+        "komponenta": 1.0,
+        "zavaznost": 0.8,
+        "reprodukovatelny": 0.9333,
+        "chybova_hlaska": 1.0
+      },
+      "latence_s": 0.493,
+      "tokeny_vstup": 13627,
+      "tokeny_vystup": 838
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "poskytovatel": "groq",
+      "prompt": "v2",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 1.0,
+      "pole": {
+        "komponenta": 1.0,
+        "zavaznost": 1.0,
+        "reprodukovatelny": 1.0,
+        "chybova_hlaska": 1.0
+      },
+      "latence_s": 0.691,
+      "tokeny_vstup": 20587,
+      "tokeny_vystup": 839
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "poskytovatel": "groq",
+      "prompt": "v2",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.8,
+      "pole": {
+        "komponenta": 1.0,
+        "zavaznost": 0.9,
+        "reprodukovatelny": 0.9,
+        "chybova_hlaska": 1.0
+      },
+      "latence_s": 0.634,
+      "tokeny_vstup": 13779,
+      "tokeny_vystup": 567
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.5,
+      "pole": {
+        "komponenta": 1.0,
+        "zavaznost": 0.6,
+        "reprodukovatelny": 0.9,
+        "chybova_hlaska": 1.0
+      },
+      "latence_s": 0.555,
+      "tokeny_vstup": 9139,
+      "tokeny_vystup": 566
+    }
+  ]
+}

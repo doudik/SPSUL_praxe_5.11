@@ -1,0 +1,322 @@
+{
+  "run": {
+    "model": "qwen/qwen3.8-27b",
+    "poskytovatel": "groq",
+    "prompt": "v2",
+    "sada": "test",
+    "pripadu": 10,
+    "validni_json": 1.0,
+    "uplna_shoda": 0.8,
+    "pole": {
+      "komponenta": 1.0,
+      "zavaznost": 0.9,
+      "reprodukovatelny": 0.9,
+      "chybova_hlaska": 1.0
+    },
+    "latence_s": 0.634,
+    "tokeny_vstup": 13779,
+    "tokeny_vystup": 567
+  },
+  "cases": [
+    {
+      "id": 16,
+      "tezky": false,
+      "input": "Při hromadném importu produktů padá databáze na deadlocku: 'ERROR: deadlock detected. Process 14203 waits for ShareLock on transaction 8912'. Děje se to spolehlivě při každém spuštění importu nad 1000 řádků.",
+      "expected": {
+        "komponenta": "databaze",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "ERROR: deadlock detected. Process 14203 waits for ShareLock on transaction 8912"
+      },
+      "raw_response": "{\n  \"komponenta\": \"databaze\",\n  \"zavaznost\": \"vysoka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": \"ERROR: deadlock detected. Process 14203 waits for ShareLock on transaction 8912\"\n}",
+      "parsed": {
+        "komponenta": "databaze",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "ERROR: deadlock detected. Process 14203 waits for ShareLock on transaction 8912"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.645258903503418,
+      "prompt_tokens": 1380,
+      "completion_tokens": 75,
+      "from_cache": false
+    },
+    {
+      "id": 17,
+      "tezky": false,
+      "input": "V mobilním zobrazení na iPhone Safari nejde rozbalit navigační hamburger menu. Po klepnutí se ikona animuje, ale menu nevyjede. Žádná chybová hláška v UI není vidět. Chyba se projevuje vždy při šířce displeje pod 400px.",
+      "expected": {
+        "komponenta": "frontend",
+        "zavaznost": "stredni",
+        "reprodukovatelny": true,
+        "chybova_hlaska": null
+      },
+      "raw_response": "{\n  \"komponenta\": \"frontend\",\n  \"zavaznost\": \"stredni\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": null\n}",
+      "parsed": {
+        "komponenta": "frontend",
+        "zavaznost": "stredni",
+        "reprodukovatelny": true,
+        "chybova_hlaska": null
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.5485100746154785,
+      "prompt_tokens": 1383,
+      "completion_tokens": 49,
+      "from_cache": false
+    },
+    {
+      "id": 18,
+      "tezky": false,
+      "input": "Uživatel je odhlášen okamžitě po načtení jakékoliv podstránky. V konzoli je chyba 'JWT expired at timestamp 1714560000'. Problém se děje všem přihlášeným uživatelům neustále od poslední aktualizace.",
+      "expected": {
+        "komponenta": "auth",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "JWT expired at timestamp 1714560000"
+      },
+      "raw_response": "{\n  \"komponenta\": \"auth\",\n  \"zavaznost\": \"vysoka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": \"JWT expired at timestamp 1714560000\"\n}",
+      "parsed": {
+        "komponenta": "auth",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "JWT expired at timestamp 1714560000"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.5723042488098145,
+      "prompt_tokens": 1377,
+      "completion_tokens": 65,
+      "from_cache": false
+    },
+    {
+      "id": 19,
+      "tezky": true,
+      "input": "Díky moc za skvělou aktualizaci platební brány, teď pro změnu nejde zaplatit vůbec ničím a zákazníci nám hromadně píšou na podporu. Vrací to hlášku 'Transaction rejected by upstream processor'. Zkoušeli jsme to z pěti různých karet a neprošla ani jedna.",
+      "expected": {
+        "komponenta": "platby",
+        "zavaznost": "kriticka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "Transaction rejected by upstream processor"
+      },
+      "raw_response": "{\n  \"komponenta\": \"platby\",\n  \"zavaznost\": \"kriticka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": \"Transaction rejected by upstream processor\"\n}",
+      "parsed": {
+        "komponenta": "platby",
+        "zavaznost": "kriticka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "Transaction rejected by upstream processor"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.6991522312164307,
+      "prompt_tokens": 1384,
+      "completion_tokens": 55,
+      "from_cache": false
+    },
+    {
+      "id": 20,
+      "tezky": true,
+      "input": "Celé API na serveru api.firma.cz přestalo odpovídat a vrací chybu HTTP status kód: 503 Service Unavailable. Žádný požadavek neprojde, systém je kompletně vyřazen z provozu. Zkoušeno z různých IP adres po dobu 20 minut se stejným výsledkem.",
+      "expected": {
+        "komponenta": "backend",
+        "zavaznost": "kriticka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "503 Service Unavailable"
+      },
+      "raw_response": "{\n  \"komponenta\": \"backend\",\n  \"zavaznost\": \"kriticka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": \"503 Service Unavailable\"\n}",
+      "parsed": {
+        "komponenta": "backend",
+        "zavaznost": "kriticka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "503 Service Unavailable"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.7063236236572266,
+      "prompt_tokens": 1388,
+      "completion_tokens": 55,
+      "from_cache": false
+    },
+    {
+      "id": 21,
+      "tezky": true,
+      "input": "Při pokusu o přihlášení do aplikace uživatel zadá správné údaje, ale namísto přihlášení spadne spojení s databází a v logu se objeví: 'MongoServerError: connection pool closed'. Zkoušeno opakovaně u více účtů.",
+      "expected": {
+        "komponenta": "databaze",
+        "zavaznost": "vysoka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "MongoServerError: connection pool closed"
+      },
+      "raw_response": "{\n  \"komponenta\": \"databaze\",\n  \"zavaznost\": \"kriticka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": \"MongoServerError: connection pool closed\"\n}",
+      "parsed": {
+        "komponenta": "databaze",
+        "zavaznost": "kriticka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "MongoServerError: connection pool closed"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": false,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": false
+      },
+      "latency_s": 0.3838021755218506,
+      "prompt_tokens": 1372,
+      "completion_tokens": 57,
+      "from_cache": false
+    },
+    {
+      "id": 22,
+      "tezky": true,
+      "input": "V kontaktním formuláři pro zaslání dotazu je tlačítko 'Odeslat' neaktivní a zašedlé i po vyplnění všech povinných polí, formulář tak nelze odeslat. Žádná chybová hláška se nezobrazí.",
+      "expected": {
+        "komponenta": "frontend",
+        "zavaznost": "stredni",
+        "reprodukovatelny": null,
+        "chybova_hlaska": null
+      },
+      "raw_response": "{\n  \"komponenta\": \"frontend\",\n  \"zavaznost\": \"stredni\",\n  \"reprodukovatelny\": null,\n  \"chybova_hlaska\": null\n}",
+      "parsed": {
+        "komponenta": "frontend",
+        "zavaznost": "stredni",
+        "reprodukovatelny": null,
+        "chybova_hlaska": null
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.5818996429443359,
+      "prompt_tokens": 1376,
+      "completion_tokens": 49,
+      "from_cache": false
+    },
+    {
+      "id": 23,
+      "tezky": false,
+      "input": "Při generování měsíčního reportu prodejů v administraci vyskočila chyba '502 Bad Gateway'. Ihned jsem stránku obnovil klávesou F5 a report se bez problémů načetl, podruhé se chyba neobjevila.",
+      "expected": {
+        "komponenta": "backend",
+        "zavaznost": "stredni",
+        "reprodukovatelny": false,
+        "chybova_hlaska": "502 Bad Gateway"
+      },
+      "raw_response": "{\n  \"komponenta\": \"backend\",\n  \"zavaznost\": \"stredni\",\n  \"reprodukovatelny\": false,\n  \"chybova_hlaska\": \"502 Bad Gateway\"\n}",
+      "parsed": {
+        "komponenta": "backend",
+        "zavaznost": "stredni",
+        "reprodukovatelny": false,
+        "chybova_hlaska": "502 Bad Gateway"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.8355369567871094,
+      "prompt_tokens": 1367,
+      "completion_tokens": 55,
+      "from_cache": false
+    },
+    {
+      "id": 24,
+      "tezky": true,
+      "input": "Klimatizace v centrální serverovně hlásí chybový kód 'E-401 Overheat Warning' a teplota v racku stoupla na nebezpečných 38 stupňů. Senzor pípá nepřetržitě, hrozí okamžité nouzové vypnutí serverů.",
+      "expected": {
+        "komponenta": "jine",
+        "zavaznost": "kriticka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": "E-401 Overheat Warning"
+      },
+      "raw_response": "{\n  \"komponenta\": \"jine\",\n  \"zavaznost\": \"kriticka\",\n  \"reprodukovatelny\": null,\n  \"chybova_hlaska\": \"E-401 Overheat Warning\"\n}",
+      "parsed": {
+        "komponenta": "jine",
+        "zavaznost": "kriticka",
+        "reprodukovatelny": null,
+        "chybova_hlaska": "E-401 Overheat Warning"
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": false,
+        "chybova_hlaska": true,
+        "uplna_shoda": false
+      },
+      "latency_s": 0.5848424434661865,
+      "prompt_tokens": 1385,
+      "completion_tokens": 58,
+      "from_cache": false
+    },
+    {
+      "id": 25,
+      "tezky": false,
+      "input": "Ikona nákupního košíku v horním menu je posunutá o 3 pixely níže oproti textu a při najetí myší problikne šedý rámeček. Chová se to takto trvale ve všech rozlišeních.",
+      "expected": {
+        "komponenta": "frontend",
+        "zavaznost": "nizka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": null
+      },
+      "raw_response": "{\n  \"komponenta\": \"frontend\",\n  \"zavaznost\": \"nizka\",\n  \"reprodukovatelny\": true,\n  \"chybova_hlaska\": null\n}",
+      "parsed": {
+        "komponenta": "frontend",
+        "zavaznost": "nizka",
+        "reprodukovatelny": true,
+        "chybova_hlaska": null
+      },
+      "evaluation": {
+        "valid_json": true,
+        "komponenta": true,
+        "zavaznost": true,
+        "reprodukovatelny": true,
+        "chybova_hlaska": true,
+        "uplna_shoda": true
+      },
+      "latency_s": 0.7821774482727051,
+      "prompt_tokens": 1367,
+      "completion_tokens": 49,
+      "from_cache": false
+    }
+  ]
+}

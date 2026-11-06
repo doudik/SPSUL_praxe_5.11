@@ -1,0 +1,10 @@
+# API klíče a tajné informace
+.env
+.env*.local
+
+# Cache a virtuální prostředí
+__pycache__/
+cache/
+.venv/
+venv/
+
