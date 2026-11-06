@@ -1,0 +1,41 @@
+<!doctype html><html lang="cs"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Počasí – eval dashboard</title>
+<style>
+body{font-family:system-ui,sans-serif;margin:0;padding:16px;background:#f6f7f9;color:#1d2330}
+h1{font-size:22px}h2{font-size:16px;margin:0 0 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+.card{background:#fff;border-radius:10px;padding:14px;box-shadow:0 1px 3px #0001}
+.row{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:13px}
+.lbl{width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar{height:16px;border-radius:3px}.v{width:44px;text-align:right;font-variant-numeric:tabular-nums}
+table{border-collapse:collapse;font-size:12px;width:100%}td,th{padding:4px 6px;border-bottom:1px solid #eee;text-align:left}
+</style></head><body>
+<h1>Zprávy o počasí – výsledky evalu (Jan Koritko)</h1>
+<div class="grid" id="g"></div>
+<div class="card" style="margin-top:16px"><h2>Všechny běhy</h2><table id="t"></table></div>
+<script>
+const B=[{"model": "allam-2-7b", "poskytovatel": "groq", "prompt": "v1", "sada": "dev", "pripadu": 15, "validni_json": 1.0, "uplna_shoda": 0.1333, "pole": {"mesto": 0.6667, "teplota": 0.9333, "srazky": 0.6667, "typ_srazek": 0.2}, "latence_s": 1.857, "tokeny_vstup": 4036, "tokeny_vystup": 775}, {"model": "openai/gpt-oss-120b", "poskytovatel": "groq", "prompt": "v1", "sada": "dev", "pripadu": 15, "validni_json": 1.0, "uplna_shoda": 0.8667, "pole": {"mesto": 0.8667, "teplota": 1.0, "srazky": 1.0, "typ_srazek": 1.0}, "latence_s": 2.214, "tokeny_vstup": 3905, "tokeny_vystup": 2381}, {"model": "openai/gpt-oss-20b", "poskytovatel": "groq", "prompt": "v1", "sada": "dev", "pripadu": 15, "validni_json": 1.0, "uplna_shoda": 0.8667, "pole": {"mesto": 0.9333, "teplota": 1.0, "srazky": 0.9333, "typ_srazek": 0.9333}, "latence_s": 0.932, "tokeny_vstup": 3905, "tokeny_vystup": 4914}, {"model": "allam-2-7b", "poskytovatel": "groq", "prompt": "v2", "sada": "dev", "pripadu": 15, "validni_json": 0.9333, "uplna_shoda": 0.4, "pole": {"mesto": 0.8667, "teplota": 0.8, "srazky": 0.8, "typ_srazek": 0.4667}, "latence_s": 0.387, "tokeny_vstup": 17461, "tokeny_vystup": 1591}, {"model": "openai/gpt-oss-120b", "poskytovatel": "groq", "prompt": "v2", "sada": "dev", "pripadu": 15, "validni_json": 1.0, "uplna_shoda": 1.0, "pole": {"mesto": 1.0, "teplota": 1.0, "srazky": 1.0, "typ_srazek": 1.0}, "latence_s": 1.664, "tokeny_vstup": 13445, "tokeny_vystup": 3608}, {"model": "openai/gpt-oss-20b", "poskytovatel": "groq", "prompt": "v2", "sada": "dev", "pripadu": 15, "validni_json": 1.0, "uplna_shoda": 1.0, "pole": {"mesto": 1.0, "teplota": 1.0, "srazky": 1.0, "typ_srazek": 1.0}, "latence_s": 0.681, "tokeny_vstup": 13445, "tokeny_vystup": 3101}, {"model": "openai/gpt-oss-120b", "poskytovatel": "groq", "prompt": "v2", "sada": "test", "pripadu": 10, "validni_json": 1.0, "uplna_shoda": 1.0, "pole": {"mesto": 1.0, "teplota": 1.0, "srazky": 1.0, "typ_srazek": 1.0}, "latence_s": 2.944, "tokeny_vstup": 8980, "tokeny_vystup": 2447}, {"model": "openai/gpt-oss-20b", "poskytovatel": "groq", "prompt": "v2", "sada": "test", "pripadu": 10, "validni_json": 1.0, "uplna_shoda": 1.0, "pole": {"mesto": 1.0, "teplota": 1.0, "srazky": 1.0, "typ_srazek": 1.0}, "latence_s": 1.395, "tokeny_vstup": 8980, "tokeny_vystup": 2785}];
+const C={v1:'#4f7fd9',v2:'#e08a2e',dev:'#4f7fd9',test:'#2ea86b'};
+const pct=x=>Math.round(x*100)+' %';
+function card(title,rows){const d=document.createElement('div');d.className='card';
+ d.innerHTML='<h2>'+title+'</h2>'+rows.map(r=>'<div class="row"><span class="lbl" title="'+r[0]+'">'+r[0]+
+ '</span><span style="flex:1;background:#eef0f4;border-radius:3px"><div class="bar" style="width:'+(r[1]*100)+
+ '%;background:'+r[2]+'"></div></span><span class="v">'+pct(r[1])+'</span></div>').join('');
+ document.getElementById('g').appendChild(d);}
+const dv1=B.filter(b=>b.sada==='dev'&&b.prompt==='v1');
+card('Porovnání modelů (dev, v1) – úplná shoda',dv1.map(b=>[b.model,b.uplna_shoda,C.v1]));
+const models=[...new Set(B.filter(b=>b.sada==='dev').map(b=>b.model))];
+card('v1 proti v2 (dev) – úplná shoda',models.flatMap(m=>['v1','v2'].map(p=>{
+ const b=B.find(x=>x.sada==='dev'&&x.model===m&&x.prompt===p);return b?[m+' · '+p,b.uplna_shoda,C[p]]:null}).filter(Boolean)));
+const tst=B.filter(b=>b.sada==='test');
+card('dev proti test – úplná shoda',tst.flatMap(t=>{const d=B.find(x=>x.sada==='dev'&&x.model===t.model&&x.prompt===t.prompt);
+ return [[t.model+' · '+t.prompt+' · dev',d?d.uplna_shoda:0,C.dev],[t.model+' · '+t.prompt+' · test',t.uplna_shoda,C.test]]}));
+const fields=Object.keys((B[0]||{pole:{}}).pole);
+const best=[...B].filter(b=>b.sada==='dev').sort((a,b)=>b.uplna_shoda-a.uplna_shoda)[0];
+if(best)card('Přesnost po polích – '+best.model+' · '+best.prompt+' (dev)',fields.map(f=>[f,best.pole[f],'#8a5cd6']));
+document.getElementById('t').innerHTML='<tr><th>model</th><th>posk.</th><th>prompt</th><th>sada</th><th>valid</th><th>shoda</th>'+
+ fields.map(f=>'<th>'+f+'</th>').join('')+'<th>latence</th><th>tokeny</th></tr>'+B.map(b=>'<tr><td>'+b.model+'</td><td>'+
+ b.poskytovatel+'</td><td>'+b.prompt+'</td><td>'+b.sada+'</td><td>'+pct(b.validni_json)+'</td><td><b>'+pct(b.uplna_shoda)+
+ '</b></td>'+fields.map(f=>'<td>'+pct(b.pole[f])+'</td>').join('')+'<td>'+b.latence_s.toFixed(2)+' s</td><td>'+
+ b.tokeny_vstup+' / '+b.tokeny_vystup+'</td></tr>').join('');
+</script></body></html>

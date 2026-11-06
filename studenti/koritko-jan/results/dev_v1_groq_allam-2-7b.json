@@ -1,0 +1,472 @@
+{
+  "souhrn": {
+    "model": "allam-2-7b",
+    "poskytovatel": "groq",
+    "prompt": "v1",
+    "sada": "dev",
+    "pripadu": 15,
+    "validni_json": 1.0,
+    "uplna_shoda": 0.1333,
+    "pole": {
+      "mesto": 0.6667,
+      "teplota": 0.9333,
+      "srazky": 0.6667,
+      "typ_srazek": 0.2
+    },
+    "latence_s": 1.857,
+    "tokeny_vstup": 4036,
+    "tokeny_vystup": 775
+  },
+  "pripady": [
+    {
+      "id": 1,
+      "tezky": false,
+      "input": "Praha dnes: polojasno, odpoledne až 14 °C, bez srážek.",
+      "expected": {
+        "mesto": "Praha",
+        "teplota": 14,
+        "srazky": false,
+        "typ_srazek": "zadne"
+      },
+      "raw": "{\n  \"mesto\": \"Praha\",\n  \"teplota\": 14,\n  \"srazky\": false,\n  \"typ_srazek\": \"bez srážek\"\n} ",
+      "parsed": {
+        "mesto": "Praha",
+        "teplota": 14,
+        "srazky": false,
+        "typ_srazek": "bez srážek"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": false
+      },
+      "vse": false,
+      "latence_s": 0.985,
+      "z_cache": false,
+      "prompt_tokens": 262,
+      "completion_tokens": 54
+    },
+    {
+      "id": 2,
+      "tezky": false,
+      "input": "V Ostravě bude celý den pršet, teploty kolem 9 stupňů.",
+      "expected": {
+        "mesto": "Ostrava",
+        "teplota": 9,
+        "srazky": true,
+        "typ_srazek": "dest"
+      },
+      "raw": "{\n  \"mesto\": \"Ostravě\",\n  \"teplota\": 9,\n  \"srazky\": true,\n  \"typ_srazek\": \"dest\"\n} ",
+      "parsed": {
+        "mesto": "Ostravě",
+        "teplota": 9,
+        "srazky": true,
+        "typ_srazek": "dest"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": false,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": true
+      },
+      "vse": false,
+      "latence_s": 0.293,
+      "z_cache": false,
+      "prompt_tokens": 262,
+      "completion_tokens": 49
+    },
+    {
+      "id": 3,
+      "tezky": false,
+      "input": "Brno – ráno mlhy, přes den slunečno, max. 18 °C.",
+      "expected": {
+        "mesto": "Brno",
+        "teplota": 18,
+        "srazky": false,
+        "typ_srazek": "zadne"
+      },
+      "raw": "{\n  \"mesto\": \"Brno\",\n  \"teplota\": 18,\n  \"srazky\": true,\n  \"typ_srazek\": \"snih\"\n} ",
+      "parsed": {
+        "mesto": "Brno",
+        "teplota": 18,
+        "srazky": true,
+        "typ_srazek": "snih"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": false,
+        "typ_srazek": false
+      },
+      "vse": false,
+      "latence_s": 1.328,
+      "z_cache": false,
+      "prompt_tokens": 258,
+      "completion_tokens": 48
+    },
+    {
+      "id": 4,
+      "tezky": false,
+      "input": "Pec pod Sněžkou hlásí vydatné sněžení a −3 °C, na hřebenech platí lavinové nebezpečí.",
+      "expected": {
+        "mesto": "Pec pod Sněžkou",
+        "teplota": -3,
+        "srazky": true,
+        "typ_srazek": "snih"
+      },
+      "raw": "{\n  \"mesto\": \"Pec pod Sněžkou\",\n  \"teplota\": -3,\n  \"srazky\": true,\n  \"typ_srazek\": \"snehem\"\n} ",
+      "parsed": {
+        "mesto": "Pec pod Sněžkou",
+        "teplota": -3,
+        "srazky": true,
+        "typ_srazek": "snehem"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": false
+      },
+      "vse": false,
+      "latence_s": 6.646,
+      "z_cache": false,
+      "prompt_tokens": 282,
+      "completion_tokens": 55
+    },
+    {
+      "id": 5,
+      "tezky": false,
+      "input": "Ústí nad Labem: odpoledne bouřky s přívalovými lijáky, teplota vystoupá na 27 °C.",
+      "expected": {
+        "mesto": "Ústí nad Labem",
+        "teplota": 27,
+        "srazky": true,
+        "typ_srazek": "bourka"
+      },
+      "raw": "{\n  \"mesto\": \"Ústí nad Labem\",\n  \"teplota\": 27,\n  \"srazky\": true,\n  \"typ_srazek\": \"bourka\"\n} ",
+      "parsed": {
+        "mesto": "Ústí nad Labem",
+        "teplota": 27,
+        "srazky": true,
+        "typ_srazek": "bourka"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": true
+      },
+      "vse": true,
+      "latence_s": 0.335,
+      "z_cache": false,
+      "prompt_tokens": 279,
+      "completion_tokens": 54
+    },
+    {
+      "id": 6,
+      "tezky": true,
+      "input": "V Liberci bude zítra kolem patnácti stupňů a sucho.",
+      "expected": {
+        "mesto": "Liberec",
+        "teplota": 15,
+        "srazky": false,
+        "typ_srazek": "zadne"
+      },
+      "raw": "{\n  \"mesto\": \"Liberci\",\n  \"teplota\": 15,\n  \"srazky\": false,\n  \"typ_srazek\": \"bourka\"\n} ",
+      "parsed": {
+        "mesto": "Liberci",
+        "teplota": 15,
+        "srazky": false,
+        "typ_srazek": "bourka"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": false,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": false
+      },
+      "vse": false,
+      "latence_s": 10.088,
+      "z_cache": false,
+      "prompt_tokens": 258,
+      "completion_tokens": 49
+    },
+    {
+      "id": 7,
+      "tezky": true,
+      "input": "Olomouc hlásí od rána vytrvalý déšť, teplotu meteorologové zatím neuvedli.",
+      "expected": {
+        "mesto": "Olomouc",
+        "teplota": null,
+        "srazky": true,
+        "typ_srazek": "dest"
+      },
+      "raw": "{\n  \"mesto\": \"Olomouc\",\n  \"teplota\": null,\n  \"srazky\": null,\n  \"typ_srazek\": null\n} ",
+      "parsed": {
+        "mesto": "Olomouc",
+        "teplota": null,
+        "srazky": null,
+        "typ_srazek": null
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": false,
+        "typ_srazek": false
+      },
+      "vse": false,
+      "latence_s": 0.727,
+      "z_cache": false,
+      "prompt_tokens": 271,
+      "completion_tokens": 46
+    },
+    {
+      "id": 8,
+      "tezky": true,
+      "input": "Plzen: zatazeno, mrholeni, 7 C",
+      "expected": {
+        "mesto": "Plzeň",
+        "teplota": 7,
+        "srazky": true,
+        "typ_srazek": "dest"
+      },
+      "raw": "{\n  \"mesto\": \"Plzen\",\n  \"teplota\": 7,\n  \"srazky\": true,\n  \"typ_srazek\": \"zadne\"\n} ",
+      "parsed": {
+        "mesto": "Plzen",
+        "teplota": 7,
+        "srazky": true,
+        "typ_srazek": "zadne"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": false
+      },
+      "vse": false,
+      "latence_s": 0.351,
+      "z_cache": false,
+      "prompt_tokens": 247,
+      "completion_tokens": 48
+    },
+    {
+      "id": 9,
+      "tezky": false,
+      "input": "Hradec Králové: ranní minima 2 °C, odpolední maxima 11 °C, déšť se sněhem.",
+      "expected": {
+        "mesto": "Hradec Králové",
+        "teplota": 11,
+        "srazky": true,
+        "typ_srazek": "dest_se_snehem"
+      },
+      "raw": "{\n  \"mesto\": \"Hradec Králové\",\n  \"teplota\": 11,\n  \"srazky\": true,\n  \"typ_srazek\": \"déšť se sněhem\"\n} ",
+      "parsed": {
+        "mesto": "Hradec Králové",
+        "teplota": 11,
+        "srazky": true,
+        "typ_srazek": "déšť se sněhem"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": true
+      },
+      "vse": true,
+      "latence_s": 0.311,
+      "z_cache": false,
+      "prompt_tokens": 272,
+      "completion_tokens": 61
+    },
+    {
+      "id": 10,
+      "tezky": false,
+      "input": "Ahoj, tak jsme dorazili do Zlína a počasí nic moc. Kamarád říkal, že předpověď na dnešek hlásí 12 stupňů, ale fouká jak blázen. Naštěstí aspoň neprší a podle radaru ani nemá.",
+      "expected": {
+        "mesto": "Zlín",
+        "teplota": 12,
+        "srazky": false,
+        "typ_srazek": "zadne"
+      },
+      "raw": "{\n  \"mesto\": \"Zlína\",\n  \"teplota\": null,\n  \"srazky\": true,\n  \"typ_srazek\": \"bourka\"\n} ",
+      "parsed": {
+        "mesto": "Zlína",
+        "teplota": null,
+        "srazky": true,
+        "typ_srazek": "bourka"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": false,
+        "teplota": false,
+        "srazky": false,
+        "typ_srazek": false
+      },
+      "vse": false,
+      "latence_s": 0.233,
+      "z_cache": false,
+      "prompt_tokens": 332,
+      "completion_tokens": 48
+    },
+    {
+      "id": 11,
+      "tezky": true,
+      "input": "Super, v Jihlavě zase „krásné letní počasí“ – leje jako z konve a je 6 stupňů.",
+      "expected": {
+        "mesto": "Jihlava",
+        "teplota": 6,
+        "srazky": true,
+        "typ_srazek": "dest"
+      },
+      "raw": "{\n  \"mesto\": \"Jihlavě\",\n  \"teplota\": 6,\n  \"srazky\": true,\n  \"typ_srazek\": \"snih\"\n} ",
+      "parsed": {
+        "mesto": "Jihlavě",
+        "teplota": 6,
+        "srazky": true,
+        "typ_srazek": "snih"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": false,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": false
+      },
+      "vse": false,
+      "latence_s": 5.438,
+      "z_cache": false,
+      "prompt_tokens": 273,
+      "completion_tokens": 50
+    },
+    {
+      "id": 12,
+      "tezky": true,
+      "input": "České Budějovice: mráz minus osm stupňů, jasno.",
+      "expected": {
+        "mesto": "České Budějovice",
+        "teplota": -8,
+        "srazky": false,
+        "typ_srazek": "zadne"
+      },
+      "raw": "{\n  \"mesto\": \"České Budějovice\",\n  \"teplota\": -8,\n  \"srazky\": true,\n  \"typ_srazek\": \"dest\"\n} ",
+      "parsed": {
+        "mesto": "České Budějovice",
+        "teplota": -8,
+        "srazky": true,
+        "typ_srazek": "dest"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": false,
+        "typ_srazek": false
+      },
+      "vse": false,
+      "latence_s": 0.288,
+      "z_cache": false,
+      "prompt_tokens": 261,
+      "completion_tokens": 55
+    },
+    {
+      "id": 13,
+      "tezky": true,
+      "input": "Karlovy Vary – odpoledne 21 °C.",
+      "expected": {
+        "mesto": "Karlovy Vary",
+        "teplota": 21,
+        "srazky": null,
+        "typ_srazek": null
+      },
+      "raw": "{\n  \"mesto\": \"Karlovy Vary\",\n  \"teplota\": 21,\n  \"srazky\": false,\n  \"typ_srazek\": \"dest\"\n} ",
+      "parsed": {
+        "mesto": "Karlovy Vary",
+        "teplota": 21,
+        "srazky": false,
+        "typ_srazek": "dest"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": false,
+        "typ_srazek": false
+      },
+      "vse": false,
+      "latence_s": 0.2,
+      "z_cache": false,
+      "prompt_tokens": 248,
+      "completion_tokens": 51
+    },
+    {
+      "id": 14,
+      "tezky": true,
+      "input": "Zatímco v Pardubicích bude sněžit při −1 °C, v Chrudimi se očekává jen zataženo.",
+      "expected": {
+        "mesto": "Pardubice",
+        "teplota": -1,
+        "srazky": true,
+        "typ_srazek": "snih"
+      },
+      "raw": "{\n  \"mesto\": \"Pardubicí\",\n  \"teplota\": -1,\n  \"srazky\": true,\n  \"typ_srazek\": \"sněh\"\n} ",
+      "parsed": {
+        "mesto": "Pardubicí",
+        "teplota": -1,
+        "srazky": true,
+        "typ_srazek": "sněh"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": false,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": false
+      },
+      "vse": false,
+      "latence_s": 0.257,
+      "z_cache": false,
+      "prompt_tokens": 278,
+      "completion_tokens": 52
+    },
+    {
+      "id": 15,
+      "tezky": false,
+      "input": "Teplice, sobota – přeháňky, 16°C",
+      "expected": {
+        "mesto": "Teplice",
+        "teplota": 16,
+        "srazky": true,
+        "typ_srazek": "dest"
+      },
+      "raw": "{\n  \"mesto\": \"Teplice\",\n  \"teplota\": 16,\n  \"srazky\": true,\n  \"typ_srazek\": \"přeháňky\"\n} ",
+      "parsed": {
+        "mesto": "Teplice",
+        "teplota": 16,
+        "srazky": true,
+        "typ_srazek": "přeháňky"
+      },
+      "validni": true,
+      "shody": {
+        "mesto": true,
+        "teplota": true,
+        "srazky": true,
+        "typ_srazek": false
+      },
+      "vse": false,
+      "latence_s": 0.37,
+      "z_cache": false,
+      "prompt_tokens": 253,
+      "completion_tokens": 55
+    }
+  ]
+}

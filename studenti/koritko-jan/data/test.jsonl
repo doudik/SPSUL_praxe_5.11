@@ -1,0 +1,10 @@
+{"id": 16, "input": "Na Lysé hoře padá sníh, teplota −6 °C.", "expected": {"mesto": "Lysá hora", "teplota": -6, "srazky": true, "typ_srazek": "snih"}, "tezky": false}
+{"id": 17, "input": "Most: tropický den, až 32 stupňů, bez deště.", "expected": {"mesto": "Most", "teplota": 32, "srazky": false, "typ_srazek": "zadne"}, "tezky": false}
+{"id": 18, "input": "Kladno ráno 3 °C, odpoledne 9 °C, občasné přeháňky.", "expected": {"mesto": "Kladno", "teplota": 9, "srazky": true, "typ_srazek": "dest"}, "tezky": false}
+{"id": 19, "input": "Turistům v Praze ukazuje americká aplikace 41 °F, venku je zataženo, ale bez srážek.", "expected": {"mesto": "Praha", "teplota": 5, "srazky": false, "typ_srazek": "zadne"}, "tezky": true}
+{"id": 20, "input": "Dobrý den, nevíte, jestli zítra ráno pojede autobus do Mělníka?", "expected": {"mesto": null, "teplota": null, "srazky": null, "typ_srazek": null}, "tezky": true}
+{"id": 21, "input": "Opava: krupobití a silný vítr, 19 °C.", "expected": {"mesto": "Opava", "teplota": 19, "srazky": true, "typ_srazek": "krupobiti"}, "tezky": false}
+{"id": 22, "input": "V Jablonci nad Nisou bude dvacet dva stupnu a odpoledne mozna sprchne.", "expected": {"mesto": "Jablonec nad Nisou", "teplota": 22, "srazky": true, "typ_srazek": "dest"}, "tezky": true}
+{"id": 23, "input": "Trutnov – večer přejde déšť ve sněžení, teploty kolem nuly.", "expected": {"mesto": "Trutnov", "teplota": 0, "srazky": true, "typ_srazek": "dest_se_snehem"}, "tezky": true}
+{"id": 24, "input": "Dnešní předpověď pro Prostějov: dopoledne převážně jasno, odpoledne přibývání oblačnosti, nejvyšší teploty 17 až 19 °C, srážky se neočekávají, vítr západní 2–5 m/s.", "expected": {"mesto": "Prostějov", "teplota": 19, "srazky": false, "typ_srazek": "zadne"}, "tezky": false}
+{"id": 25, "input": "V Děčíně naměřili ráno 4 °C a hustou mlhu, v Ústí bylo o dva stupně tepleji.", "expected": {"mesto": "Děčín", "teplota": 4, "srazky": null, "typ_srazek": null}, "tezky": true}

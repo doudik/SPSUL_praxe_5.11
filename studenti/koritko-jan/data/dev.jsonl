@@ -1,0 +1,15 @@
+{"id": 1, "input": "Praha dnes: polojasno, odpoledne až 14 °C, bez srážek.", "expected": {"mesto": "Praha", "teplota": 14, "srazky": false, "typ_srazek": "zadne"}, "tezky": false}
+{"id": 2, "input": "V Ostravě bude celý den pršet, teploty kolem 9 stupňů.", "expected": {"mesto": "Ostrava", "teplota": 9, "srazky": true, "typ_srazek": "dest"}, "tezky": false}
+{"id": 3, "input": "Brno – ráno mlhy, přes den slunečno, max. 18 °C.", "expected": {"mesto": "Brno", "teplota": 18, "srazky": false, "typ_srazek": "zadne"}, "tezky": false}
+{"id": 4, "input": "Pec pod Sněžkou hlásí vydatné sněžení a −3 °C, na hřebenech platí lavinové nebezpečí.", "expected": {"mesto": "Pec pod Sněžkou", "teplota": -3, "srazky": true, "typ_srazek": "snih"}, "tezky": false}
+{"id": 5, "input": "Ústí nad Labem: odpoledne bouřky s přívalovými lijáky, teplota vystoupá na 27 °C.", "expected": {"mesto": "Ústí nad Labem", "teplota": 27, "srazky": true, "typ_srazek": "bourka"}, "tezky": false}
+{"id": 6, "input": "V Liberci bude zítra kolem patnácti stupňů a sucho.", "expected": {"mesto": "Liberec", "teplota": 15, "srazky": false, "typ_srazek": "zadne"}, "tezky": true}
+{"id": 7, "input": "Olomouc hlásí od rána vytrvalý déšť, teplotu meteorologové zatím neuvedli.", "expected": {"mesto": "Olomouc", "teplota": null, "srazky": true, "typ_srazek": "dest"}, "tezky": true}
+{"id": 8, "input": "Plzen: zatazeno, mrholeni, 7 C", "expected": {"mesto": "Plzeň", "teplota": 7, "srazky": true, "typ_srazek": "dest"}, "tezky": true}
+{"id": 9, "input": "Hradec Králové: ranní minima 2 °C, odpolední maxima 11 °C, déšť se sněhem.", "expected": {"mesto": "Hradec Králové", "teplota": 11, "srazky": true, "typ_srazek": "dest_se_snehem"}, "tezky": false}
+{"id": 10, "input": "Ahoj, tak jsme dorazili do Zlína a počasí nic moc. Kamarád říkal, že předpověď na dnešek hlásí 12 stupňů, ale fouká jak blázen. Naštěstí aspoň neprší a podle radaru ani nemá.", "expected": {"mesto": "Zlín", "teplota": 12, "srazky": false, "typ_srazek": "zadne"}, "tezky": false}
+{"id": 11, "input": "Super, v Jihlavě zase „krásné letní počasí“ – leje jako z konve a je 6 stupňů.", "expected": {"mesto": "Jihlava", "teplota": 6, "srazky": true, "typ_srazek": "dest"}, "tezky": true}
+{"id": 12, "input": "České Budějovice: mráz minus osm stupňů, jasno.", "expected": {"mesto": "České Budějovice", "teplota": -8, "srazky": false, "typ_srazek": "zadne"}, "tezky": true}
+{"id": 13, "input": "Karlovy Vary – odpoledne 21 °C.", "expected": {"mesto": "Karlovy Vary", "teplota": 21, "srazky": null, "typ_srazek": null}, "tezky": true}
+{"id": 14, "input": "Zatímco v Pardubicích bude sněžit při −1 °C, v Chrudimi se očekává jen zataženo.", "expected": {"mesto": "Pardubice", "teplota": -1, "srazky": true, "typ_srazek": "snih"}, "tezky": true}
+{"id": 15, "input": "Teplice, sobota – přeháňky, 16°C", "expected": {"mesto": "Teplice", "teplota": 16, "srazky": true, "typ_srazek": "dest"}, "tezky": false}
