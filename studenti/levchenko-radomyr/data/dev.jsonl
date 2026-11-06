@@ -1,0 +1,15 @@
+{"id": 1, "input": "Hovězí guláš s knedlíkem, alergeny 1, 3, 7", "expected": {"nazev_jidla": "Hovězí guláš s knedlíkem", "kategorie": "hlavni_jidlo", "alergeny": [1, 3, 7]}, "tezky": false}
+{"id": 2, "input": "Dnes nabízíme Hovězí guláš s knedlikiem, obsahující alergeny (1,3,7)", "expected": {"nazev_jidla": "Hovězí guláš s knedlíkem", "kategorie": "hlavni_jidlo", "alergeny": [1, 3, 7]}, "tezky": true}
+{"id": 3, "input": "Čočková polévka 1, 9", "expected": {"nazev_jidla": "Čočková polévka", "kategorie": "polevka", "alergeny": [1, 9]}, "tezky": false}
+{"id": 4, "input": "Kyselica po valašsku (alergeny: 1, 7)", "expected": {"nazev_jidla": "Kyselica po valašsku", "kategorie": "polevka", "alergeny": [1, 7]}, "tezky": false}
+{"id": 5, "input": "Svíčková na smetaně, knedlíky (alergeny 1, 3, 7, 10)", "expected": {"nazev_jidla": "Svíčková na smetaně", "kategorie": "hlavni_jidlo", "alergeny": [1, 3, 7, 10]}, "tezky": false}
+{"id": 6, "input": "Jako dezert máme svjčkovou na smetaně? Ne, kofolu!", "expected": {"nazev_jidla": "Kofola", "kategorie": "napoj", "alergeny": []}, "tezky": true}
+{"id": 7, "input": "Ovocný koláč s tvarohem (1, 3, 7)", "expected": {"nazev_jidla": "Ovocný koláč s tvarohem", "kategorie": "dezert", "alergeny": [1, 3, 7]}, "tezky": false}
+{"id": 8, "input": "Čerstvý pomerančový džus 0,3l", "expected": {"nazev_jidla": "Čerstvý pomerančový džus", "kategorie": "napoj", "alergeny": []}, "tezky": false}
+{"id": 9, "input": "Kofola čepovaná 0,5 l", "expected": {"nazev_jidla": "Kofola čepovaná", "kategorie": "napoj", "alergeny": []}, "tezky": false}
+{"id": 10, "input": "Kuřecí řízek s bramborovou kaší a okurkový salát (alergeny 1, 3, 7)", "expected": {"nazev_jidla": "Kuřecí řízek s bramborovou kaší", "kategorie": "hlavni_jidlo", "alergeny": [1, 3, 7]}, "tezky": false}
+{"id": 11, "input": "Máme dnes v jídelně řízek z kuřecího masa s kaši (1,3,7) a také zeleninový salát (bez alergenů)?", "expected": {"nazev_jidla": "Kuřecí řízek s bramborovou kaší", "kategorie": "hlavni_jidlo", "alergeny": [1, 3, 7]}, "tezky": true}
+{"id": 12, "input": "Dršťková polévka - alergeny: 1", "expected": {"nazev_jidla": "Dršťková polévka", "kategorie": "polevka", "alergeny": [1]}, "tezky": false}
+{"id": 13, "input": "Domácí tiramisu (1, 3, 7)", "expected": {"nazev_jidla": "Domácí tiramisu", "kategorie": "dezert", "alergeny": [1, 3, 7]}, "tezky": false}
+{"id": 14, "input": "Bramborový salát a smažený kapr, alergeny 1, 3, 4, 7", "expected": {"nazev_jidla": "Smažený kapr s bramborovým salátem", "kategorie": "hlavni_jidlo", "alergeny": [1, 3, 4, 7]}, "tezky": true}
+{"id": 15, "input": "Dnešní speciální nabídka: Jablečný štrůdl (1, 3, 7) a k tomu horká čokoláda", "expected": {"nazev_jidla": "Jablečný štrůdl", "kategorie": "dezert", "alergeny": [1, 3, 7]}, "tezky": true}

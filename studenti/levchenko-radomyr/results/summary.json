@@ -1,0 +1,23 @@
+{
+  "student": "Levchenko Radomyr",
+  "uloha": "Jídelníček, alergeny",
+  "behy": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "poskytovatel": "google",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.6,
+      "pole": {
+        "nazev_jidla": 0.6,
+        "kategorie": 1.0,
+        "alergeny": 1.0
+      },
+      "latence_s": 12.22,
+      "tokeny_vstup": 2391,
+      "tokeny_vystup": 591
+    }
+  ]
+}
