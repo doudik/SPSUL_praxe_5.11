@@ -65,3 +65,55 @@ Nejlepší kombinace podle `dev` (gemini-3.5-flash-lite + v2, 100 %) a druhá ne
 | gpt-oss-120b | Groq | v2 | test | 100 % | 90 % | 90 % | 0,73 s | 8985 / 1805 |
 
 Oba modely na `test` sadě selhaly na úplně stejném jediném případu (č. 18 – Mercedes-Benz C220 CDI) a stejným způsobem: vrátily `"model": "C220 CDI"` místo gold hodnoty `"C220"`. Při bližším pohledu je to spíš nejednoznačnost v pravidlech porovnávání než chyba modelu.
+
+## Fáze 5: Rozbor a závěr
+
+### Rozbor 3 chyb
+
+**1. Model spletl, co znamenají čísla napsaná jako slovo**
+
+Vstup: *„Nazdar prodam oktavku, rv 2014, najeto poctivych dve ste pade, necham za sedesat, dohoda mozna"*
+
+Model (gpt-oss-20b) odpověděl: nájezd `250` km, cena `600` Kč. Správně má být nájezd `250000` km, cena `60000` Kč.
+
+Proč se spletl: Model vzal čísla doslova. I když jsem do promptu přidal přímo tenhle vzor, pořád to občas spletl – u malého modelu (20b) to vypadá na jeho limit, ne na chybu zadání. Zajímavý detail: na stejný dotaz jednou model odpověděl rovnou prázdně (bez JSONu), podruhé vrátil ten špatný výsledek – i při `temperature: 0` tedy odpověď není vždycky úplně stejná.
+
+**2. Model (u všech tří testovaných modelů) ztratil kus označení auta**
+
+Vstup: *„Bávo na prodej, 2010, najeto tři sta dvacet tisíc kilometrů, cena 180K, 320d."*
+
+Modely odpověděly různě špatně: jeden `model` vůbec nenašel, druhý napsal jen `"3"`, třetí `"320"` (bez „d" na konci). Správně má být `"320d"`.
+
+Proč: „320d" je ve větě schované úplně na konci, oddělené čárkou od zbytku, a značka je napsaná slangově. Žádný model si to nedokázal spojit dohromady. Tohle je chyba promptu, ne modelu – potvrdilo se to tím, že po úpravě promptu to začaly zvládat všechny tři.
+
+**3. Spor o to, co vlastně patří do pole „model"**
+
+Vstup: *„...Mercedes-Benz třídy C, model C220 CDI..."*
+
+Model odpověděl `"C220 CDI"`, v mých gold datech mám `"C220"`.
+
+Proč: tohle je nejspíš chyba v mé vlastní správné odpovědi, ne modelu. Text doslova říká „model C220 CDI", takže model se jen držel textu. Já jsem si předem řekl, že generační označení typu „VII" do pole nepatří, ale nikde jsem přesně nedefinoval, co dělat s označením motoru („CDI", „TDI" apod.). Je to hraniční případ, který bych příště definoval přesněji už v Fázi 1.
+
+### Doporučení
+
+Pro nasazení na 10 000 dotazů denně bych vybral **gemini-3.5-flash-lite s promptem v2**. Mělo nejlepší výsledky (100 % na dev, 90 % na test) a navíc generuje hodně krátké odpovědi, takže je i levné. Je sice o trochu pomalejší než modely na Groqu (~1,4 s místo ~0,8 s na dotaz), ale pro zpracování inzerátů na pozadí rozhoduje spíš přesnost a cena než pár desetin sekundy.
+
+Cena: na OpenRouteru stojí placená verze `google/gemini-3.5-flash-lite` 0,30 $ za milion vstupních tokenů a 2,50 $ za milion výstupních tokenů. Z běhu na `test` sadě mi vyšlo v průměru 887 vstupních a 55 výstupních tokenů na jeden dotaz. Při 10 000 dotazech denně:
+
+- vstup: 8 870 000 tokenů × 0,0000003 $ ≈ 2,66 $
+- výstup: 550 000 tokenů × 0,0000025 $ ≈ 1,37 $
+- **celkem zhruba 4 $ na den** (cca 95 Kč při kurzu 23,5 Kč/$)
+
+### Rozdíl dev a test
+
+Jo, liší se – lepší modely (120b, gemini) měly na `dev` sadě 93,3–100 %, na `test` sadě klesly na 90 %. `dev` sadu jsem používal na ladění promptu, takže se chování modelu na ni trochu „přizpůsobilo". `test` sada je oproti tomu sada, kterou model (a prompt) nikdy neviděl, takže ukazuje reálnější číslo. Rozdíl pár procent beru jako dobré znamení – nepřeučil jsem to na dev sadě moc.
+
+### AI asistent
+
+V OpenCode jsem si připojil Mistral, Google a Groq a nastavil defaultní model na `mistral/devstral-latest`. Hned na začátku jsem narazil na to, že PowerShell blokuje spouštění `.ps1` skriptů (vyřešil jsem to spuštěním `opencode.cmd` místo `opencode`). Později jsem v OpenCode zkoušel přepnout na `gemini-3.8-flash` – model se zacyklil na špatně naformátovaném volání nástroje a opakovaně generoval čím dál delší a delší vnořenou chybovou hlášku, musel jsem konverzaci zrušit a založit novou. Po přepnutí na DeepSeek V4.1 Flash (Free) už to fungovalo normálně.
+
+Většinu samotného psaní kódu (eval skript, cache, porovnávací logika, hledání chyb u Mistral/Gemini API, návrh a úpravy promptů) jsem dělal s **Claude Code**, ne přímo v OpenCode – na delší, propojené úkoly s hledáním chyb napříč víc soubory mi přišel rychlejší a spolehlivější. Rozdíl mezi menším a větším modelem jsem nejvíc poznal přímo v evalu: `gpt-oss-20b` dělal chyby (čísla napsaná slovy, nejistota u slangu), které si desetinásobně větší `gpt-oss-120b` nedovolil.
+
+### Reflexe
+
+Nejvíc mě překvapilo, že i velké bezplatné modely dokážou selhat na docela banální drobnosti, jako je číslo napsané slovy nebo schované na konci věty – čekal jsem spíš chyby ve složitějších věcech. Taky mě zaskočilo, jak nestabilní dokáže být odpověď i při `temperature: 0` – stejný dotaz jednou vrátil prázdnou odpověď, podruhé normální JSON. Mistral a Gemini mi navíc několikrát spadly na rate limitu nebo přetížení serveru. Příště bych si testovací sadu promyslel ještě pečlivěji hned na začátku.Taky bych rovnou na začátku vyzkoušel víc modelů najednou místo postupného doplňování, ušetřilo by to čas.
