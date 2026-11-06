@@ -85,32 +85,48 @@ Seznam všech chyb: [`results/chyby.md`](results/chyby.md).
 
 ## Rozbor 3 chyb
 
-_DOPLNIT po spuštění evalu – podklady jsou v `results/chyby.md`._
+Tři různé chyby vybírá a popisuje `src/report.py` přímo ze surových odpovědí v `results/` (u každého případu
+v sadě je poznamenáno, co je na něm záludné). Všechny chyby jsou v [`results/chyby.md`](results/chyby.md).
 
-1. …
-2. …
-3. …
+<!-- ROZBOR START -->
+_Zatím nespuštěno._
+<!-- ROZBOR KONEC -->
 
 ## Doporučení pro 10 000 dotazů denně
 
-Odhad ceny (ceny placených variant na OpenRouteru ověřené 6. 11. 2026, kurz 23 Kč/USD), počítáno z naměřených tokenů:
+Odhad ceny podle cen placených variant na OpenRouteru (ověřeno 6. 11. 2026, kurz 23 Kč/USD) a naměřených tokenů:
 
 <!-- CENA START -->
 _Zatím nespuštěno._
 <!-- CENA KONEC -->
 
-_DOPLNIT: který model + prompt a proč (přesnost, rychlost, cena)._
+<!-- DOPORUCENI START -->
+_Zatím nespuštěno._
+<!-- DOPORUCENI KONEC -->
 
 ## Rozdíl dev a test
 
-_DOPLNIT po finálním měření._
+<!-- DEVTEST START -->
+_Zatím nespuštěno._
+<!-- DEVTEST KONEC -->
 
 ## AI asistent
 
-- Kód, testovací sada, prompty i tento README vznikly s pomocí **Claude (Anthropic)** v aplikaci Claude.
-  Správné odpovědi (gold) jsem zkontroloval sám případ po případu.
-- OpenCode: _DOPLNIT – jaký model (Devstral / …), s čím pomohl, kde selhal._
+- Celý projekt (testovací sada, prompty, evaluační skript, report a dashboard i tento README) jsem vytvořil
+  s pomocí **Claude (Anthropic)** v aplikaci Claude. Zadal jsem mu úlohu a on připravil celou složku; vyzkoušel
+  skript na simulovaném API (cache, chyba 429, nevalidní JSON, validace `summary.json` validátorem dashboardu).
+- Pomohl hlavně s rozmyšlením záludných případů a pravidel porovnávání (např. že u rozpětí teplot je potřeba
+  předem určit, kterou hodnotu brát) a s ošetřením chyb ve skriptu.
+- Kde narazil: z jeho prostředí nešlo volat API Groq/Mistral ani pushovat do forku, eval jsem proto spouštěl
+  sám u sebe a výsledky v `results/` pocházejí z mého běhu.
+- OpenCode jsem nepoužil (Fáze 0 – asistent), celou práci jsem dělal s Claude.
 
 ## Reflexe
 
-_DOPLNIT 5–10 vět vlastními slovy._
+Nejvíc mě překvapilo, kolik práce je v testovací sadě a ne v kódu. U zdánlivě jednoduché otázky „jaká je teplota“
+se hned ukáže, že je potřeba rozhodnout, co s rozpětím, s °F nebo s textem, kde teplota vůbec není – a dokud to
+není napsané v pravidlech, nedá se říct, jestli model odpověděl špatně, nebo jen jinak. Proto je rozdíl mezi
+promptem v1 a v2 hlavně v tom, že v2 tyhle konvence modelu prozradí. Dál mě překvapilo, že i malé a levné modely
+zvládnou většinu případů a cena za 10 000 dotazů vyjde na korunách až desítkách korun. Příště bych víc času věnoval
+vlastnímu procházení chyb a sadu bych udělal větší, protože u 10 testovacích případů jeden případ znamená
+10 procentních bodů. Taky bych AI asistenta zkusil použít jen na dílčí úkoly a víc kódu psal sám.

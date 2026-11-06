@@ -42,9 +42,13 @@ def main():
     print("\n######## 4a: porovnání modelů (v1, dev)")
     for posk, model in modely:
         dev.append(ev.spust("dev", "v1", posk, model))
+    dev = [b for b in dev if b]
     print("\n######## 4b: lepší prompt (v2, dev)")
     for posk, model in modely:
         dev.append(ev.spust("dev", "v2", posk, model))
+    dev = [b for b in dev if b]
+    if not dev:
+        sys.exit("Žádný běh neproběhl – zkontroluj klíče v .env a názvy modelů v MODELY.")
 
     if not a.jen_dev:
         # 4c: dvě nejlepší kombinace podle úplné shody na dev (při shodě rozhoduje validita, pak latence)

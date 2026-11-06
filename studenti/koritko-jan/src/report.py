@@ -150,12 +150,174 @@ document.getElementById('t').innerHTML='<tr><th>model</th><th>posk.</th><th>prom
     (RES / "dashboard.html").write_text(html.replace("__DATA__", data), encoding="utf-8")
 
 
+# ---------------------------------------------------------------- Fáze 5: rozbor z výsledků
+
+# Co je na kterém případu záludné (napsáno při tvorbě sady, slouží k vysvětlení chyb).
+ZALUDNOST = {
+    3: "ráno mlha, přes den slunečno – slunečno znamená bez srážek",
+    4: "záporná teplota se znakem − (unicode minus)",
+    6: "teplota je napsaná slovem („patnácti“)",
+    7: "teplota v textu vůbec není, správně je null",
+    8: "text bez diakritiky a se zkratkou „C“",
+    9: "rozpětí min/max – podle pravidel se bere nejvyšší hodnota",
+    10: "dlouhý hovorový text, údaje jsou rozházené",
+    11: "ironie – slova „krásné letní počasí“ tvrdí opak skutečnosti",
+    12: "záporná teplota slovy („minus osm“)",
+    13: "o srážkách text nic neříká, správně je null",
+    14: "dvě města, počasí je popsané u prvního",
+    15: "„přeháňky“ je déšť",
+    16: "místo není město, ale hora",
+    18: "ranní a odpolední teplota – bere se vyšší",
+    19: "teplota ve °F, je potřeba přepočet (41 °F = 5 °C)",
+    20: "text není zpráva o počasí, správně je všude null",
+    21: "krupobití je samostatná kategorie",
+    22: "překlepy, číslovka slovy a nejistá předpověď („možná sprchne“)",
+    23: "„kolem nuly“ = 0 a déšť přecházející ve sníh",
+    24: "rozpětí 17 až 19 °C – bere se 19",
+    25: "mlha není srážka a zmínka o druhém městě",
+}
+POPIS_POLE = {"mesto": "město", "teplota": "teplota", "srazky": "srážky", "typ_srazek": "typ srážek"}
+
+
+def proc_chyba(z, prompt):
+    """Odhad příčiny chyby z toho, co model vrátil a co je na případu záludné."""
+    if not z["validni"]:
+        return ("Model nevrátil validní JSON (přidal text okolo nebo odpověď useknul). Je to chyba modelu – "
+                "pomohl by `response_format: json_object` nebo přísnější instrukce v promptu.")
+    e, o = z["expected"], z["parsed"] or {}
+    duvody = []
+    for p in POLE:
+        if z["shody"][p]:
+            continue
+        ev, ov = e.get(p), o.get(p)
+        if p == "mesto" and ev and isinstance(ov, str):
+            duvody.append(f"město vrátil jako „{ov}“ místo „{ev}“ – buď jiný pád/tvar, nebo vybral jiné místo")
+        elif ev is None and ov is not None:
+            duvody.append(f"u pole {POPIS_POLE[p]} si údaj domyslel ({json.dumps(ov, ensure_ascii=False)}), "
+                          "i když v textu není – modely nerady vracejí null")
+        elif ev is not None and ov is None:
+            duvody.append(f"pole {POPIS_POLE[p]} nechal prázdné, i když údaj v textu je")
+        else:
+            duvody.append(f"{POPIS_POLE[p]}: vrátil {json.dumps(ov, ensure_ascii=False)}, správně je "
+                          f"{json.dumps(ev, ensure_ascii=False)}")
+    zal = ZALUDNOST.get(z["id"])
+    text = "; ".join(duvody) + "."
+    if zal:
+        text += f" Na případu je záludné: {zal}."
+    if prompt == "v1" and zal and any(k in zal for k in ("bere se", "null", "kategorie", "přepočet", "znamená")):
+        text += (" Prompt v1 tohle pravidlo vůbec neříká, takže jde spíš o **nejasné zadání** než o chybu modelu "
+                 "(v2 pravidlo obsahuje).")
+    else:
+        text += " Pravidlo je v zadání jasné, jde spíš o **chybu modelu**."
+    return text
+
+
+def vyber_chyby(n=3):
+    """Vybere n různých chybných případů, přednostně z dev v1 a s chybou v různých polích."""
+    kandidati = []
+    for f in sorted(RES.glob("*_v*_*.json")):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        s = d["souhrn"]
+        for z in d["pripady"]:
+            if not z["vse"]:
+                kandidati.append((s["sada"] != "dev", s["prompt"] != "v1", z["id"], s, z))
+    kandidati.sort(key=lambda k: k[:3])
+    vybrane, ids, pole_videna = [], set(), set()
+    for _, _, i, s, z in kandidati:  # nejdřív různá pole
+        spatne = frozenset(p for p in POLE if not z["shody"][p]) if z["validni"] else frozenset({"json"})
+        if i not in ids and not spatne <= pole_videna:
+            vybrane.append((s, z)); ids.add(i); pole_videna |= spatne
+        if len(vybrane) == n:
+            return vybrane
+    for _, _, i, s, z in kandidati:
+        if i not in ids:
+            vybrane.append((s, z)); ids.add(i)
+        if len(vybrane) == n:
+            break
+    return vybrane
+
+
+def rozbor():
+    vyb = vyber_chyby()
+    if not vyb:
+        return "Žádný model neudělal ani jednu chybu – sada je na tyhle modely asi moc lehká."
+    out = []
+    for k, (s, z) in enumerate(vyb, 1):
+        vrat = json.dumps(z["parsed"], ensure_ascii=False) if z["validni"] else (z["raw"] or "")[:200]
+        out.append(f"**{k}. Případ #{z['id']}** ({s['model']}, prompt {s['prompt']}, sada {s['sada']})\n\n"
+                   f"- Vstup: „{z['input']}“\n- Model vrátil: `{vrat}`\n"
+                   f"- Správně: `{json.dumps(z['expected'], ensure_ascii=False)}`\n"
+                   f"- Proč: {proc_chyba(z, s['prompt'])}\n")
+    return "\n".join(out)
+
+
+def cena_10k(b):
+    if b["model"] not in CENY_OPENROUTER or not b["pripadu"]:
+        return None
+    _, cin, cout = CENY_OPENROUTER[b["model"]]
+    return DOTAZU * (b["tokeny_vstup"] / b["pripadu"] * cin + b["tokeny_vystup"] / b["pripadu"] * cout) / 1e6
+
+
+def doporuceni(behy):
+    dev = [b for b in behy if b["sada"] == "dev"]
+    if not dev:
+        return "Zatím žádný běh na dev sadě."
+    best = sorted(dev, key=lambda b: (-b["uplna_shoda"], cena_10k(b) or 9e9, b["latence_s"]))[0]
+    test = next((b for b in behy if b["sada"] == "test" and b["model"] == best["model"]
+                 and b["prompt"] == best["prompt"]), None)
+    usd = cena_10k(best)
+    t = (f"Vybral bych **{best['model']}** ({best['poskytovatel']}) s promptem **{best['prompt']}**. Na dev sadě má "
+         f"nejvyšší úplnou shodu ({pct(best['uplna_shoda'])}, validní JSON {pct(best['validni_json'])})")
+    if test:
+        t += f" a na test sadě {pct(test['uplna_shoda'])}"
+    t += f", průměrná latence {cz(best['latence_s'])} s."
+    if usd is not None:
+        t += (f" Při naměřené spotřebě {cz(best['tokeny_vstup'] / best['pripadu'], 0)} vstupních a "
+              f"{cz(best['tokeny_vystup'] / best['pripadu'], 0)} výstupních tokenů na dotaz by 10 000 dotazů denně "
+              f"stálo na OpenRouteru asi **{cz(usd, 2)} USD (≈ {cz(usd * USD_CZK, 0)} Kč) denně**, "
+              f"tj. ≈ {cz(usd * USD_CZK * 30, 0)} Kč měsíčně.")
+    levnejsi = [b for b in dev if b is not best and cena_10k(b) is not None and usd is not None
+                and cena_10k(b) < usd and b["uplna_shoda"] >= best["uplna_shoda"] - 0.07]
+    if levnejsi:
+        l = min(levnejsi, key=cena_10k)
+        t += (f" Levnější alternativa s podobnou přesností je {l['model']} + {l['prompt']} "
+              f"({pct(l['uplna_shoda'])}, ≈ {cz(cena_10k(l) * USD_CZK, 0)} Kč za 10 000 dotazů).")
+    v1 = {b["model"]: b for b in dev if b["prompt"] == "v1"}
+    v2 = {b["model"]: b for b in dev if b["prompt"] == "v2"}
+    spol = [m for m in v1 if m in v2]
+    if spol:
+        rozdil = sum(v2[m]["uplna_shoda"] - v1[m]["uplna_shoda"] for m in spol) / len(spol)
+        pomer = sum(v2[m]["tokeny_vstup"] for m in spol) / max(1, sum(v1[m]["tokeny_vstup"] for m in spol))
+        t += (f" Prompt v2 změnil úplnou shodu v průměru o {rozdil * 100:+.0f} procentních bodů, ale má "
+              f"{cz(pomer, 1)}× víc vstupních tokenů – u takhle levných modelů je to pořád zanedbatelná cena, "
+              f"rozhoduje hlavně přesnost.")
+    return t
+
+
+def dev_test(behy):
+    radky = []
+    for t in [b for b in behy if b["sada"] == "test"]:
+        d = next((b for b in behy if b["sada"] == "dev" and b["model"] == t["model"] and b["prompt"] == t["prompt"]), None)
+        if d:
+            radky.append(f"- {t['model']} + {t['prompt']}: dev {pct(d['uplna_shoda'])} → test {pct(t['uplna_shoda'])} "
+                         f"({(t['uplna_shoda'] - d['uplna_shoda']) * 100:+.0f} p. b.)")
+    if not radky:
+        return "Na test sadě zatím nic neběželo."
+    return ("\n".join(radky) + "\n\nTest sada má jen 10 případů, takže jeden případ = 10 procentních bodů a rozdíl "
+            "v řádu desítek bodů může být čistě náhoda. Prompt v2 jsem ladil na dev sadě, proto se na ní dá čekat "
+            "spíš lepší výsledek než na test (mírné přeučení). Test sada navíc obsahuje typy záludností, které v dev "
+            "nejsou (°F, text, který není o počasí, krupobití), takže ukazuje, jak nástroj zvládne nové situace.")
+
+
 def main():
     if not (RES / "summary.json").exists():
         sys.exit("results/summary.json zatím neexistuje – nejdřív spusť eval.")
     behy = nacti()
     vloz_do_readme(tabulka(behy), "TABULKA")
     vloz_do_readme(cena(behy), "CENA")
+    vloz_do_readme(rozbor(), "ROZBOR")
+    vloz_do_readme(doporuceni(behy), "DOPORUCENI")
+    vloz_do_readme(dev_test(behy), "DEVTEST")
     chyby()
     dashboard(behy)
     print("Report hotový: tabulka v README.md, results/chyby.md, results/cena.md, results/dashboard.html")

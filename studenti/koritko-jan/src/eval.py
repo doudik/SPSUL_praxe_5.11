@@ -46,7 +46,7 @@ def nacti_env():
     soubor = ROOT / ".env"
     if not soubor.exists():
         return
-    for radek in soubor.read_text(encoding="utf-8").splitlines():
+    for radek in soubor.read_text(encoding="utf-8-sig").splitlines():
         radek = radek.strip()
         if not radek or radek.startswith("#") or "=" not in radek:
             continue
@@ -228,14 +228,18 @@ def spust(sada, prompt, poskytovatel, model, json_mode=False):
     pripady = nacti_sadu(sada)
     print(f"== {model} ({poskytovatel}), prompt {prompt}, sada {sada}, {len(pripady)} případů")
 
-    zaznamy, volani_api = [], 0
+    zaznamy, volani_api, chyb_api = [], 0, 0
     for p in pripady:
         prompt_text = sablona.replace("{text}", p["input"])
         try:
             odpoved, latence, z_cache = zavolej_s_cache(poskytovatel, model, prompt_text, json_mode)
         except Exception as e:  # chyba API nesmí shodit celý běh
             print(f"  #{p['id']}: CHYBA API {e}")
-            odpoved, latence, z_cache = None, 0.0, False
+            odpoved, latence, z_cache = None, 0.0, True  # chybu necachujeme, ale ani nečekáme
+            chyb_api += 1
+            if "HTTP 4" in str(e) and "HTTP 429" not in str(e):
+                print("  Chyba 4xx (špatný klíč nebo název modelu) – běh přerušen, nic se neukládá.")
+                return None
         if not z_cache:
             volani_api += 1
             time.sleep(PAUZA.get(poskytovatel, 1.0))
@@ -260,6 +264,9 @@ def spust(sada, prompt, poskytovatel, model, json_mode=False):
         znacka = "OK " if all(shody.values()) else ("NEV" if vystup is None else "-- ")
         print(f"  #{p['id']:>2} {znacka} {'(cache)' if z_cache else f'{latence:.2f}s'}  {json.dumps(vystup, ensure_ascii=False)}")
 
+    if chyb_api:
+        print(f"!! {chyb_api} požadavků selhalo – běh se neukládá, spusť ho znovu (hotové odpovědi jsou v cache).")
+        return None
     n = len(zaznamy)
     beh = {
         "model": model,
