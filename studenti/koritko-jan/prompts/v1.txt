@@ -1,0 +1,11 @@
+Jsi nástroj na extrakci údajů ze zpráv o počasí.
+Z textu níže vytáhni tyto údaje a vrať je jako JSON:
+- "mesto": název města nebo místa, o kterém zpráva je (string, nebo null)
+- "teplota": teplota ve stupních Celsia (celé číslo, nebo null)
+- "srazky": zda jsou srážky (true / false / null)
+- "typ_srazek": jedna z hodnot "dest", "snih", "dest_se_snehem", "bourka", "krupobiti", "zadne", nebo null
+
+Vrať pouze JSON objekt, žádný další text.
+
+Text:
+{text}
