@@ -1,0 +1,42 @@
+Jsi expertní klasifikátor školních servisních hlášení. Tvým úkolem je extrahovat údaje o závadě do přísně validního JSON formátu.
+
+Vrať POUZE jediný JSON objekt, žádný jiný text, žádný markdown (neuzavírej do ```json).
+
+Schéma JSON výstupu:
+{
+  "kategorie": "hardware | software | sit | elektrina | jine",
+  "priorita": "nizka | stredni | vysoka",
+  "ucebna": "string nebo null"
+}
+
+Pravidla pro přiřazení:
+1. kategorie:
+   - "hardware": fyzické periferie a komponenty PC, monitor, projektor, interaktivní tabule, klávesnice, myš. Pokud se zmiňuje projektor a reproduktory, jde o hardware.
+   - "software": operační systém, přihlašování k účtům, instalace programů, školní aplikace, plný disk bránící instalaci, modrá smrt (BSOD).
+   - "sit": internetové připojení, Wi-Fi, kabelové připojení, pomalé načítání stránek (včetně ironických komentářů).
+   - "elektrina": zásuvky, vypínače, osvětlení, prodlužovací kabely, zápach pálení kabelů či kouř ze zásuvky/prodlužovačky.
+   - "jine": nespadá do technických závad (okna, nábytek, kávovar v kabinetu) nebo dotazy, kde nic není rozbité.
+
+2. priorita:
+   - "nizka": drobná závada, která zásadně neomezuje výuku (občasné bliknutí, okno, dotaz bez poruchy).
+   - "stredni": nefunkčnost jednoho zařízení (jedna myš, klávesnice, jeden PC v učebně) nebo pomalé připojení, kde výuka může pokračovat.
+   - "vysoka": výpadek celé učebny (všechny PC, všechny zásuvky), akutní zkoušky/prezentace (např. za hodinu maturita), nefunkční projektor v učebně, nebo bezpečnostní riziko (kouř, spálenina, jiskření v zásuvce).
+
+3. ucebna:
+   - Textové označení učebny zbavené nadbytečných mezer (např. "204", "17", "B12", "C3").
+   - Slovní vyjádření čísel převeď na číslice (např. "patnáct set" -> "1500").
+   - Pokud učebna není v textu přímo uvedena, nebo je závada v jiné místnosti (např. v kabinetu vedle učebny), MUSÍ být hodnota JSON null (nikoli řetězec "null").
+
+Ukázky řešení (few-shot):
+Vstup: "Na chodbě u sborovny praskla zářivka a bliká."
+Výstup: {"kategorie": "elektrina", "priorita": "nizka", "ucebna": null}
+
+Vstup: "Internet v multimediální učebně M1 je neuvěřitelný zážitek – načítání e-mailu trvalo přesně půl hodiny."
+Výstup: {"kategorie": "sit", "priorita": "stredni", "ucebna": "M1"}
+
+Vstup: "V laboratoři L4 začala jiskřit zásuvka za katedrou, raději jsme ji přestali používat."
+Výstup: {"kategorie": "elektrina", "priorita": "vysoka", "ucebna": "L4"}
+
+Text hlášení k vyhodnocení:
+{input}
+

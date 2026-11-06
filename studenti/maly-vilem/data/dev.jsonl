@@ -1,0 +1,15 @@
+{"id": 1, "input": "Dobrý den, v učebně 204 nejde zapnout projektor. Za hodinu tam máme maturitní prezentace.", "expected": {"kategorie": "hardware", "priorita": "vysoka", "ucebna": "204"}, "tezky": false}
+{"id": 2, "input": "Počítač v učebně 17 po přihlášení zamrzne a nejde otevřít žádný program.", "expected": {"kategorie": "software", "priorita": "stredni", "ucebna": "17"}, "tezky": false}
+{"id": 3, "input": "V učebně B12 nejde internet na žádném počítači. Kabely vypadají zapojené správně.", "expected": {"kategorie": "sit", "priorita": "vysoka", "ucebna": "B12"}, "tezky": false}
+{"id": 4, "input": "Monitor u učitelského stolu jen bliká, obraz se vůbec neukáže.", "expected": {"kategorie": "hardware", "priorita": "stredni", "ucebna": null}, "tezky": true}
+{"id": 5, "input": "Prosím o kontrolu zásuvky v učebně 105, při zapojení nabíječky v ní praská.", "expected": {"kategorie": "elektrina", "priorita": "vysoka", "ucebna": "105"}, "tezky": false}
+{"id": 6, "input": "Na školním počítači se po aktualizaci stále zobrazuje modrá obrazovka.", "expected": {"kategorie": "software", "priorita": "stredni", "ucebna": null}, "tezky": true}
+{"id": 7, "input": "V učebně 204 nefunguje projektor ani reproduktory. Ostatní počítače jsou v pořádku.", "expected": {"kategorie": "hardware", "priorita": "stredni", "ucebna": "204"}, "tezky": true}
+{"id": 8, "input": "Dobrý den, v učebně patnáct set nejde připojit počítač k síti.", "expected": {"kategorie": "sit", "priorita": "stredni", "ucebna": "1500"}, "tezky": true}
+{"id": 9, "input": "Ten nový počítač v učebně 8 je opravdu skvělý – zapne se jen tehdy, když do něj třikrát praštím.", "expected": {"kategorie": "hardware", "priorita": "stredni", "ucebna": "8"}, "tezky": true}
+{"id": 10, "input": "V učebně 31 nejde klávesnice, respektive klávesnice píše sama znaky a nedá se na ní pracovat.", "expected": {"kategorie": "hardware", "priorita": "stredni", "ucebna": "31"}, "tezky": false}
+{"id": 11, "input": "Učebna není uvedena. Na notebooku nejde spustit školní aplikace pro výuku.", "expected": {"kategorie": "software", "priorita": "stredni", "ucebna": null}, "tezky": true}
+{"id": 12, "input": "V učebně C3 je cítit spálenina od prodlužovačky a z jejího krytu jde kouř.", "expected": {"kategorie": "elektrina", "priorita": "vysoka", "ucebna": "C3"}, "tezky": true}
+{"id": 13, "input": "Dobrý den, chtěl bych se zeptat, kdy bude v učebně 12 instalován nový software. Současný funguje bez problémů.", "expected": {"kategorie": "jine", "priorita": "nizka", "ucebna": "12"}, "tezky": true}
+{"id": 14, "input": "V kabinetu vedle učebny 22 se rozbil kávovar. Počítače a školní technika fungují.", "expected": {"kategorie": "jine", "priorita": "nizka", "ucebna": null}, "tezky": true}
+{"id": 15, "input": "Projektor v učebně 7 občas ztratí obraz asi na dvě sekundy, pak se sám obnoví.", "expected": {"kategorie": "hardware", "priorita": "nizka", "ucebna": "7"}, "tezky": false}

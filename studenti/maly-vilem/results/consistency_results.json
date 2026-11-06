@@ -1,0 +1,192 @@
+[
+  {
+    "id": 1,
+    "input": "Dobrý den, v učebně 204 nejde zapnout projektor. Za hodinu tam máme maturitní prezentace.",
+    "expected": {
+      "kategorie": "hardware",
+      "priorita": "vysoka",
+      "ucebna": "204"
+    },
+    "runs_outputs": [
+      {
+        "kategorie": "hardware",
+        "priorita": "vysoka",
+        "ucebna": "204"
+      },
+      {
+        "kategorie": "hardware",
+        "priorita": "vysoka",
+        "ucebna": "204"
+      },
+      {
+        "kategorie": "hardware",
+        "priorita": "vysoka",
+        "ucebna": "204"
+      },
+      {
+        "kategorie": "hardware",
+        "priorita": "vysoka",
+        "ucebna": "204"
+      },
+      {
+        "kategorie": "hardware",
+        "priorita": "vysoka",
+        "ucebna": "204"
+      }
+    ],
+    "unique_answers_count": 1,
+    "is_stable": true
+  },
+  {
+    "id": 2,
+    "input": "Počítač v učebně 17 po přihlášení zamrzne a nejde otevřít žádný program.",
+    "expected": {
+      "kategorie": "software",
+      "priorita": "stredni",
+      "ucebna": "17"
+    },
+    "runs_outputs": [
+      {
+        "kategorie": "software",
+        "priorita": "stredni",
+        "ucebna": "17"
+      },
+      {
+        "kategorie": "software",
+        "priorita": "stredni",
+        "ucebna": "17"
+      },
+      {
+        "kategorie": "software",
+        "priorita": "stredni",
+        "ucebna": "17"
+      },
+      {
+        "kategorie": "software",
+        "priorita": "stredni",
+        "ucebna": "17"
+      },
+      {
+        "kategorie": "software",
+        "priorita": "stredni",
+        "ucebna": "17"
+      }
+    ],
+    "unique_answers_count": 1,
+    "is_stable": true
+  },
+  {
+    "id": 3,
+    "input": "V učebně B12 nejde internet na žádném počítači. Kabely vypadají zapojené správně.",
+    "expected": {
+      "kategorie": "sit",
+      "priorita": "vysoka",
+      "ucebna": "B12"
+    },
+    "runs_outputs": [
+      {
+        "kategorie": "sit",
+        "priorita": "vysoka",
+        "ucebna": "B12"
+      },
+      {
+        "kategorie": "sit",
+        "priorita": "vysoka",
+        "ucebna": "B12"
+      },
+      {
+        "kategorie": "sit",
+        "priorita": "vysoka",
+        "ucebna": "B12"
+      },
+      {
+        "kategorie": "sit",
+        "priorita": "vysoka",
+        "ucebna": "B12"
+      },
+      {
+        "kategorie": "sit",
+        "priorita": "stredni",
+        "ucebna": "B12"
+      }
+    ],
+    "unique_answers_count": 2,
+    "is_stable": false
+  },
+  {
+    "id": 4,
+    "input": "Monitor u učitelského stolu jen bliká, obraz se vůbec neukáže.",
+    "expected": {
+      "kategorie": "hardware",
+      "priorita": "stredni",
+      "ucebna": null
+    },
+    "runs_outputs": [
+      {
+        "kategorie": "hardware",
+        "priorita": "vysoka",
+        "ucebna": null
+      },
+      {
+        "kategorie": "hardware",
+        "priorita": "stredni",
+        "ucebna": null
+      },
+      {
+        "kategorie": "hardware",
+        "priorita": "nizka",
+        "ucebna": null
+      },
+      {
+        "kategorie": "hardware",
+        "priorita": "stredni",
+        "ucebna": null
+      },
+      {
+        "kategorie": "hardware",
+        "priorita": "stredni",
+        "ucebna": null
+      }
+    ],
+    "unique_answers_count": 3,
+    "is_stable": false
+  },
+  {
+    "id": 5,
+    "input": "Prosím o kontrolu zásuvky v učebně 105, při zapojení nabíječky v ní praská.",
+    "expected": {
+      "kategorie": "elektrina",
+      "priorita": "vysoka",
+      "ucebna": "105"
+    },
+    "runs_outputs": [
+      {
+        "kategorie": "elektrina",
+        "priorita": "vysoka",
+        "ucebna": "105"
+      },
+      {
+        "kategorie": "elektrina",
+        "priorita": "vysoka",
+        "ucebna": "105"
+      },
+      {
+        "kategorie": "elektrina",
+        "priorita": "vysoka",
+        "ucebna": "105"
+      },
+      {
+        "kategorie": "elektrina",
+        "priorita": "vysoka",
+        "ucebna": "105"
+      },
+      {
+        "kategorie": "elektrina",
+        "priorita": "vysoka",
+        "ucebna": "105"
+      }
+    ],
+    "unique_answers_count": 1,
+    "is_stable": true
+  }
+]

@@ -1,0 +1,301 @@
+{
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "prompt": "v2",
+  "dataset": "test",
+  "cases_count": 10,
+  "metrics": {
+    "valid_json": 1.0,
+    "exact_match": 0.8,
+    "fields": {
+      "kategorie": 1.0,
+      "priorita": 0.8,
+      "ucebna": 1.0
+    },
+    "avg_latency_s": 0.32,
+    "total_tokens_in": 9280,
+    "total_tokens_out": 347
+  },
+  "details": [
+    {
+      "id": 16,
+      "tezky": false,
+      "input": "V učebně 101 nejde zapnout světlo ani zásuvky u zadní stěny.",
+      "expected": {
+        "kategorie": "elektrina",
+        "priorita": "vysoka",
+        "ucebna": "101"
+      },
+      "predicted_raw": "{\n  \"kategorie\": \"elektrina\",\n  \"priorita\": \"vysoka\",\n  \"ucebna\": \"101\"\n}",
+      "predicted_json": {
+        "kategorie": "elektrina",
+        "priorita": "vysoka",
+        "ucebna": "101"
+      },
+      "valid_json": true,
+      "exact_match": true,
+      "field_matches": {
+        "kategorie": true,
+        "priorita": true,
+        "ucebna": true
+      },
+      "latency_s": 0.29,
+      "tokens_in": 925,
+      "tokens_out": 38,
+      "from_cache": false,
+      "error": null
+    },
+    {
+      "id": 17,
+      "tezky": false,
+      "input": "Počítač v učebně 6 hlásí, že nemá místo na disku, a instalace programu se proto nedokončí.",
+      "expected": {
+        "kategorie": "software",
+        "priorita": "stredni",
+        "ucebna": "6"
+      },
+      "predicted_raw": "{\n  \"kategorie\": \"software\",\n  \"priorita\": \"stredni\",\n  \"ucebna\": \"6\"\n}",
+      "predicted_json": {
+        "kategorie": "software",
+        "priorita": "stredni",
+        "ucebna": "6"
+      },
+      "valid_json": true,
+      "exact_match": true,
+      "field_matches": {
+        "kategorie": true,
+        "priorita": true,
+        "ucebna": true
+      },
+      "latency_s": 0.472,
+      "tokens_in": 930,
+      "tokens_out": 34,
+      "from_cache": false,
+      "error": null
+    },
+    {
+      "id": 18,
+      "tezky": false,
+      "input": "Na tabuli v učebně 3 je prasklé sklo. Dotyková funkce stále funguje.",
+      "expected": {
+        "kategorie": "hardware",
+        "priorita": "stredni",
+        "ucebna": "3"
+      },
+      "predicted_raw": "{\n  \"kategorie\": \"hardware\",\n  \"priorita\": \"stredni\",\n  \"ucebna\": \"3\"\n}",
+      "predicted_json": {
+        "kategorie": "hardware",
+        "priorita": "stredni",
+        "ucebna": "3"
+      },
+      "valid_json": true,
+      "exact_match": true,
+      "field_matches": {
+        "kategorie": true,
+        "priorita": true,
+        "ucebna": true
+      },
+      "latency_s": 0.347,
+      "tokens_in": 925,
+      "tokens_out": 34,
+      "from_cache": false,
+      "error": null
+    },
+    {
+      "id": 19,
+      "tezky": true,
+      "input": "Síť v učebně 14 jede tak rychle, že se stránka načítá skoro minutu.",
+      "expected": {
+        "kategorie": "sit",
+        "priorita": "stredni",
+        "ucebna": "14"
+      },
+      "predicted_raw": "{\n  \"kategorie\": \"sit\",\n  \"priorita\": \"stredni\",\n  \"ucebna\": \"14\"\n}",
+      "predicted_json": {
+        "kategorie": "sit",
+        "priorita": "stredni",
+        "ucebna": "14"
+      },
+      "valid_json": true,
+      "exact_match": true,
+      "field_matches": {
+        "kategorie": true,
+        "priorita": true,
+        "ucebna": true
+      },
+      "latency_s": 0.259,
+      "tokens_in": 924,
+      "tokens_out": 35,
+      "from_cache": false,
+      "error": null
+    },
+    {
+      "id": 20,
+      "tezky": true,
+      "input": "V učebně není napsané číslo. U projektoru je slyšet hlasité chrčení a po chvíli se vypne.",
+      "expected": {
+        "kategorie": "hardware",
+        "priorita": "vysoka",
+        "ucebna": null
+      },
+      "predicted_raw": "{\n  \"kategorie\": \"hardware\",\n  \"priorita\": \"vysoka\",\n  \"ucebna\": null\n}",
+      "predicted_json": {
+        "kategorie": "hardware",
+        "priorita": "vysoka",
+        "ucebna": null
+      },
+      "valid_json": true,
+      "exact_match": true,
+      "field_matches": {
+        "kategorie": true,
+        "priorita": true,
+        "ucebna": true
+      },
+      "latency_s": 0.345,
+      "tokens_in": 930,
+      "tokens_out": 32,
+      "from_cache": false,
+      "error": null
+    },
+    {
+      "id": 21,
+      "tezky": true,
+      "input": "Dobrý den, v učebně 2 je vadná zásuvka a zároveň nefunguje připojení k Wi-Fi.",
+      "expected": {
+        "kategorie": "elektrina",
+        "priorita": "vysoka",
+        "ucebna": "2"
+      },
+      "predicted_raw": "{\n  \"kategorie\": \"elektrina\",\n  \"priorita\": \"stredni\",\n  \"ucebna\": \"2\"\n}",
+      "predicted_json": {
+        "kategorie": "elektrina",
+        "priorita": "stredni",
+        "ucebna": "2"
+      },
+      "valid_json": true,
+      "exact_match": false,
+      "field_matches": {
+        "kategorie": true,
+        "priorita": false,
+        "ucebna": true
+      },
+      "latency_s": 0.367,
+      "tokens_in": 929,
+      "tokens_out": 36,
+      "from_cache": false,
+      "error": null
+    },
+    {
+      "id": 22,
+      "tezky": false,
+      "input": "V učebně 1 se na všech počítačích změnil čas a nejde se přihlásit do školního účtu.",
+      "expected": {
+        "kategorie": "software",
+        "priorita": "vysoka",
+        "ucebna": "1"
+      },
+      "predicted_raw": "{\n  \"kategorie\": \"software\",\n  \"priorita\": \"vysoka\",\n  \"ucebna\": \"1\"\n}",
+      "predicted_json": {
+        "kategorie": "software",
+        "priorita": "vysoka",
+        "ucebna": "1"
+      },
+      "valid_json": true,
+      "exact_match": true,
+      "field_matches": {
+        "kategorie": true,
+        "priorita": true,
+        "ucebna": true
+      },
+      "latency_s": 0.315,
+      "tokens_in": 928,
+      "tokens_out": 34,
+      "from_cache": false,
+      "error": null
+    },
+    {
+      "id": 23,
+      "tezky": true,
+      "input": "Prosím, opravte v učebně 9 okno. Jde špatně zavírat a při větru profukuje.",
+      "expected": {
+        "kategorie": "jine",
+        "priorita": "nizka",
+        "ucebna": "9"
+      },
+      "predicted_raw": "{\n  \"kategorie\": \"jine\",\n  \"priorita\": \"nizka\",\n  \"ucebna\": \"9\"\n}",
+      "predicted_json": {
+        "kategorie": "jine",
+        "priorita": "nizka",
+        "ucebna": "9"
+      },
+      "valid_json": true,
+      "exact_match": true,
+      "field_matches": {
+        "kategorie": true,
+        "priorita": true,
+        "ucebna": true
+      },
+      "latency_s": 0.225,
+      "tokens_in": 929,
+      "tokens_out": 35,
+      "from_cache": false,
+      "error": null
+    },
+    {
+      "id": 24,
+      "tezky": false,
+      "input": "V učebně 18 nejde myš. Zkoušel jsem jiný USB port i jinou myš, bez výsledku.",
+      "expected": {
+        "kategorie": "hardware",
+        "priorita": "stredni",
+        "ucebna": "18"
+      },
+      "predicted_raw": "{\n  \"kategorie\": \"hardware\",\n  \"priorita\": \"stredni\",\n  \"ucebna\": \"18\"\n}",
+      "predicted_json": {
+        "kategorie": "hardware",
+        "priorita": "stredni",
+        "ucebna": "18"
+      },
+      "valid_json": true,
+      "exact_match": true,
+      "field_matches": {
+        "kategorie": true,
+        "priorita": true,
+        "ucebna": true
+      },
+      "latency_s": 0.317,
+      "tokens_in": 930,
+      "tokens_out": 35,
+      "from_cache": false,
+      "error": null
+    },
+    {
+      "id": 25,
+      "tezky": false,
+      "input": "V učebně 4 se počítač sám vypíná po několika minutách. Někdy se z něj ozve cvaknutí.",
+      "expected": {
+        "kategorie": "hardware",
+        "priorita": "vysoka",
+        "ucebna": "4"
+      },
+      "predicted_raw": "{\n  \"kategorie\": \"hardware\",\n  \"priorita\": \"stredni\",\n  \"ucebna\": \"4\"\n}",
+      "predicted_json": {
+        "kategorie": "hardware",
+        "priorita": "stredni",
+        "ucebna": "4"
+      },
+      "valid_json": true,
+      "exact_match": false,
+      "field_matches": {
+        "kategorie": true,
+        "priorita": false,
+        "ucebna": true
+      },
+      "latency_s": 0.264,
+      "tokens_in": 930,
+      "tokens_out": 34,
+      "from_cache": false,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "student": "Vilém Malý",
+  "uloha": "Hlášení závad v učebně",
+  "behy": [
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.8667,
+      "pole": {
+        "kategorie": 0.9333,
+        "priorita": 0.9333,
+        "ucebna": 1.0
+      },
+      "latence_s": 0.67,
+      "tokeny_vstup": 8518,
+      "tokeny_vystup": 3800
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.8667,
+      "pole": {
+        "kategorie": 1.0,
+        "priorita": 0.8667,
+        "ucebna": 1.0
+      },
+      "latence_s": 0.4,
+      "tokeny_vstup": 7924,
+      "tokeny_vystup": 523
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "poskytovatel": "nvidia",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 0.9333,
+      "uplna_shoda": 0.8667,
+      "pole": {
+        "kategorie": 0.8667,
+        "priorita": 0.9333,
+        "ucebna": 0.9333
+      },
+      "latence_s": 7.23,
+      "tokeny_vstup": 7289,
+      "tokeny_vystup": 480
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.7333,
+      "pole": {
+        "kategorie": 0.9333,
+        "priorita": 0.8,
+        "ucebna": 1.0
+      },
+      "latence_s": 0.73,
+      "tokeny_vstup": 8518,
+      "tokeny_vystup": 2975
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v2",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.8,
+      "pole": {
+        "kategorie": 0.9333,
+        "priorita": 0.8667,
+        "ucebna": 1.0
+      },
+      "latence_s": 0.65,
+      "tokeny_vstup": 14368,
+      "tokeny_vystup": 3727
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "poskytovatel": "groq",
+      "prompt": "v2",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.9333,
+      "pole": {
+        "kategorie": 1.0,
+        "priorita": 0.9333,
+        "ucebna": 1.0
+      },
+      "latence_s": 0.36,
+      "tokeny_vstup": 13924,
+      "tokeny_vystup": 523
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "poskytovatel": "groq",
+      "prompt": "v2",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.8,
+      "pole": {
+        "kategorie": 1.0,
+        "priorita": 0.8,
+        "ucebna": 1.0
+      },
+      "latence_s": 0.32,
+      "tokeny_vstup": 9280,
+      "tokeny_vystup": 347
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.9,
+      "pole": {
+        "kategorie": 1.0,
+        "priorita": 0.9,
+        "ucebna": 1.0
+      },
+      "latence_s": 0.73,
+      "tokeny_vstup": 5684,
+      "tokeny_vystup": 2885
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v2",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.7,
+      "pole": {
+        "kategorie": 1.0,
+        "priorita": 0.7,
+        "ucebna": 1.0
+      },
+      "latence_s": 0.88,
+      "tokeny_vstup": 9584,
+      "tokeny_vystup": 4130
+    }
+  ]
+}
