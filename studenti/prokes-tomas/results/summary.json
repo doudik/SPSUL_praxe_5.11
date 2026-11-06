@@ -1,0 +1,25 @@
+{
+  "student": "Tomáš Prokeš",
+  "uloha": "Inzeráty aut",
+  "behy": [
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1,
+      "uplna_shoda": 0.8,
+      "pole": {
+        "znacka": 0.933,
+        "model": 0.933,
+        "rok": 1,
+        "najezd_km": 0.933,
+        "cena": 0.933
+      },
+      "latence_s": 0.739,
+      "tokeny_vstup": 7795,
+      "tokeny_vystup": 3114
+    }
+  ]
+}

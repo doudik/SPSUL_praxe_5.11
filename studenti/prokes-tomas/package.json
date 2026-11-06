@@ -1,0 +1,9 @@
+{
+  "name": "inzeraty-aut-eval",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
