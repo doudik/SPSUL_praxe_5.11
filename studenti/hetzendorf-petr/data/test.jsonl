@@ -1,0 +1,10 @@
+{"id":16,"input":"Jednu hawai na adresu Měsíčná 24, Pohádkov, platba kartou.","tezky":false,"expected":{"polozky":[{"nazev":"hawai","pocet":1}],"adresa":"Měsíčná 24, Pohádkov","platba":"karta"}}
+{"id":17,"input":"Prosím tři quattro formaggi a dvě salámové. Vyzvednu osobně a zaplatím v hotovosti.","tezky":false,"expected":{"polozky":[{"nazev":"salamova","pocet":2},{"nazev":"quattro formaggi","pocet":3}],"adresa":null,"platba":"hotovost"}}
+{"id":18,"input":"Margherita, hotově.","tezky":false,"expected":{"polozky":[{"nazev":"margherita","pocet":1}],"adresa":null,"platba":"hotovost"}}
+{"id":19,"input":"2 salámové a 4 margherity doručte na Větrníková 11, Snovice.","tezky":false,"expected":{"polozky":[{"nazev":"margherita","pocet":4},{"nazev":"salamova","pocet":2}],"adresa":"Větrníková 11, Snovice","platba":null}}
+{"id":20,"input":"Dobrý večer, chtěli bychom jednu hawai, jednu margheritu a dvě quattro formaggi. Adresa je Dušičková 73, Pohádkov. Platit budeme kartou.","tezky":false,"expected":{"polozky":[{"nazev":"margherita","pocet":1},{"nazev":"hawai","pocet":1},{"nazev":"quattro formaggi","pocet":2}],"adresa":"Dušičková 73, Pohádkov","platba":"karta"}}
+{"id":21,"input":"Prosím o pět pizz hawai. Osobní odběr.","tezky":false,"expected":{"polozky":[{"nazev":"hawai","pocet":5}],"adresa":null,"platba":null}}
+{"id":22,"input":"Salámovou ne, objednávám jednu quattro formaggi a dvě hawai. Platím hotově.","tezky":true,"expected":{"polozky":[{"nazev":"hawai","pocet":2},{"nazev":"quattro formaggi","pocet":1}],"adresa":null,"platba":"hotovost"}}
+{"id":23,"input":"Doručení na Pírková 9, Snovice nepotřebuji, dvě margherity si vyzvednu sám. Platba kartou.","tezky":true,"expected":{"polozky":[{"nazev":"margherita","pocet":2}],"adresa":null,"platba":"karta"}}
+{"id":24,"input":"Kolik stojí quattro formaggi? Zatím žádnou pizzu neobjednávám.","tezky":true,"expected":{"polozky":[],"adresa":null,"platba":null}}
+{"id":25,"input":"Jednu salámovou a hawai, jejíž počet ještě upřesním. Doručte na Vesmírná 2, Snovice.","tezky":true,"expected":{"polozky":[{"nazev":"salamova","pocet":1}],"adresa":"Vesmírná 2, Snovice","platba":null}}

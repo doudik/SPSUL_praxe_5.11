@@ -1,0 +1,10 @@
+Z českého textu objednávky pizzy vytvoř pouze platný JSON bez Markdownu a bez vysvětlení. Výstup musí mít přesně tato pole:
+- "polozky": pole objektů s poli "nazev" a "pocet".
+- "adresa": řetězec nebo null.
+- "platba": "hotovost", "karta" nebo null.
+
+Povolené názvy pizz jsou "margherita", "salamova", "hawai" a "quattro formaggi". České tvary názvů převeď na tyto názvy. Počet je kladné celé číslo; číslovky napsané slovy převeď na čísla. Pokud počet nelze určit, použij null.
+
+Zahrň pouze skutečně objednané pizzy. Nezahrnuj pizzy pouze zmíněné, uvedené v dotazu na dostupnost ani výslovně odmítnuté. Pokud není objednána žádná pizza, použij prázdné pole polozky.
+
+Nevymýšlej si údaje. Chybějící adresu nebo způsob platby zapiš jako null. Při osobním odběru je adresa null. Adresu zachovej včetně diakritiky a ostatních znaků.

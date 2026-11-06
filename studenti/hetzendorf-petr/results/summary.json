@@ -1,0 +1,108 @@
+{
+  "student": "Petr Hetzendorf",
+  "uloha": "Objednávky v pizzerii",
+  "behy": [
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1,
+      "uplna_shoda": 0.9333333333333333,
+      "pole": {
+        "polozky": 0.9333333333333333,
+        "adresa": 1,
+        "platba": 1
+      },
+      "latence_s": 0.7390128799999999,
+      "tokeny_vstup": 5774,
+      "tokeny_vystup": 4844
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1,
+      "uplna_shoda": 0.8666666666666667,
+      "pole": {
+        "polozky": 0.9333333333333333,
+        "adresa": 0.9333333333333333,
+        "platba": 1
+      },
+      "latence_s": 0.8886492133333336,
+      "tokeny_vstup": 5774,
+      "tokeny_vystup": 3873
+    },
+    {
+      "model": "nvidia/nemotron-3.5-lightning:free",
+      "poskytovatel": "openrouter",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1,
+      "uplna_shoda": 0.9333333333333333,
+      "pole": {
+        "polozky": 0.9333333333333333,
+        "adresa": 1,
+        "platba": 1
+      },
+      "latence_s": 13.837749986666664,
+      "tokeny_vstup": 5008,
+      "tokeny_vystup": 19501
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v2",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1,
+      "uplna_shoda": 0.9333333333333333,
+      "pole": {
+        "polozky": 0.9333333333333333,
+        "adresa": 1,
+        "platba": 1
+      },
+      "latence_s": 0.6839883466666666,
+      "tokeny_vstup": 8699,
+      "tokeny_vystup": 5142
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 1,
+      "uplna_shoda": 0.8,
+      "pole": {
+        "polozky": 0.8,
+        "adresa": 1,
+        "platba": 1
+      },
+      "latence_s": 1.91376668,
+      "tokeny_vstup": 3842,
+      "tokeny_vystup": 2818
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v2",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 1,
+      "uplna_shoda": 0.7,
+      "pole": {
+        "polozky": 0.8,
+        "adresa": 0.9,
+        "platba": 1
+      },
+      "latence_s": 0.6530650100000002,
+      "tokeny_vstup": 5792,
+      "tokeny_vystup": 3029
+    }
+  ]
+}

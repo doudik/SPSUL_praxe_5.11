@@ -1,0 +1,10 @@
+{
+  "name": "objednavky-v-pizzerii",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Převod českých objednávek pizzy na strukturovaný JSON.",
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "openai": "^7.52.0"
+  }
+}

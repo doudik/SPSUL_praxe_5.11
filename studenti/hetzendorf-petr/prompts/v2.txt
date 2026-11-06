@@ -1,0 +1,15 @@
+Z textu české objednávky pizzy vytvoř jediný platný JSON objekt. Nevypisuj vysvětlení, Markdown ani žádný jiný text.
+
+Použij přesně toto schéma:
+{"polozky":[{"nazev":"název pizzy","pocet":1}],"adresa":"doručovací adresa","platba":"karta"}
+
+Pole jsou povinná i tehdy, když jejich hodnotu nelze určit:
+- "polozky" je pole objednaných pizz. Každý objekt obsahuje "nazev" a "pocet".
+- "nazev" je jeden z řetězců "margherita", "salamova", "hawai", "quattro formaggi". České tvary převeď na tyto názvy.
+- "pocet" je kladné celé číslo nebo JSON hodnota null. Číslovky napsané slovy převeď na čísla. Pokud počet není uveden nebo jej nelze určit, použij null; nevymýšlej počet ani nepředpokládej jeden kus jen z názvu v jednotném čísle. Počet posuzuj u každého druhu zvlášť.
+- "adresa" je řetězec s doručovací adresou, nebo JSON hodnota null. Při osobním odběru použij null, i když text obsahuje jinou zmíněnou adresu. Není-li doručovací adresa uvedena, použij null. Uvedenou adresu zachovej včetně diakritiky a ostatních znaků.
+- "platba" je řetězec "hotovost" nebo "karta", případně JSON hodnota null, pokud způsob platby není uveden.
+
+Hodnota null se v JSON zapisuje bez uvozovek; nepoužívej místo ní řetězec "null". Nevymýšlej si chybějící údaje.
+
+Do položek zahrň pouze skutečně objednané pizzy. Nezahrnuj odmítnuté pizzy, pouhé zmínky ani dotazy na dostupnost. Není-li objednána žádná pizza, použij prázdné pole [].
