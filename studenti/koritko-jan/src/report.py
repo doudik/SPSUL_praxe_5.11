@@ -28,6 +28,7 @@ CENY_OPENROUTER = {
     "mistral-small-latest": ("mistralai/mistral-small-3.2-24b-instruct", 0.075, 0.20),
     "llama-3.1-8b-instant": ("meta-llama/llama-3.1-8b-instruct", 0.02, 0.04),
     "openai/gpt-oss-120b": ("openai/gpt-oss-120b", 0.026, 0.095),
+    "qwen/qwen3-32b": ("qwen/qwen3-32b", 0.08, 0.28),
 }
 USD_CZK = 23.0  # orientační kurz
 DOTAZU = 10_000
@@ -313,7 +314,7 @@ def dev_test(behy):
 
 VELIKOST = {"openai/gpt-oss-20b": "~20 mld. parametrů", "llama-3.3-70b-versatile": "70 mld.",
             "mistral-small-latest": "~24 mld.", "llama-3.1-8b-instant": "8 mld.", "openai/gpt-oss-120b": "~120 mld.",
-            "gemini-flash-latest": "velikost nezveřejněna"}
+            "gemini-flash-latest": "velikost nezveřejněna", "qwen/qwen3-32b": "32 mld."}
 
 
 def pouzite_modely(behy):

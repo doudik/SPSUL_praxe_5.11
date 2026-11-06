@@ -36,6 +36,7 @@ POSKYTOVATELE = {
     "nvidia": ("https://integrate.api.nvidia.com/v1", "NVIDIA_API_KEY"),
 }
 # pauza mezi skutečnými požadavky (s), ať nenarážíme na limity tokenů/min
+FUNGUJICI = set()  # modely, které v tomhle spuštění už odpověděly
 PAUZA = {"groq": 2.0, "mistral": 1.2, "gemini": 4.0, "openrouter": 3.5, "nvidia": 1.6}
 
 
@@ -135,7 +136,7 @@ def over_spojeni(poskytovatel):
         time.sleep(5)
 
 
-def zavolej_s_cache(poskytovatel, model, prompt_text, json_mode):
+def zavolej_s_cache(poskytovatel, model, prompt_text, json_mode, max_pokusu=8):
     """Vrátí (odpoved, latence, z_cache). Klíč = hash(poskytovatel + model + celý prompt se vstupem)."""
     klic = hashlib.sha256(f"{poskytovatel}|{model}|{json_mode}|{prompt_text}".encode("utf-8")).hexdigest()
     cache_dir = ROOT / "cache"
@@ -144,7 +145,7 @@ def zavolej_s_cache(poskytovatel, model, prompt_text, json_mode):
     if soubor.exists():
         ulozene = json.loads(soubor.read_text(encoding="utf-8"))
         return ulozene["odpoved"], ulozene["latence_s"], True
-    odpoved, latence = zavolej(poskytovatel, model, prompt_text, json_mode)
+    odpoved, latence = zavolej(poskytovatel, model, prompt_text, json_mode, max_pokusu)
     soubor.write_text(json.dumps({"odpoved": odpoved, "latence_s": latence}, ensure_ascii=False),
                       encoding="utf-8")
     return odpoved, latence, False
@@ -156,7 +157,7 @@ def rozparsuj(text):
     """Zkusí z odpovědi modelu dostat JSON objekt. Vrátí dict, nebo None (= nevalidní výstup)."""
     if not text:
         return None
-    t = text.strip()
+    t = re.sub(r"<think>.*?</think>", "", text, flags=re.S).strip()  # "přemýšlení" modelů typu Qwen
     t = re.sub(r"^```(?:json)?\s*|\s*```$", "", t)  # odstraní ```json ... ```
     try:
         obj = json.loads(t)
@@ -255,20 +256,22 @@ def spust(sada, prompt, poskytovatel, model, json_mode=False):
     pripady = nacti_sadu(sada)
     print(f"== {model} ({poskytovatel}), prompt {prompt}, sada {sada}, {len(pripady)} případů")
 
-    zaznamy, volani_api, chyb_api = [], 0, 0
+    zaznamy, volani_api = [], 0
     for p in pripady:
         prompt_text = sablona.replace("{text}", p["input"])
+        # dokud z API nepřišla žádná odpověď, nezkoušíme to dlouho (model nemusí být dostupný vůbec)
+        pokusu = 8 if (volani_api or (poskytovatel, model) in FUNGUJICI) else 3
         try:
-            odpoved, latence, z_cache = zavolej_s_cache(poskytovatel, model, prompt_text, json_mode)
-        except Exception as e:  # chyba API nesmí shodit celý běh
-            print(f"  #{p['id']}: CHYBA API {e}")
-            odpoved, latence, z_cache = None, 0.0, True  # chybu necachujeme, ale ani nečekáme
-            chyb_api += 1
-            if "HTTP 4" in str(e) and "HTTP 429" not in str(e):
-                print("  Chyba 4xx (špatný klíč nebo název modelu) – běh přerušen, nic se neukládá.")
-                return None
+            odpoved, latence, z_cache = zavolej_s_cache(poskytovatel, model, prompt_text, json_mode, pokusu)
+        except Exception as e:  # chyba API nesmí shodit celý program
+            print(f"  #{p['id']}: CHYBA API {str(e)[:250]}")
+            if "HTTP 429" in str(e):
+                print("  Limit poskytovatele je vyčerpaný (429) – model teď nejde použít.")
+            print("  Běh přerušen, nic se neukládá (hotové odpovědi zůstávají v cache).")
+            return None
         if not z_cache:
             volani_api += 1
+            FUNGUJICI.add((poskytovatel, model))
             time.sleep(PAUZA.get(poskytovatel, 1.0))
         text = None
         usage = {}
@@ -291,9 +294,6 @@ def spust(sada, prompt, poskytovatel, model, json_mode=False):
         znacka = "OK " if all(shody.values()) else ("NEV" if vystup is None else "-- ")
         print(f"  #{p['id']:>2} {znacka} {'(cache)' if z_cache else f'{latence:.2f}s'}  {json.dumps(vystup, ensure_ascii=False)}")
 
-    if chyb_api:
-        print(f"!! {chyb_api} požadavků selhalo – běh se neukládá, spusť ho znovu (hotové odpovědi jsou v cache).")
-        return None
     n = len(zaznamy)
     beh = {
         "model": model,

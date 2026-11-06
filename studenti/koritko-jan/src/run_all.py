@@ -19,12 +19,13 @@ import report  # noqa: E402
 # (poskytovatel, model) v pořadí, v jakém se zkoušejí. Potřebujeme 3 funkční,
 # ideálně malý + velký model a aspoň 2 poskytovatele.
 KANDIDATI = [
-    ("groq", "openai/gpt-oss-20b"),          # ~20 mld. parametrů
-    ("groq", "llama-3.3-70b-versatile"),     # 70 mld. parametrů
-    ("mistral", "mistral-small-latest"),     # jiný poskytovatel (~24 mld.)
-    ("groq", "llama-3.1-8b-instant"),        # záloha: malý model 8 mld.
-    ("groq", "openai/gpt-oss-120b"),         # záloha: velký model 120 mld.
-    ("gemini", "gemini-flash-latest"),       # záloha: jiný poskytovatel
+    ("groq", "openai/gpt-oss-20b"),                         # ~20 mld. parametrů
+    ("groq", "openai/gpt-oss-120b"),                        # ~120 mld. parametrů
+    ("mistral", "mistral-small-latest"),                    # jiný poskytovatel (~24 mld.)
+    ("groq", "llama-3.1-8b-instant"),                       # záloha: malý model 8 mld.
+    ("groq", "llama-3.3-70b-versatile"),                    # záloha: 70 mld.
+    ("groq", "qwen/qwen3-32b"),                             # záloha: 32 mld.
+    ("gemini", "gemini-flash-latest"),                      # záloha: jiný poskytovatel
 ]
 POTREBA_MODELU = 3
 
