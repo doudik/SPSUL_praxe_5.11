@@ -1,0 +1,13 @@
+{
+  "name": "evaluace-forum",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node eval.js"
+  },
+  "dependencies": {
+    "@google/genai": "^3.0.0",
+    "dotenv": "^16.6.1",
+    "groq-sdk": "^0.7.0"
+  }
+}

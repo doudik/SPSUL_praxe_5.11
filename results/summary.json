@@ -1,0 +1,74 @@
+{
+  "student": "Lukáš Svoboda",
+  "uloha": "Komentáře na fóru",
+  "behy": [
+    {
+      "model": "openai/gpt-oss-20b",
+      "poskytovatel": "groq",
+      "prompt": "v1",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 1,
+      "uplna_shoda": 0.6,
+      "pole": {
+        "typ": 1,
+        "skore_toxicity": 0.6,
+        "akce": 0.9
+      },
+      "latence_s": 0.46,
+      "tokeny_vstup": 5740,
+      "tokeny_vystup": 2023
+    },
+    {
+      "model": "gemini-3.6-flash",
+      "poskytovatel": "gemini",
+      "prompt": "v1",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 0.6,
+      "uplna_shoda": 0.3,
+      "pole": {
+        "typ": 0.6,
+        "skore_toxicity": 0.4,
+        "akce": 0.5
+      },
+      "latence_s": 5.02,
+      "tokeny_vstup": 3245,
+      "tokeny_vystup": 188
+    },
+    {
+      "model": "open-mistral-7b",
+      "poskytovatel": "mistral",
+      "prompt": "v1",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 0.9,
+      "uplna_shoda": 0.3,
+      "pole": {
+        "typ": 0.7,
+        "skore_toxicity": 0.4,
+        "akce": 0.5
+      },
+      "latence_s": 1.05,
+      "tokeny_vstup": 5610,
+      "tokeny_vystup": 362
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "poskytovatel": "gemini",
+      "prompt": "v1",
+      "sada": "test",
+      "pripadu": 10,
+      "validni_json": 0.7,
+      "uplna_shoda": 0.2,
+      "pole": {
+        "typ": 0.6,
+        "skore_toxicity": 0.3,
+        "akce": 0.4
+      },
+      "latence_s": 5.19,
+      "tokeny_vstup": 3748,
+      "tokeny_vystup": 210
+    }
+  ]
+}

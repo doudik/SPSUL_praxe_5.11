@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "input": "Ahoj, vyplatí se dneska ještě kupovat RTX 3060 12GB, nebo radši připlatit za RX 6700 XT?",
+    "tezky": "ne",
+    "expected": {"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}
+  },
+  {
+    "id": 2,
+    "input": "Ty seš fakt neskutečnej idiot, radíš tu lidi k blbostem a vůbec tomu nerozumíš. Zalez radši.",
+    "tezky": "ne",
+    "expected": {"typ": "urazka", "skore_toxicity": "3", "akce": "vyzaduje_kontrolu"}
+  },
+  {
+    "id": 3,
+    "input": "Získejte snadné půjčky bez nahlížení do registru až do výše 50 000 Kč! Více info na http://rychla-pujcka-ihned.cz",
+    "tezky": "ne",
+    "expected": {"typ": "spam", "skore_toxicity": "1", "akce": "smazat"}
+  },
+  {
+    "id": 4,
+    "input": "Díky moc za tento návod! Měl jsem s tím problém už týden a podle tvýho postupu to šlapalo hned napoprvé.",
+    "tezky": "ne",
+    "expected": {"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}
+  },
+  {
+    "id": 5,
+    "input": "S tímhle názorem absolutně nesouhlasím. V dokumentaci se jasně píše, že od verze 18 je toto chování deprecated.",
+    "tezky": "ne",
+    "expected": {"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}
+  },
+  {
+    "id": 6,
+    "input": "Kdo ti dal vůbec právo sem psát tyhle sračky? Vypadni z tohoto fóra a už se nevracej.",
+    "tezky": "ne",
+    "expected": {"typ": "urazka", "skore_toxicity": "4", "akce": "vyzaduje_kontrolu"}
+  },
+  {
+    "id": 7,
+    "input": "Nevíte někdo, jak v PowerShellu nastavit ExecutionPolicy jen pro aktuálního uživatele?",
+    "tezky": "ne",
+    "expected": {"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}
+  },
+  {
+    "id": 8,
+    "input": "Kupujte nejlevnější značkové tenisky a oblečení! Sleva 80 % pro prvních 100 zákazníků na www.top-brand-discounts.com",
+    "tezky": "ne",
+    "expected": {"typ": "spam", "skore_toxicity": "1", "akce": "smazat"}
+  },
+  {
+    "id": 9,
+    "input": "Hrál jsem to asi dvě hodiny a po aktualizaci patchi 1.04 mi hra pořád padá do Windows bez jakékoliv chyby.",
+    "tezky": "ne",
+    "expected": {"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}
+  },
+  {
+    "id": 10,
+    "input": "Autor tohoto článku je očividně placená opice ze strany konkurenční firmy, větší odpad jsem nečetl.",
+    "tezky": "ne",
+    "expected": {"typ": "urazka", "skore_toxicity": "2", "akce": "schvalit"}
+  },
+  {
+    "id": 11,
+    "input": "Prosím o pomoc, po zapnutí PC se roztočí větráky, ale obrazovka zůstane černá a deska pípne 3x krátce.",
+    "tezky": "ne",
+    "expected": {"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}
+  },
+  {
+    "id": 12,
+    "input": "Pracuj z domova a vydělávej 3000 USD týdně bez předchozích zkušeností! Zaregistruj se zde: bit.ly/easy-money-2026",
+    "tezky": "ne",
+    "expected": {"typ": "spam", "skore_toxicity": "1", "akce": "smazat"}
+  },
+  {
+    "id": 13,
+    "input": "Pokud hledáš dobrý servis na kola v Ústí, zkus Cyklo-Purkyně u nádraží, spravili mi tam vidlici za stovku a chlapík byl mega ochotnej.",
+    "tezky": "ne",
+    "expected": {"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}
+  },
+  {
+    "id": 14,
+    "input": "Dneska na to koukám a říkám si: 'Kterej kretén tohle psal?' No a pak kouknu na git blame a tam moje jméno z minulýho roku...",
+    "tezky": "ano",
+    "expected": {"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}
+  },
+  {
+    "id": 15,
+    "input": "Chceš vědět, jak dostat zdarma 1000 EUR? Klikni sem... kecám, ale přesně takhle teď vypadají všechny komentáře na fórách.",
+    "tezky": "ano",
+    "expected": {"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}
+  }
+]

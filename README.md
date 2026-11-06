@@ -180,9 +180,9 @@ Do `README.md` ve své složce pak popiš:
 
 ```json
 {
-  "kategorie": "hardware | software | sit | ucet | jine",
-  "priorita": "nizka | stredni | vysoka",
-  "ucebna": "string nebo null"
+  "typ": "urazka | spam | v poradku",
+  "skore_toxicity": "1 | 2 | 3 | 4 | 5",
+  "akce" : "schvalit | smazat | vyzaduje_kontrolu"
 }
 ```
 
@@ -413,3 +413,88 @@ Do README napiš i **jak projekt spustit** (instalace, příkaz).
 - změny mimo vlastní složku: **−5 bodů**
 
 **Převod na známku:** 90+ bodů = 1, 75+ = 2, 60+ = 3, 45+ = 4, méně = 5.
+
+## Rozbory a Hodnocení Evaluace
+
+### 1. Rozbor 3 chyb z evaluace
+
+#### Chyba 1: Detekce ironie a sarkasmu (ID 14 v dev sadě)
+* **Vstup:** `"Dneska na to koukám a říkám si: 'Kterej kretén tohle psal?' No a pak kouknu na git blame a tam moje jméno z minulýho roku..."`
+* **Co model vrátil:** `{"typ": "urazka", "skore_toxicity": "3", "akce": "vyzaduje_kontrolu"}`
+* **Co je správně (expected):** `{"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}`
+* **Proč se spletl:** Jedná se o chybu modelu v chápaní kontextu a sebeironie. Model zachytil vulgární slovo („kretén“) a automaticky ho vyhodnotil jako útok na jiného uživatele. Nedokázal rozpoznat, že autor píše s nadsázkou o svém vlastním starém kódu.
+
+#### Chyba 2: Hraniční vulgarita vs. vyžadování kontroly (ID 3 v test sadě)
+* **Vstup:** `"Co to je za kecy? Ty musíš mít v hlavě fakt vymatláno, když tvrdíš takovou kravinu."`
+* **Co model vrátil:** `{"typ": "urazka", "skore_toxicity": "2", "akce": "schvalit"}`
+* **Co je správně (expected):** `{"typ": "urazka", "skore_toxicity": "3", "akce": "vyzaduje_kontrolu"}`
+* **Proč se spletl:** Jde o nejasnou hranici v zadání a nastavení promptu. Model sice správně určil typ jako `urazka`, ale podcenil skóre toxicity (dal 2 místo 3) a zvolil akci `schvalit`. Menší modely mají tendenci podceňovat méně agresivní urážky, pokud neobsahují explicitní sprostá slova nejhrubšího kalibru.
+
+#### Chyba 3: Falešný poplach u technického výrazu (ID 6 v dev sadě)
+* **Vstup:** `"Tento update stojí úplně za nic. Vývojáři jsou líná stvoření a jen z lidí tahají peníze."`
+* **Co model vrátil:** `{"typ": "urazka", "skore_toxicity": "3", "akce": "vyzaduje_kontrolu"}`
+* **Co je správně (expected):** `{"typ": "v poradku", "skore_toxicity": "2", "akce": "schvalit"}`
+* **Proč se spletl:** Chyba v naší definici v `expected` vs. striktnost modelu. Výrok vyjadřuje silnou frustraci ze softwaru a kritizuje vývojáře. Z lidského pohledu jde o běžný názor na fóru (proto `v poradku`), ale model kritiku vyhodnotil jako osobní útok. Zde byla hranice mezi objektivní kritikou a urážkou nastavená hodně těsně.
+
+---
+
+### 2. Doporučení pro produkční nasazení (10 000 dotazů / den)
+
+Na základě naměřených dat jednoznačně doporučuji pro produkční nasazení vybrat model **`openai/gpt-oss-20b`** (poskytovatel Groq) v kombinaci s **Promptem v1**.
+
+* **Důvody pro výběr z naměřených výsledků:**
+  * **Přesnost:** Jako jediný dosáhl **100% validního JSONu** (1.0) a nejvyšší úplné shody (**60 %**). V jednotlivých polích dosáhl excelentní shody u pole `typ` (100 %) a `akce` (90 %).
+  * **Rychlost (Latence):** S průměrnou latencí **0.46 s** je více než 10× rychlejší než modely Gemini (které trvaly přes 5 sekund).
+
+#### Přesný výpočet nákladů na 10 000 dotazů denně:
+* **Z naměřených dat pro 10 případů:**
+  * Vstupní tokeny celkem: 5 740 $\rightarrow$ **574 tokenů na 1 dotaz**
+  * Výstupní tokeny celkem: 2 023 $\rightarrow$ **202 tokenů na 1 dotaz**
+* **Spotřeba pro 10 000 dotazů:**
+  * Vstup: $10\,000 \times 574 = 5\,740\,000\text{ tokenů}$ ($5.74\text{M}$)
+  * Výstup: $10\,000 \times 202 = 2\,020\,000\text{ tokenů}$ ($2.02\text{M}$)
+* **Cena na OpenRouteru pro `openai/gpt-oss-20b` (placená variant):**
+  * Input: \$0.05 za 1M tokenů
+  * Output: \$0.10 za 1M tokenů
+* **Výpočet ceny za den:**
+  $$\text{Input cena} = 5.74 \times 0.05 = \$0.287$$
+  $$\text{Output cena} = 2.02 \times 0.10 = \$0.202$$
+  $$\mathbf{\text{Celková denní cena}} = \mathbf{\$0.489\text{ USD}}\text{ (cca 11.50 Kč / den)}$$
+* **Měsíční náklady (30 dní):** cca **\$14.67 USD** (cca 345 Kč za měsíc za zpracování 300 000 dotazů).
+
+---
+
+### 3. Rozdíl mezi sadami `dev` a `test`
+
+Výsledky na sadě `test` ukázaly reálné limity jednotlivých modelů. Zatímco `openai/gpt-oss-20b` si udržel vysokou přesnost, ostatní modely na testovací sadě výrazně propadly (shoda pouze 20–30 %).
+* **Proč se výsledky liší:**
+  1. **Overfitting na dev sadu:** System prompt byl původně laděn a testován na pravidlech z `dev` sady. `test` sada prověřila, jak dobře dokážou modely pravidla zobecnit.
+  2. **Těžší případy v test sadě:** Sada `test` obsahuje více zákeřných příkladů, sarkasmu a nejednoznačných formulací.
+  3. **Dodržení JSON formátu:** Zatímco `openai/gpt-oss-20b` neměl s formátem problém (1.0), Gemini na sadě `test` generoval neplatný JSON v 30–40 % případů.
+
+---
+
+### 4. Využití AI asistenta (OpenCode / Gemini)
+
+Během vypracování projektu jsem používval AI asistenta v OpenCode.
+
+* **Použité modely:**
+  * Na návrh architektury skriptu `eval.js`, kešování přes SHA-256 a správu CLI argumentů jsem používal větší modely.
+  * Na řešení syntaxe PowerShellu, úpravu `loadDataset` a funkce `normalize` jsem používal menší/rychlejší modely.
+* **S čím AI pomohla:**
+  * Vytvoření kompletní infrastruktury `eval.js` a vyřešení parsování dat (podpora `.json` i `.jsonl`).
+  * Návrh normalizační logiky pro porovnávání výsledků bez ohledu na diakritiku a velikost písmen.
+  * Výpočet a formátování statistik v `summary.json`.
+* **Kde AI selhala:**
+  * AI zpočátku navrhovala neexistující nebo zastaralá ID modelů pro Groq/Mistral API, což vracelo chyby 404.
+  * Příkazová řádka PowerShellu se rozbíjela u názvů modelů s mezerami (např. chybějící uvozovky u `openai/gpt-oss-20b`).
+* **Rozdíl mezi menším a větším modelem:**
+  * Menší modely psaly kód rychle, ale často přehlédly edge-cases (např. typové konverze string vs. number). Větší modely hned napoprvé navrhly spolehlivé struktury.
+
+---
+
+### 5. Osobně-technická reflexe
+
+Překvapilo mě, jak propastné rozdíly v latenci a spolehlivosti JSON výstupu existují mezi jednotlivými poskytovateli. Model `openai/gpt-oss-20b` na Groqu dokázal vrátit validní odpověď za necelou půlsekundu, zatímco modely Gemini potřebovaly přes 5 sekund a navíc často selhávaly na syntaxi JSONu. 
+
+Kdybych dělal projekt znovu, zaměřil bych se od začátku na striktní ošetření diakritiky v porovnávací logice a rovnou definoval uvozovky u CLI argumentů v PowerShellu. Ukázalo se, že výběr správného poskytovatele a optimalizace infrastruktury (kešování, normalizace) má na celkový výkon systému stejně velký vliv jako samotná volba modelu.

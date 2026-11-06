@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "input": "Nabízíme vypracování bakalářských a diplomových prací na zakázku. 100% originalita zaručena. Kontakt: seminarky-rychle@email.cz",
+    "tezky": "ne",
+    "expected": {"typ": "spam", "skore_toxicity": "1", "akce": "smazat"}
+  },
+  {
+    "id": 2,
+    "input": "Nefunguje mi přihlášení k účtu, píše to chybu 403. Může se na to prosím nějaký admin podívat?",
+    "tezky": "ne",
+    "expected": {"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}
+  },
+  {
+    "id": 3,
+    "input": "Co to je za kecy? Ty musíš mít v hlavě fakt vymatláno, když tvrdíš takovou kravinu.",
+    "tezky": "ne",
+    "expected": {"typ": "urazka", "skore_toxicity": "3", "akce": "vyzaduje_kontrolu"}
+  },
+  {
+    "id": 4,
+    "input": "Pro zájemce o Web3 a NFT: připojte se k naší telegramové skupině pro exkluzivní signály t.me/crypto_signals_cz",
+    "tezky": "ne",
+    "expected": {"typ": "spam", "skore_toxicity": "1", "akce": "smazat"}
+  },
+  {
+    "id": 5,
+    "input": "Stačí přidat do souboru .env řádek PORT=3000 a předělat npm run dev, pak už to pojede.",
+    "tezky": "ne",
+    "expected": {"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}
+  },
+  {
+    "id": 6,
+    "input": "Tento update stojí úplně za nic. Vývojáři jsou líná stvoření a jen z lidí tahají peníze.",
+    "tezky": "ne",
+    "expected": {"typ": "v poradku", "skore_toxicity": "2", "akce": "schvalit"}
+  },
+  {
+    "id": 7,
+    "input": "Dobrý den, má tato základní deska podpora pro paměti DDR5 s frekvencí 6000 MHz z výroby?",
+    "tezky": "ne",
+    "expected": {"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}
+  },
+  {
+    "id": 8,
+    "input": "Drž už hubu a nepiš sem. Nikoho tvé výlevy nezajímají, všichni tě tu mají za šaška.",
+    "tezky": "ne",
+    "expected": {"typ": "urazka", "skore_toxicity": "4", "akce": "vyzaduje_kontrolu"}
+  },
+  {
+    "id": 9,
+    "input": "Ahoj, napsal jsem jednoduchý Python skript na sledování cen grafických karet, pokud by to někoho zajímalo, otevřel jsem repozitář na github.com/lukas/gpu-tracker",
+    "tezky": "ano",
+    "expected": {"typ": "v poradku", "skore_toxicity": "1", "akce": "schvalit"}
+  },
+  {
+    "id": 10,
+    "input": "Díky moc za radu brácho, tvůj tip mi pomohl smazat celou databázi zákazníků. Opravdu smekám před tvými znalostmi.",
+    "tezky": "ano",
+    "expected": {"typ": "v poradku", "skore_toxicity": "2", "akce": "schvalit"}
+  }
+]

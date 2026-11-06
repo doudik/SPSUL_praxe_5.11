@@ -1,0 +1,30 @@
+[
+  {
+    "id": 3,
+    "raw": "{\"typ\": \"urážka\", \"skore_toxicity\": \"4\", \"akce\": \"smazat\"}"
+  },
+  {
+    "id": 4,
+    "raw": "{\"typ\": \"spam\", \"skore_toxicity\": \"3\", \"akce\": \"smazat\"}"
+  },
+  {
+    "id": 5,
+    "raw": "{\"typ\": \"v pořádku\", \"skore_toxicity\": \"1\", \"akce\": \"schvalit\"}"
+  },
+  {
+    "id": 6,
+    "raw": "{\"typ\": \"urážka\", \"skore_toxicity\": \"3\", \"akce\": \"vyzaduje_kontrolu\"}"
+  },
+  {
+    "id": 7,
+    "raw": "{\n  \"typ\": \"v pořádku\",\n  \"skore_toxicity\": \"1\",\n  \"akce\": \"schvalit\"\n}"
+  },
+  {
+    "id": 8,
+    "raw": "{\n  \"typ\": \"urážka\",\n  \"skore_toxicity\": \"4\",\n  \"akce\": \"smazat\"\n}"
+  },
+  {
+    "id": 10,
+    "raw": "{\n  \"typ\": \"v pořádku\",\n  \"skore_toxicity\": \"3\",\n  \"akce\": \"schvalit\"\n}"
+  }
+]
