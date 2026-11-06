@@ -66,7 +66,7 @@ def bez_diakritiky(s):
 
 # ---------------------------------------------------------------- volání API
 
-def zavolej(poskytovatel, model, prompt_text, json_mode, max_pokusu=6):
+def zavolej(poskytovatel, model, prompt_text, json_mode, max_pokusu=8):
     base_url, env_klic = POSKYTOVATELE[poskytovatel]
     klic = os.environ.get(env_klic)
     if not klic:
@@ -100,12 +100,39 @@ def zavolej(poskytovatel, model, prompt_text, json_mode, max_pokusu=6):
                 time.sleep(cekej)
                 continue
             raise RuntimeError(f"HTTP {e.code}: {text}") from None
-        except (urllib.error.URLError, TimeoutError) as e:
+        except (urllib.error.URLError, TimeoutError, ConnectionError, OSError) as e:
             if pokus < max_pokusu:
-                print(f"    síťová chyba {e}, zkouším znovu")
-                time.sleep(5 * pokus)
+                cekej = min(10 * pokus, 60)
+                print(f"    síťová chyba ({e}), čekám {cekej} s a zkouším znovu ({pokus}/{max_pokusu})")
+                time.sleep(cekej)
                 continue
-            raise
+            raise RuntimeError(f"síťová chyba: {e}") from None
+
+
+def over_spojeni(poskytovatel):
+    """Rychlý test klíče a spojení (GET /models, nespotřebuje tokeny). Vrátí (ok, zprava)."""
+    base_url, env_klic = POSKYTOVATELE[poskytovatel]
+    klic = os.environ.get(env_klic)
+    if not klic:
+        return False, f"chybí {env_klic} v .env"
+    req = urllib.request.Request(base_url.rstrip("/") + "/models",
+                                 headers={"Authorization": f"Bearer {klic}", "User-Agent": "spsul-eval"})
+    for pokus in range(1, 4):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                data = json.loads(r.read().decode("utf-8"))
+            modely = sorted(m.get("id", "").removeprefix("models/") for m in data.get("data", []))
+            return True, modely
+        except urllib.error.HTTPError as e:
+            if e.code in (401, 403):
+                return False, f"HTTP {e.code} – klíč {env_klic} je neplatný nebo zablokovaný (vytvoř nový v konzoli)"
+            if pokus == 3:
+                return False, f"HTTP {e.code}"
+        except Exception as e:  # DNS, firewall, výpadek sítě
+            if pokus == 3:
+                return False, (f"nedá se připojit k {base_url} ({e}). Zkontroluj internet, VPN/firewall "
+                               "nebo zkus jinou síť (třeba hotspot z mobilu).")
+        time.sleep(5)
 
 
 def zavolej_s_cache(poskytovatel, model, prompt_text, json_mode):

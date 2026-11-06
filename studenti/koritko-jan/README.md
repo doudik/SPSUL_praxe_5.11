@@ -79,8 +79,11 @@ Tabulku generuje `src/report.py` přímo z `results/summary.json`, čísla tedy 
 _Zatím nespuštěno – po `python src/run_all.py` se sem vloží tabulka._
 <!-- TABULKA KONEC -->
 
-Použité modely: `openai/gpt-oss-20b` (Groq, ~20 mld. parametrů), `llama-3.3-70b-versatile` (Groq, 70 mld.),
-`mistral-small-latest` (Mistral, ~24 mld.). Grafy: [`results/dashboard.html`](results/dashboard.html).
+<!-- MODELY START -->
+_Zatím nespuštěno._
+<!-- MODELY KONEC -->
+
+Grafy: [`results/dashboard.html`](results/dashboard.html).
 Seznam všech chyb: [`results/chyby.md`](results/chyby.md).
 
 ## Rozbor 3 chyb

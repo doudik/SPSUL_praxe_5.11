@@ -26,6 +26,8 @@ CENY_OPENROUTER = {
     "openai/gpt-oss-20b": ("openai/gpt-oss-20b", 0.018, 0.09),
     "llama-3.3-70b-versatile": ("meta-llama/llama-3.3-70b-instruct", 0.10, 0.32),
     "mistral-small-latest": ("mistralai/mistral-small-3.2-24b-instruct", 0.075, 0.20),
+    "llama-3.1-8b-instant": ("meta-llama/llama-3.1-8b-instruct", 0.02, 0.04),
+    "openai/gpt-oss-120b": ("openai/gpt-oss-120b", 0.026, 0.095),
 }
 USD_CZK = 23.0  # orientační kurz
 DOTAZU = 10_000
@@ -309,12 +311,23 @@ def dev_test(behy):
             "nejsou (°F, text, který není o počasí, krupobití), takže ukazuje, jak nástroj zvládne nové situace.")
 
 
+VELIKOST = {"openai/gpt-oss-20b": "~20 mld. parametrů", "llama-3.3-70b-versatile": "70 mld.",
+            "mistral-small-latest": "~24 mld.", "llama-3.1-8b-instant": "8 mld.", "openai/gpt-oss-120b": "~120 mld.",
+            "gemini-flash-latest": "velikost nezveřejněna"}
+
+
+def pouzite_modely(behy):
+    m = dict.fromkeys((b["model"], b["poskytovatel"]) for b in behy)
+    return "Použité modely: " + ", ".join(f"`{mo}` ({po}, {VELIKOST.get(mo, '?')})" for mo, po in m) + "."
+
+
 def main():
     if not (RES / "summary.json").exists():
         sys.exit("results/summary.json zatím neexistuje – nejdřív spusť eval.")
     behy = nacti()
     vloz_do_readme(tabulka(behy), "TABULKA")
     vloz_do_readme(cena(behy), "CENA")
+    vloz_do_readme(pouzite_modely(behy), "MODELY")
     vloz_do_readme(rozbor(), "ROZBOR")
     vloz_do_readme(doporuceni(behy), "DOPORUCENI")
     vloz_do_readme(dev_test(behy), "DEVTEST")

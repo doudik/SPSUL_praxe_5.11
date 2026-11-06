@@ -3,11 +3,12 @@
     python src/run_all.py            # 4a + 4b na dev, pak 4c na test pro 2 nejlepší kombinace
     python src/run_all.py --jen-dev  # jen dev (test spustíš později)
 
-Modely se nastavují v MODELY níže (ne v kódu evalu). Poskytovatel bez klíče v .env se přeskočí.
-Díky cache stojí opakované spuštění 0 požadavků.
+1. Ověří klíče a spojení ke každému poskytovateli (bez spotřeby tokenů).
+2. Z KANDIDATU vezme první 3 modely, které opravdu fungují (když jeden selže, nastoupí další).
+3. 4a: prompt v1 na dev, 4b: prompt v2 na dev, 4c: 2 nejlepší kombinace na test.
+Díky cache stojí opakované spuštění 0 požadavků – po chybě ho stačí pustit znovu.
 """
 import argparse
-import os
 import sys
 from pathlib import Path
 
@@ -15,12 +16,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import eval as ev  # noqa: E402
 import report  # noqa: E402
 
-# (poskytovatel, model) – malý, velký a model od jiného poskytovatele
-MODELY = [
+# (poskytovatel, model) v pořadí, v jakém se zkoušejí. Potřebujeme 3 funkční,
+# ideálně malý + velký model a aspoň 2 poskytovatele.
+KANDIDATI = [
     ("groq", "openai/gpt-oss-20b"),          # ~20 mld. parametrů
     ("groq", "llama-3.3-70b-versatile"),     # 70 mld. parametrů
     ("mistral", "mistral-small-latest"),     # jiný poskytovatel (~24 mld.)
+    ("groq", "llama-3.1-8b-instant"),        # záloha: malý model 8 mld.
+    ("groq", "openai/gpt-oss-120b"),         # záloha: velký model 120 mld.
+    ("gemini", "gemini-flash-latest"),       # záloha: jiný poskytovatel
 ]
+POTREBA_MODELU = 3
 
 
 def main():
@@ -29,29 +35,49 @@ def main():
     a = ap.parse_args()
     ev.nacti_env()
 
-    modely = []
-    for posk, model in MODELY:
-        if os.environ.get(ev.POSKYTOVATELE[posk][1]):
-            modely.append((posk, model))
-        else:
-            print(f"!! přeskakuji {model}: chybí {ev.POSKYTOVATELE[posk][1]} v .env")
-    if not modely:
-        sys.exit("Žádný klíč v .env – nejdřív vyplň .env (viz .env.example).")
+    print("######## kontrola klíčů a spojení")
+    dostupne = {}
+    for posk in dict.fromkeys(p for p, _ in KANDIDATI):
+        ok, info = ev.over_spojeni(posk)
+        dostupne[posk] = info if ok else None
+        print(f"  {posk:<10} {'OK' if ok else 'NEJDE: ' + info}")
 
-    dev = []
+    vybrane = []
+    for posk, model in KANDIDATI:
+        if dostupne.get(posk) is None:
+            continue
+        vybrane.append((posk, model))
+    if not vybrane:
+        sys.exit("\nNejde se připojit k žádnému poskytovateli – oprav klíče v .env nebo připojení k internetu.")
+
+    # výsledky se pokaždé skládají znovu (z cache to nic nestojí), aby README přesně sedělo se results/
+    for f in ev.ROOT.joinpath("results").glob("*.json"):
+        f.unlink()
+
     print("\n######## 4a: porovnání modelů (v1, dev)")
-    for posk, model in modely:
-        dev.append(ev.spust("dev", "v1", posk, model))
-    dev = [b for b in dev if b]
-    print("\n######## 4b: lepší prompt (v2, dev)")
-    for posk, model in modely:
-        dev.append(ev.spust("dev", "v2", posk, model))
-    dev = [b for b in dev if b]
+    hotove, dev = [], []
+    for posk, model in vybrane:
+        if len(hotove) == POTREBA_MODELU:
+            break
+        b = ev.spust("dev", "v1", posk, model)
+        if b:
+            hotove.append((posk, model))
+            dev.append(b)
+        else:
+            print(f"!! {model} ({posk}) nefunguje, zkouším další model")
+    if len(hotove) < POTREBA_MODELU:
+        print(f"!! Funkční jsou jen {len(hotove)} modely – spusť skript později znovu (hotové je v cache).")
     if not dev:
-        sys.exit("Žádný běh neproběhl – zkontroluj klíče v .env a názvy modelů v MODELY.")
+        sys.exit("Žádný běh neproběhl.")
+
+    print("\n######## 4b: lepší prompt (v2, dev)")
+    for posk, model in hotove:
+        b = ev.spust("dev", "v2", posk, model)
+        if b:
+            dev.append(b)
 
     if not a.jen_dev:
-        # 4c: dvě nejlepší kombinace podle úplné shody na dev (při shodě rozhoduje validita, pak latence)
+        # 4c: dvě nejlepší kombinace podle úplné shody na dev (při shodě validita, pak latence)
         poradi = sorted(dev, key=lambda b: (-b["uplna_shoda"], -b["validni_json"], b["latence_s"]))
         print("\n######## 4c: finální měření na test sadě – 2 nejlepší kombinace z dev:")
         for b in poradi[:2]:
@@ -60,6 +86,7 @@ def main():
             ev.spust("test", b["prompt"], b["poskytovatel"], b["model"])
 
     report.main()
+    print("\nHOTOVO.")
 
 
 if __name__ == "__main__":
