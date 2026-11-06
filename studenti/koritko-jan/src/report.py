@@ -298,18 +298,30 @@ def doporuceni(behy):
 
 
 def dev_test(behy):
-    radky = []
+    radky, rozdily = [], []
     for t in [b for b in behy if b["sada"] == "test"]:
         d = next((b for b in behy if b["sada"] == "dev" and b["model"] == t["model"] and b["prompt"] == t["prompt"]), None)
         if d:
+            rozdily.append(t["uplna_shoda"] - d["uplna_shoda"])
             radky.append(f"- {t['model']} + {t['prompt']}: dev {pct(d['uplna_shoda'])} → test {pct(t['uplna_shoda'])} "
                          f"({(t['uplna_shoda'] - d['uplna_shoda']) * 100:+.0f} p. b.)")
     if not radky:
         return "Na test sadě zatím nic neběželo."
-    return ("\n".join(radky) + "\n\nTest sada má jen 10 případů, takže jeden případ = 10 procentních bodů a rozdíl "
-            "v řádu desítek bodů může být čistě náhoda. Prompt v2 jsem ladil na dev sadě, proto se na ní dá čekat "
-            "spíš lepší výsledek než na test (mírné přeučení). Test sada navíc obsahuje typy záludností, které v dev "
-            "nejsou (°F, text, který není o počasí, krupobití), takže ukazuje, jak nástroj zvládne nové situace.")
+    if all(abs(r) < 1e-9 for r in rozdily):
+        zaver = ("Výsledky na dev a test se neliší. Prompt v2 jsem psal podle pravidel ze schématu (ne podle konkrétních "
+                 "případů z test sady) a ověřoval jen na dev sadě. Pravidla v něm jsou obecná (pád města, rozpětí teplot, null, °F) a few-shot příklady nejsou z žádné sady, takže se "
+                 "nepřeučil na konkrétní případy – fungoval i na test sadě, která má záludnosti, jaké v dev nejsou "
+                 "(°F, text, který není o počasí, krupobití). Na druhou stranu 10 případů je málo (1 případ = 10 p. b.) "
+                 "a stoprocentní výsledek spíš ukazuje, že je sada pro tyhle modely už lehká; pro přesnější srovnání "
+                 "by byla potřeba větší a těžší sada.")
+    elif sum(rozdily) < 0:
+        zaver = ("Na test sadě je výsledek horší. Prompt v2 jsem ladil podle chyb na dev sadě, takže se na ní dá čekat "
+                 "lepší výsledek (mírné přeučení), a test sada má záludnosti, které v dev nejsou (°F, text, který není "
+                 "o počasí, krupobití). Test má navíc jen 10 případů, takže jeden případ = 10 procentních bodů.")
+    else:
+        zaver = ("Na test sadě je výsledek dokonce lepší – při 10 případech (1 případ = 10 p. b.) je to spíš náhoda "
+                 "a rozdílná obtížnost případů než skutečné zlepšení.")
+    return "\n".join(radky) + "\n\n" + zaver
 
 
 VELIKOST = {"openai/gpt-oss-20b": "~20 mld. parametrů", "llama-3.3-70b-versatile": "70 mld.",
@@ -329,7 +341,7 @@ def main():
     vloz_do_readme(tabulka(behy), "TABULKA")
     vloz_do_readme(cena(behy), "CENA")
     vloz_do_readme(pouzite_modely(behy), "MODELY")
-    vloz_do_readme(rozbor(), "ROZBOR")
+    vloz_do_readme(rozbor(), "ROZBOR")  # jen když v README značky ROZBOR zůstaly
     vloz_do_readme(doporuceni(behy), "DOPORUCENI")
     vloz_do_readme(dev_test(behy), "DEVTEST")
     chyby()

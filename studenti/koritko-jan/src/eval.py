@@ -96,7 +96,7 @@ def zavolej(poskytovatel, model, prompt_text, json_mode, max_pokusu=8):
         except urllib.error.HTTPError as e:
             text = e.read().decode("utf-8", "replace")[:300]
             if e.code in (429, 500, 502, 503, 504) and pokus < max_pokusu:
-                cekej = float(e.headers.get("retry-after") or 0) or min(10 * pokus, 60)
+                cekej = max(float(e.headers.get("retry-after") or 0), min(15 * pokus, 60))
                 print(f"    HTTP {e.code}, čekám {cekej:.0f} s a zkouším znovu ({pokus}/{max_pokusu})")
                 time.sleep(cekej)
                 continue
@@ -260,7 +260,7 @@ def spust(sada, prompt, poskytovatel, model, json_mode=False):
     for p in pripady:
         prompt_text = sablona.replace("{text}", p["input"])
         # dokud z API nepřišla žádná odpověď, nezkoušíme to dlouho (model nemusí být dostupný vůbec)
-        pokusu = 8 if (volani_api or (poskytovatel, model) in FUNGUJICI) else 3
+        pokusu = 8 if (volani_api or (poskytovatel, model) in FUNGUJICI) else 4
         try:
             odpoved, latence, z_cache = zavolej_s_cache(poskytovatel, model, prompt_text, json_mode, pokusu)
         except Exception as e:  # chyba API nesmí shodit celý program

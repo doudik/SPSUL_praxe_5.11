@@ -48,6 +48,12 @@ def main():
         if dostupne.get(posk) is None:
             continue
         vybrane.append((posk, model))
+    # další zálohy: chatovací modely, které Groq tomuhle účtu opravdu nabízí
+    nechci = ("whisper", "tts", "guard", "compound", "orpheus", "playai", "distil")
+    for model in dostupne.get("groq") or []:
+        if model and not any(n in model.lower() for n in nechci) and ("groq", model) not in vybrane:
+            vybrane.append(("groq", model))
+    print("  pořadí modelů k vyzkoušení: " + ", ".join(m for _, m in vybrane))
     if not vybrane:
         sys.exit("\nNejde se připojit k žádnému poskytovateli – oprav klíče v .env nebo připojení k internetu.")
 

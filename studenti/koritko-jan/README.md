@@ -90,37 +90,50 @@ Tabulku generuje `src/report.py` přímo z `results/summary.json`, čísla tedy 
 Použité modely: `openai/gpt-oss-120b` (groq, ~120 mld.), `openai/gpt-oss-20b` (groq, ~20 mld. parametrů).
 <!-- MODELY KONEC -->
 
+Pozn.: Mistral (`mistral-small-latest`) na bezplatném účtu opakovaně vracel chybu 429 (vyčerpaný limit)
+a `llama-3.3-70b-versatile` už Groq nenabízí (404 `model_not_found`). Skript `run_all.py` proto automaticky
+vzal další dostupný model; všechny použité modely jsou tak nakonec od Groqu, což zadání pro tuhle situaci
+povoluje.
+
 Grafy: [`results/dashboard.html`](results/dashboard.html).
 Seznam všech chyb: [`results/chyby.md`](results/chyby.md).
 
 ## Rozbor 3 chyb
 
-Tři různé chyby vybírá a popisuje `src/report.py` přímo ze surových odpovědí v `results/` (u každého případu
-v sadě je poznamenáno, co je na něm záludné). Všechny chyby jsou v [`results/chyby.md`](results/chyby.md).
+Všechny chyby jsou v [`results/chyby.md`](results/chyby.md). S promptem v1 udělal každý model 2 chyby z 15,
+s promptem v2 žádnou.
 
-<!-- ROZBOR START -->
-**1. Případ #8** (openai/gpt-oss-20b, prompt v1, sada dev)
+**1. Případ #8 – srážky** (`openai/gpt-oss-20b`, v1, dev)
 
 - Vstup: „Plzen: zatazeno, mrholeni, 7 C“
 - Model vrátil: `{"mesto": "Plzen", "teplota": 7, "srazky": false, "typ_srazek": null}`
 - Správně: `{"mesto": "Plzeň", "teplota": 7, "srazky": true, "typ_srazek": "dest"}`
-- Proč: srážky: vrátil false, správně je true; pole typ srážek nechal prázdné, i když údaj v textu je. Na případu je záludné: text bez diakritiky a se zkratkou „C“. Pravidlo je v zadání jasné, jde spíš o **chybu modelu**.
+- Proč: text je bez diakritiky, takže „mrholeni“ menší model nejspíš nepoznal jako mrholení, a i kdyby ano,
+  prompt v1 neříká, že mrholení se počítá jako srážky (déšť). Je to kombinace **chyby modelu** (větší
+  gpt-oss-120b to zvládl) a **nejasného zadání**. Navíc je výstup nekonzistentní: `srazky: false`, ale
+  `typ_srazek: null` místo `zadne`. V2 má v pravidlech výslovně „přeháňky, mrholení“ a případ zvládl.
 
-**2. Případ #10** (openai/gpt-oss-120b, prompt v1, sada dev)
-
-- Vstup: „Ahoj, tak jsme dorazili do Zlína a počasí nic moc. Kamarád říkal, že předpověď na dnešek hlásí 12 stupňů, ale fouká jak blázen. Naštěstí aspoň neprší a podle radaru ani nemá.“
-- Model vrátil: `{"mesto": "Zlína", "teplota": 12, "srazky": false, "typ_srazek": "zadne"}`
-- Správně: `{"mesto": "Zlín", "teplota": 12, "srazky": false, "typ_srazek": "zadne"}`
-- Proč: město vrátil jako „Zlína“ místo „Zlín“ – buď jiný pád/tvar, nebo vybral jiné místo. Na případu je záludné: dlouhý hovorový text, údaje jsou rozházené. Pravidlo je v zadání jasné, jde spíš o **chybu modelu**.
-
-**3. Případ #11** (openai/gpt-oss-20b, prompt v1, sada dev)
+**2. Případ #11 – město ve špatném pádě** (`openai/gpt-oss-20b`, v1, dev)
 
 - Vstup: „Super, v Jihlavě zase „krásné letní počasí“ – leje jako z konve a je 6 stupňů.“
 - Model vrátil: `{"mesto": "Jihlavě", "teplota": 6, "srazky": true, "typ_srazek": "dest"}`
 - Správně: `{"mesto": "Jihlava", "teplota": 6, "srazky": true, "typ_srazek": "dest"}`
-- Proč: město vrátil jako „Jihlavě“ místo „Jihlava“ – buď jiný pád/tvar, nebo vybral jiné místo. Na případu je záludné: ironie – slova „krásné letní počasí“ tvrdí opak skutečnosti. Pravidlo je v zadání jasné, jde spíš o **chybu modelu**.
+- Proč: ironii model prokoukl správně (déšť), jen město opsal z textu tak, jak tam bylo („v Jihlavě“).
+  Že chci 1. pád, je moje pravidlo z README, v promptu v1 ale není – jde o **nejasné zadání**. Stejnou
+  chybu udělal i velký model u #10 („Zlína“). V2 obsahuje pravidlo „město v 1. pádě“ s příkladem a chyba zmizela.
 
-<!-- ROZBOR KONEC -->
+**3. Případ #14 – dvě města** (`openai/gpt-oss-120b`, v1, dev)
+
+- Vstup: „Zatímco v Pardubicích bude sněžit při −1 °C, v Chrudimi se očekává jen zataženo.“
+- Model vrátil: `{"mesto": null, "teplota": -1, "srazky": true, "typ_srazek": "snih"}`
+- Správně: `{"mesto": "Pardubice", "teplota": -1, "srazky": true, "typ_srazek": "snih"}`
+- Proč: model správně vzal teplotu a sníh z Pardubic, ale u města se nedokázal rozhodnout mezi dvěma
+  a raději vrátil `null`. Pravidlo „při více místech ber první, pro které je popsané počasí“ jsem si určil
+  já a v1 ho neobsahuje, takže je to hlavně **nejasné zadání**; dá se dokonce namítnout, že správná odpověď
+  není úplně jednoznačná. V2 pravidlo obsahuje a model pak odpověděl správně.
+
+**Závěr:** většina chyb v1 nebyla „hloupost“ modelu, ale konvence, které jsem měl v hlavě a v README,
+ale ne v promptu. Přesný popis pravidel v promptu v2 je odstranil úplně.
 
 ## Doporučení pro 10 000 dotazů denně
 
@@ -147,7 +160,7 @@ Vybral bych **openai/gpt-oss-20b** (groq) s promptem **v2**. Na dev sadě má ne
 - openai/gpt-oss-120b + v2: dev 100 % → test 100 % (+0 p. b.)
 - openai/gpt-oss-20b + v2: dev 100 % → test 100 % (+0 p. b.)
 
-Test sada má jen 10 případů, takže jeden případ = 10 procentních bodů a rozdíl v řádu desítek bodů může být čistě náhoda. Prompt v2 jsem ladil na dev sadě, proto se na ní dá čekat spíš lepší výsledek než na test (mírné přeučení). Test sada navíc obsahuje typy záludností, které v dev nejsou (°F, text, který není o počasí, krupobití), takže ukazuje, jak nástroj zvládne nové situace.
+Výsledky na dev a test se neliší. Prompt v2 jsem psal podle pravidel ze schématu (ne podle konkrétních případů z test sady) a ověřoval jen na dev sadě. Pravidla v něm jsou obecná (pád města, rozpětí teplot, null, °F) a few-shot příklady nejsou z žádné sady, takže se nepřeučil na konkrétní případy – fungoval i na test sadě, která má záludnosti, jaké v dev nejsou (°F, text, který není o počasí, krupobití). Na druhou stranu 10 případů je málo (1 případ = 10 p. b.) a stoprocentní výsledek spíš ukazuje, že je sada pro tyhle modely už lehká; pro přesnější srovnání by byla potřeba větší a těžší sada.
 <!-- DEVTEST KONEC -->
 
 ## AI asistent
