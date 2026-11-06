@@ -1,0 +1,10 @@
+{"id":16,"raw":"{\n  \"znacka\": \"Honda\",\n  \"model\": \"Civic\",\n  \"rok\": 2013,\n  \"najezd_km\": 121000,\n  \"cena\": 175000\n}"}
+{"id":17,"raw":"{\n  \"znacka\": \"Citroën\",\n  \"model\": \"C3\",\n  \"rok\": null,\n  \"najezd_km\": 88000,\n  \"cena\": 99000\n}"}
+{"id":18,"raw":"{\n  \"znacka\": \"Mercedes-Benz\",\n  \"model\": \"C220 CDI\",\n  \"rok\": 2011,\n  \"najezd_km\": 210000,\n  \"cena\": 220000\n}"}
+{"id":19,"raw":"{\"znacka\": \"Nissan\", \"model\": \"Qashqai\", \"rok\": 2016, \"najezd_km\": 95000, \"cena\": 220000}"}
+{"id":20,"raw":"{\n  \"znacka\": \"Suzuki\",\n  \"model\": \"Swift\",\n  \"rok\": 2012,\n  \"najezd_km\": 130000,\n  \"cena\": 85000\n}"}
+{"id":21,"raw":"{\"znacka\": \"Škoda\", \"model\": \"Fabia\", \"rok\": 2017, \"najezd_km\": 68000, \"cena\": 189000}"}
+{"id":22,"raw":"{\"znacka\": \"Opel\", \"model\": \"Corsa\", \"rok\": 2010, \"najezd_km\": 175000, \"cena\": null}"}
+{"id":23,"raw":"{\n  \"znacka\": \"Volkswagen\",\n  \"model\": \"Passat\",\n  \"rok\": 2013,\n  \"najezd_km\": 198000,\n  \"cena\": 245000\n}"}
+{"id":24,"raw":"{\"znacka\": null, \"model\": null, \"rok\": null, \"najezd_km\": null, \"cena\": null}"}
+{"id":25,"raw":"{\n  \"znacka\": \"Kia\",\n  \"model\": \"Ceed\",\n  \"rok\": 2009,\n  \"najezd_km\": 280000,\n  \"cena\": 45000\n}"}

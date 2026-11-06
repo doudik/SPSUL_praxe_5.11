@@ -1,0 +1,15 @@
+{"id":1,"raw":"{\"znacka\": \"Škoda\", \"model\": \"Octavia\", \"rok\": 2014, \"najezd_km\": 250000, \"cena\": 60000}"}
+{"id":2,"raw":"{\"znacka\": \"Volkswagen\", \"model\": \"Golf\", \"rok\": 2016, \"najezd_km\": 150000, \"cena\": 120000}"}
+{"id":3,"raw":"{\"znacka\": \"Ford\", \"model\": \"Fiesta\", \"rok\": null, \"najezd_km\": 98000, \"cena\": 89000}"}
+{"id":4,"raw":"{\n  \"znacka\": \"Toyota\",\n  \"model\": \"Yaris\",\n  \"rok\": 2011,\n  \"najezd_km\": 112000,\n  \"cena\": 15000\n}"}
+{"id":5,"raw":"{\n  \"znacka\": \"Hyundai\",\n  \"model\": \"i30\",\n  \"rok\": 2018,\n  \"najezd_km\": null,\n  \"cena\": 245000\n}"}
+{"id":6,"raw":"{\n  \"znacka\": \"Opel\",\n  \"model\": \"Astra\",\n  \"rok\": 2013,\n  \"najezd_km\": 180000,\n  \"cena\": 95000\n}"}
+{"id":7,"raw":"{\n  \"znacka\": \"Renault\",\n  \"model\": \"Clio\",\n  \"rok\": 2005,\n  \"najezd_km\": 303000,\n  \"cena\": 15000\n}"}
+{"id":8,"raw":"{\n  \"znacka\": \"BMW\",\n  \"model\": \"320d\",\n  \"rok\": 2010,\n  \"najezd_km\": 320000,\n  \"cena\": 180000\n}"}
+{"id":9,"raw":"{\n  \"znacka\": \"Audi\",\n  \"model\": \"A4\",\n  \"rok\": 2015,\n  \"najezd_km\": 165000,\n  \"cena\": 310000\n}"}
+{"id":10,"raw":"{\"znacka\": \"Peugeot\", \"model\": \"208\", \"rok\": 2017, \"najezd_km\": 77000, \"cena\": null}"}
+{"id":11,"raw":"{\"znacka\": \"Kia\", \"model\": \"Sportage\", \"rok\": 2012, \"najezd_km\": 142000, \"cena\": 265000}"}
+{"id":12,"raw":"{\"znacka\": \"Dacia\", \"model\": \"Duster\", \"rok\": 2012, \"najezd_km\": 250000, \"cena\": null}"}
+{"id":13,"raw":"{\"znacka\": \"Fiat\", \"model\": \"Punto\", \"rok\": 2008, \"najezd_km\": 189000, \"cena\": 35000}"}
+{"id":14,"raw":"{\"znacka\": \"Seat\", \"model\": \"Leon\", \"rok\": 2019, \"najezd_km\": 60000, \"cena\": 180000}"}
+{"id":15,"raw":"{\"znacka\": \"Mazda\", \"model\": \"3\", \"rok\": 2014, \"najezd_km\": 134000, \"cena\": 155000}"}

@@ -1,0 +1,15 @@
+{"id":1,"raw":"{\n  \"znacka\": \"Škoda\",\n  \"model\": \"Octavia\",\n  \"rok\": 2014,\n  \"najezd_km\": 250000,\n  \"cena\": 60000\n}"}
+{"id":2,"raw":"{\n  \"znacka\": \"Volkswagen\",\n  \"model\": \"Golf\",\n  \"rok\": 2016,\n  \"najezd_km\": 150000,\n  \"cena\": 120000\n}"}
+{"id":3,"raw":"{\n  \"znacka\": \"Ford\",\n  \"model\": \"Fiesta\",\n  \"rok\": null,\n  \"najezd_km\": 98000,\n  \"cena\": 89000\n}"}
+{"id":4,"raw":"{\n  \"znacka\": \"Toyota\",\n  \"model\": \"Yaris\",\n  \"rok\": 2011,\n  \"najezd_km\": 112000,\n  \"cena\": 15000\n}"}
+{"id":5,"raw":"{\n  \"znacka\": \"Hyundai\",\n  \"model\": \"i30\",\n  \"rok\": 2018,\n  \"najezd_km\": null,\n  \"cena\": 245000\n}"}
+{"id":6,"raw":"{\n  \"znacka\": \"Opel\",\n  \"model\": \"Astra\",\n  \"rok\": 2013,\n  \"najezd_km\": 180000,\n  \"cena\": 95000\n}"}
+{"id":7,"raw":"{\n  \"znacka\": \"Renault\",\n  \"model\": \"Clio\",\n  \"rok\": 2005,\n  \"najezd_km\": 303000,\n  \"cena\": 15000\n}"}
+{"id":8,"raw":"{\n  \"znacka\": \"BMW\",\n  \"model\": \"320\",\n  \"rok\": 2010,\n  \"najezd_km\": 320000,\n  \"cena\": 180000\n}"}
+{"id":9,"raw":"{\"znacka\": \"Audi\", \"model\": \"A4\", \"rok\": 2015, \"najezd_km\": 165000, \"cena\": 310000}"}
+{"id":10,"raw":"{\n  \"znacka\": \"Peugeot\",\n  \"model\": \"208\",\n  \"rok\": 2017,\n  \"najezd_km\": 77000,\n  \"cena\": null\n}"}
+{"id":11,"raw":"{\n  \"znacka\": \"Kia\",\n  \"model\": \"Sportage\",\n  \"rok\": 2012,\n  \"najezd_km\": 142000,\n  \"cena\": 265000\n}"}
+{"id":12,"raw":"{\n  \"znacka\": \"Dacia\",\n  \"model\": \"Duster\",\n  \"rok\": 2012,\n  \"najezd_km\": 250000,\n  \"cena\": null\n}"}
+{"id":13,"raw":"{\n  \"znacka\": \"Fiat\",\n  \"model\": \"Punto\",\n  \"rok\": 2008,\n  \"najezd_km\": 189000,\n  \"cena\": 35000\n}"}
+{"id":14,"raw":"{\n  \"znacka\": \"Seat\",\n  \"model\": \"Leon\",\n  \"rok\": 2019,\n  \"najezd_km\": 60000,\n  \"cena\": 180000\n}"}
+{"id":15,"raw":"{\n  \"znacka\": \"Mazda\",\n  \"model\": \"3\",\n  \"rok\": 2014,\n  \"najezd_km\": 134000,\n  \"cena\": 155000\n}"}

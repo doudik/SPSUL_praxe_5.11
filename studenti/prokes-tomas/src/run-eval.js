@@ -53,9 +53,9 @@ async function callModel({ baseURL, apiKey, model, systemPrompt, input, maxRetri
       body: JSON.stringify(body),
     });
 
-    if (res.status === 429) {
-      const waitMs = 15000;
-      console.log(`  429 rate limit, čekám ${waitMs / 1000}s a zkouším znovu (pokus ${attempt + 1}/${maxRetries})...`);
+    if (res.status === 429 || res.status === 500 || res.status === 503) {
+      const waitMs = res.status === 429 ? 15000 : 5000;
+      console.log(`  ${res.status} dočasná chyba, čekám ${waitMs / 1000}s a zkouším znovu (pokus ${attempt + 1}/${maxRetries})...`);
       await new Promise(r => setTimeout(r, waitMs));
       continue;
     }
