@@ -1,0 +1,335 @@
+{
+  "summary": {
+    "model": "nvidia/nemotron-3.5-lightning:free",
+    "poskytovatel": "openrouter",
+    "prompt": "v1",
+    "sada": "dev",
+    "pripadu": 15,
+    "validni_json": 1.0,
+    "uplna_shoda": 0.9333333333333333,
+    "pole": {
+      "phishing": 0.9333333333333333,
+      "typ_podvodu": 0.9333333333333333
+    },
+    "latence_s": 9.681233339997318,
+    "tokeny_vstup": 7302,
+    "tokeny_vystup": 11001
+  },
+  "pripady": [
+    {
+      "id": 1,
+      "input": "Upozornění banky: vaše karta byla z bezpečnostních důvodů dočasně zablokována. Odblokujte ji na https://karta-overeni.example.cz.",
+      "expected": {
+        "phishing": true,
+        "typ_podvodu": "banka"
+      },
+      "raw": "{\"phishing\": true, \"typ_podvodu\": \"banka\"}",
+      "parsed": {
+        "phishing": true,
+        "typ_podvodu": "banka"
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 4.798249699990265
+    },
+    {
+      "id": 2,
+      "input": "Potvrďte prosím poslední platbu kartou ve výši 1 250 Kč kliknutím na odkaz https://platba-potvrzeni.example.cz.",
+      "expected": {
+        "phishing": true,
+        "typ_podvodu": "banka"
+      },
+      "raw": "{\"phishing\": true, \"typ_podvodu\": \"banka\"}",
+      "parsed": {
+        "phishing": true,
+        "typ_podvodu": "banka"
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 9.6529369999771
+    },
+    {
+      "id": 3,
+      "input": "Váš účet bude zrušen do 24 hodin. Přihlaste se a ověřte své bankovní údaje zde: https://bezpecna-banka.example.cz.",
+      "expected": {
+        "phishing": true,
+        "typ_podvodu": "banka"
+      },
+      "raw": "{\"phishing\": true, \"typ_podvodu\": \"banka\"}",
+      "parsed": {
+        "phishing": true,
+        "typ_podvodu": "banka"
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 10.05553620000137
+    },
+    {
+      "id": 4,
+      "input": "Kurýr dnes nedoručil váš balík. Zaplaťte nový poplatek za doručení ve výši 25 Kč na https://kuryr-poplatek.example.cz.",
+      "expected": {
+        "phishing": true,
+        "typ_podvodu": "doruceni"
+      },
+      "raw": "{\"phishing\": true, \"typ_podvodu\": \"doruceni\"}",
+      "parsed": {
+        "phishing": true,
+        "typ_podvodu": "doruceni"
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 8.797193599981256
+    },
+    {
+      "id": 5,
+      "input": "Čeká na vás zásilka. Pro potvrzení doručovací adresy odpovězte na tuto zprávu nebo otevřete https://balik-adresa.example.cz.",
+      "expected": {
+        "phishing": true,
+        "typ_podvodu": "doruceni"
+      },
+      "raw": "{\"phishing\": true, \"typ_podvodu\": \"doruceni\"}",
+      "parsed": {
+        "phishing": true,
+        "typ_podvodu": "doruceni"
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 7.116401500010397
+    },
+    {
+      "id": 6,
+      "input": "Finanční úřad: evidujeme nedoplatek 480 Kč. Uhradit jej můžete prostřednictvím tohoto odkazu: https://danovy-nedoplatek.example.cz.",
+      "expected": {
+        "phishing": true,
+        "typ_podvodu": "urady"
+      },
+      "raw": "{\"phishing\": true, \"typ_podvodu\": \"urady\"}",
+      "parsed": {
+        "phishing": true,
+        "typ_podvodu": "urady"
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 9.213648099976126
+    },
+    {
+      "id": 7,
+      "input": "Městský úřad vás žádá o okamžité potvrzení osobních údajů kvůli nové elektronické občance: https://obcan-overeni.example.cz.",
+      "expected": {
+        "phishing": true,
+        "typ_podvodu": "urady"
+      },
+      "raw": "{\n  \"phishing\": true,\n  \"typ_podvodu\": \"urady\"\n}",
+      "parsed": {
+        "phishing": true,
+        "typ_podvodu": "urady"
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 6.619892599992454
+    },
+    {
+      "id": 8,
+      "input": "Náš investiční program využívá umělou inteligenci a garantuje výnos 15 % týdně. Začněte zde: https://chytre-investice.example.cz.",
+      "expected": {
+        "phishing": true,
+        "typ_podvodu": "investice"
+      },
+      "raw": "{\"phishing\": true, \"typ_podvodu\": \"investice\"}",
+      "parsed": {
+        "phishing": true,
+        "typ_podvodu": "investice"
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 6.116522199998144
+    },
+    {
+      "id": 9,
+      "input": "Máte předběžně schválenou možnost zhodnotit úspory. Stačí napsat ANO a poradce vám zavolá.",
+      "expected": {
+        "phishing": true,
+        "typ_podvodu": "investice"
+      },
+      "raw": "{\"phishing\": false, \"typ_podvodu\": null}",
+      "parsed": {
+        "phishing": false,
+        "typ_podvodu": null
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": false,
+        "typ_podvodu": false
+      },
+      "uplna_shoda": false,
+      "z_cache": false,
+      "latence_s": 19.315614200022537
+    },
+    {
+      "id": 10,
+      "input": "Byli jste vybráni mezi deset výherců soutěže. Pro zaslání ceny potvrďte svou adresu na https://soutez-vyhra.example.cz.",
+      "expected": {
+        "phishing": true,
+        "typ_podvodu": "vyhra"
+      },
+      "raw": "{\n  \"phishing\": true,\n  \"typ_podvodu\": \"vyhra\"\n}",
+      "parsed": {
+        "phishing": true,
+        "typ_podvodu": "vyhra"
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 9.122259499970824
+    },
+    {
+      "id": 11,
+      "input": "Získáváte odměnu 5 000 Kč za věrnost. Pro její vyplacení uhraďte ověřovací poplatek 10 Kč na https://odmena-vyplaceni.example.cz.",
+      "expected": {
+        "phishing": true,
+        "typ_podvodu": "vyhra"
+      },
+      "raw": "{\"phishing\": true, \"typ_podvodu\": \"vyhra\"}",
+      "parsed": {
+        "phishing": true,
+        "typ_podvodu": "vyhra"
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 8.641290900006425
+    },
+    {
+      "id": 12,
+      "input": "Někdo se možná pokouší přihlásit k vašemu profilu. Pokud jste to nebyli vy, potvrďte svou identitu v aplikaci nebo na https://ochrana-profilu.example.cz.",
+      "expected": {
+        "phishing": true,
+        "typ_podvodu": "ucet"
+      },
+      "raw": "{\"phishing\": true, \"typ_podvodu\": \"ucet\"}",
+      "parsed": {
+        "phishing": true,
+        "typ_podvodu": "ucet"
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 15.070009500021115
+    },
+    {
+      "id": 13,
+      "input": "Vaše heslo k e-mailu brzy vyprší. Pro zachování přístupu se přihlaste zde: https://email-aktualizace.example.cz.",
+      "expected": {
+        "phishing": true,
+        "typ_podvodu": "ucet"
+      },
+      "raw": "{\"phishing\": true, \"typ_podvodu\": \"ucet\"}",
+      "parsed": {
+        "phishing": true,
+        "typ_podvodu": "ucet"
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 5.885530399973504
+    },
+    {
+      "id": 14,
+      "input": "Zítra v 8:00 máte objednanou návštěvu u zubaře. Pokud se nemůžete dostavit, zavolejte na číslo ordinace.",
+      "expected": {
+        "phishing": false,
+        "typ_podvodu": null
+      },
+      "raw": "{\"phishing\": false, \"typ_podvodu\": null}",
+      "parsed": {
+        "phishing": false,
+        "typ_podvodu": null
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 20.030242800014094
+    },
+    {
+      "id": 15,
+      "input": "Dobrý den, připomínáme schůzku ve škole ve středu v 15 hodin. Změny prosím nahlaste třídnímu učiteli.",
+      "expected": {
+        "phishing": false,
+        "typ_podvodu": null
+      },
+      "raw": "{\"phishing\": false, \"typ_podvodu\": null}",
+      "parsed": {
+        "phishing": false,
+        "typ_podvodu": null
+      },
+      "validni_json": true,
+      "shoda_poli": {
+        "phishing": true,
+        "typ_podvodu": true
+      },
+      "uplna_shoda": true,
+      "z_cache": false,
+      "latence_s": 4.783171900024172
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "student": "Kostiantyn Mamai",
+  "uloha": "SMS zprávy: phishing a typ podvodu",
+  "behy": [
+    {
+      "model": "cohere/north-mini-code:free",
+      "poskytovatel": "openrouter",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.9333333333333333,
+      "pole": {
+        "phishing": 0.9333333333333333,
+        "typ_podvodu": 0.9333333333333333
+      },
+      "latence_s": 1.8995111400067495,
+      "tokeny_vstup": 5570,
+      "tokeny_vystup": 2115
+    },
+    {
+      "model": "liquid/lfm-2.5-2.6b:free",
+      "poskytovatel": "openrouter",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 0.8666666666666667,
+      "uplna_shoda": 0.7333333333333333,
+      "pole": {
+        "phishing": 0.8666666666666667,
+        "typ_podvodu": 0.7333333333333333
+      },
+      "latence_s": 2.4040630533243528,
+      "tokeny_vstup": 6717,
+      "tokeny_vystup": 12250
+    },
+    {
+      "model": "nvidia/nemotron-3.5-lightning:free",
+      "poskytovatel": "openrouter",
+      "prompt": "v1",
+      "sada": "dev",
+      "pripadu": 15,
+      "validni_json": 1.0,
+      "uplna_shoda": 0.9333333333333333,
+      "pole": {
+        "phishing": 0.9333333333333333,
+        "typ_podvodu": 0.9333333333333333
+      },
+      "latence_s": 9.681233339997318,
+      "tokeny_vstup": 7302,
+      "tokeny_vystup": 11001
+    }
+  ]
+}

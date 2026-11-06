@@ -1,0 +1,10 @@
+{"id":1,"input":"Vaše banka: účet bude zablokován. Ověřte údaje na http://fake.example","expected":{"phishing":true,"typ_podvodu":"banka"},"tezky":false}
+{"id":2,"input":"Česká spořitelna: Na vašem účtu jsme zaznamenali podezřelou platbu. Pro potvrzení identity se přihlaste na https://banka-overeni.example.cz.","expected":{"phishing":true,"typ_podvodu":"banka"},"tezky":false}
+{"id":3,"input":"Balík čeká na doručení. Uhraďte prosím doplatek 39 Kč za změnu adresy na https://doprava-baliku.example.cz.","expected":{"phishing":true,"typ_podvodu":"doruceni"},"tezky":false}
+{"id":4,"input":"Policie ČR: Kvůli neuhrazené pokutě vám bude zablokován účet. Zaplaťte ihned zde: https://pokuta-pcr.example.cz.","expected":{"phishing":true,"typ_podvodu":"urady"},"tezky":false}
+{"id":5,"input":"Investujte dnes 2 000 Kč do nové platformy a vydělávejte až 50 000 Kč měsíčně. Registrace: https://rychle-zisky.example.cz.","expected":{"phishing":true,"typ_podvodu":"investice"},"tezky":false}
+{"id":6,"input":"Gratulujeme! Vyhráli jste nový telefon. Pro vyzvednutí ceny uhraďte administrativní poplatek 49 Kč: https://vyhra-telefon.example.cz.","expected":{"phishing":true,"typ_podvodu":"vyhra"},"tezky":false}
+{"id":7,"input":"Bezpečnostní upozornění: někdo se pokusil přihlásit do vašeho e-mailu. Ověřte účet zde: https://email-bezpecnost.example.cz.","expected":{"phishing":true,"typ_podvodu":"ucet"},"tezky":false}
+{"id":8,"input":"Ahoj, dnes přijdu asi v šest. Nezapomeň prosím koupit chleba.","expected":{"phishing":false,"typ_podvodu":null},"tezky":false}
+{"id":9,"input":"Vaše zásilka je připravena. Stav doručení můžete zkontrolovat v aplikaci dopravce.","expected":{"phishing":false,"typ_podvodu":null},"tezky":true}
+{"id":10,"input":"Banka upozorňuje na plánovanou údržbu internetového bankovnictví. Přihlaste se pouze přes oficiální aplikaci.","expected":{"phishing":false,"typ_podvodu":null},"tezky":true}

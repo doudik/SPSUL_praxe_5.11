@@ -1,0 +1,15 @@
+{"id":1,"input":"Upozornění banky: vaše karta byla z bezpečnostních důvodů dočasně zablokována. Odblokujte ji na https://karta-overeni.example.cz.","expected":{"phishing":true,"typ_podvodu":"banka"},"tezky":false}
+{"id":2,"input":"Potvrďte prosím poslední platbu kartou ve výši 1 250 Kč kliknutím na odkaz https://platba-potvrzeni.example.cz.","expected":{"phishing":true,"typ_podvodu":"banka"},"tezky":false}
+{"id":3,"input":"Váš účet bude zrušen do 24 hodin. Přihlaste se a ověřte své bankovní údaje zde: https://bezpecna-banka.example.cz.","expected":{"phishing":true,"typ_podvodu":"banka"},"tezky":false}
+{"id":4,"input":"Kurýr dnes nedoručil váš balík. Zaplaťte nový poplatek za doručení ve výši 25 Kč na https://kuryr-poplatek.example.cz.","expected":{"phishing":true,"typ_podvodu":"doruceni"},"tezky":false}
+{"id":5,"input":"Čeká na vás zásilka. Pro potvrzení doručovací adresy odpovězte na tuto zprávu nebo otevřete https://balik-adresa.example.cz.","expected":{"phishing":true,"typ_podvodu":"doruceni"},"tezky":true}
+{"id":6,"input":"Finanční úřad: evidujeme nedoplatek 480 Kč. Uhradit jej můžete prostřednictvím tohoto odkazu: https://danovy-nedoplatek.example.cz.","expected":{"phishing":true,"typ_podvodu":"urady"},"tezky":false}
+{"id":7,"input":"Městský úřad vás žádá o okamžité potvrzení osobních údajů kvůli nové elektronické občance: https://obcan-overeni.example.cz.","expected":{"phishing":true,"typ_podvodu":"urady"},"tezky":true}
+{"id":8,"input":"Náš investiční program využívá umělou inteligenci a garantuje výnos 15 % týdně. Začněte zde: https://chytre-investice.example.cz.","expected":{"phishing":true,"typ_podvodu":"investice"},"tezky":false}
+{"id":9,"input":"Máte předběžně schválenou možnost zhodnotit úspory. Stačí napsat ANO a poradce vám zavolá.","expected":{"phishing":true,"typ_podvodu":"investice"},"tezky":true}
+{"id":10,"input":"Byli jste vybráni mezi deset výherců soutěže. Pro zaslání ceny potvrďte svou adresu na https://soutez-vyhra.example.cz.","expected":{"phishing":true,"typ_podvodu":"vyhra"},"tezky":false}
+{"id":11,"input":"Získáváte odměnu 5 000 Kč za věrnost. Pro její vyplacení uhraďte ověřovací poplatek 10 Kč na https://odmena-vyplaceni.example.cz.","expected":{"phishing":true,"typ_podvodu":"vyhra"},"tezky":false}
+{"id":12,"input":"Někdo se možná pokouší přihlásit k vašemu profilu. Pokud jste to nebyli vy, potvrďte svou identitu v aplikaci nebo na https://ochrana-profilu.example.cz.","expected":{"phishing":true,"typ_podvodu":"ucet"},"tezky":true}
+{"id":13,"input":"Vaše heslo k e-mailu brzy vyprší. Pro zachování přístupu se přihlaste zde: https://email-aktualizace.example.cz.","expected":{"phishing":true,"typ_podvodu":"ucet"},"tezky":false}
+{"id":14,"input":"Zítra v 8:00 máte objednanou návštěvu u zubaře. Pokud se nemůžete dostavit, zavolejte na číslo ordinace.","expected":{"phishing":false,"typ_podvodu":null},"tezky":false}
+{"id":15,"input":"Dobrý den, připomínáme schůzku ve škole ve středu v 15 hodin. Změny prosím nahlaste třídnímu učiteli.","expected":{"phishing":false,"typ_podvodu":null},"tezky":false}
